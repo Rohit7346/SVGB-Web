@@ -161,6 +161,7 @@
             font-weight: bold;
             font-size: 18px;
             letter-spacing: 2px;
+            font-family: 'Courier New', monospace;
         }
 
         .refresh-captcha {
@@ -1068,7 +1069,7 @@
             text-align: center;
         }
 
-        /* Gallery Section */
+        /* Gallery Section - UPDATED: Added download functionality */
         .gallery-container {
             margin-top: 20px;
         }
@@ -1086,6 +1087,12 @@
             box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
             overflow: hidden;
             position: relative;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
         }
 
         .gallery-media {
@@ -1128,6 +1135,21 @@
             align-items: center;
             justify-content: center;
             cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .gallery-actions button:hover {
+            background: rgba(0, 0, 0, 0.9);
+        }
+
+        .download-btn-gallery {
+            background: var(--success) !important;
+            width: 35px !important;
+            height: 35px !important;
+        }
+
+        .download-btn-gallery:hover {
+            background: #218838 !important;
         }
 
         /* File Upload Styles */
@@ -1250,6 +1272,185 @@
             width: 120px;
         }
 
+        /* Chat Section - NEW: Added chat functionality */
+        .chat-section {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 350px;
+            height: 500px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            display: flex;
+            flex-direction: column;
+            z-index: 999;
+            transition: all 0.3s ease;
+        }
+
+        .chat-section.minimized {
+            height: 60px;
+        }
+
+        .chat-header {
+            background: linear-gradient(to right, var(--maroon), var(--saffron));
+            color: white;
+            padding: 15px 20px;
+            border-radius: 15px 15px 0 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .chat-title {
+            font-size: 16px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .chat-controls {
+            display: flex;
+            gap: 10px;
+        }
+
+        .chat-control-btn {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .chat-control-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .chat-messages {
+            flex: 1;
+            padding: 15px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            background: #f8f9fa;
+        }
+
+        .message {
+            max-width: 80%;
+            padding: 10px 15px;
+            border-radius: 18px;
+            position: relative;
+            word-wrap: break-word;
+        }
+
+        .message.own {
+            align-self: flex-end;
+            background: var(--saffron);
+            color: white;
+            border-bottom-right-radius: 5px;
+        }
+
+        .message.other {
+            align-self: flex-start;
+            background: white;
+            color: #333;
+            border: 1px solid #e0e0e0;
+            border-bottom-left-radius: 5px;
+        }
+
+        .message-sender {
+            font-size: 12px;
+            font-weight: bold;
+            margin-bottom: 3px;
+            opacity: 0.8;
+        }
+
+        .message-time {
+            font-size: 10px;
+            text-align: right;
+            margin-top: 5px;
+            opacity: 0.7;
+        }
+
+        .chat-input-container {
+            padding: 15px;
+            border-top: 1px solid #e0e0e0;
+            background: white;
+            border-radius: 0 0 15px 15px;
+        }
+
+        .chat-input-row {
+            display: flex;
+            gap: 10px;
+        }
+
+        .chat-input {
+            flex: 1;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 25px;
+            outline: none;
+            font-size: 14px;
+        }
+
+        .chat-input:focus {
+            border-color: var(--saffron);
+        }
+
+        .send-btn {
+            background: var(--maroon);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .send-btn:hover {
+            background: #600000;
+        }
+
+        .send-btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+
+        .no-messages {
+            text-align: center;
+            color: #666;
+            font-style: italic;
+            margin-top: 50px;
+        }
+
+        .chat-badge {
+            background: #ff4444;
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            top: -5px;
+            right: -5px;
+        }
+
         /* Responsive Design */
         @media (max-width: 768px) {
             .navbar {
@@ -1359,6 +1560,13 @@
                 flex-direction: column;
                 align-items: flex-start;
             }
+            
+            .chat-section {
+                width: 300px;
+                height: 400px;
+                right: 10px;
+                bottom: 10px;
+            }
         }
 
         @media (max-width: 480px) {
@@ -1406,6 +1614,12 @@
                 width: 120px;
                 height: 120px;
             }
+            
+            .chat-section {
+                width: calc(100% - 20px);
+                right: 10px;
+                left: 10px;
+            }
         }
     </style>
 </head>
@@ -1447,7 +1661,7 @@
             }
         };
 
-        // Login Component
+        // Login Component - FIXED: Proper case-insensitive captcha
         const Login = ({ onLogin }) => {
             const [userType, setUserType] = useState('member');
             const [name, setName] = useState('');
@@ -1456,22 +1670,17 @@
             const [userCaptcha, setUserCaptcha] = useState('');
             const [error, setError] = useState('');
 
-            // Generate random math captcha
+            // Generate random alphabetical captcha
             const generateCaptcha = () => {
-                const num1 = Math.floor(Math.random() * 10) + 1;
-                const num2 = Math.floor(Math.random() * 10) + 1;
-                const operators = ['+', '-', '*'];
-                const operator = operators[Math.floor(Math.random() * operators.length)];
+                const characters = 'ABCDEFGHJKLMNPQRSTUVWXYZabcdefghjkmnpqrstuvwxyz23456789';
+                let result = '';
+                const length = 6;
                 
-                let answer;
-                switch(operator) {
-                    case '+': answer = num1 + num2; break;
-                    case '-': answer = num1 - num2; break;
-                    case '*': answer = num1 * num2; break;
-                    default: answer = num1 + num2;
+                for (let i = 0; i < length; i++) {
+                    result += characters.charAt(Math.floor(Math.random() * characters.length));
                 }
                 
-                setCaptcha({ text: `${num1} ${operator} ${num2}`, answer });
+                setCaptcha(result);
                 setUserCaptcha('');
             };
 
@@ -1490,8 +1699,8 @@
                         return;
                     }
                     
-                    // Validate captcha
-                    if (parseInt(userCaptcha) !== captcha.answer) {
+                    // FIXED: Proper case-insensitive captcha validation
+                    if (userCaptcha.toUpperCase() !== captcha.toUpperCase()) {
                         setError('Incorrect captcha answer');
                         generateCaptcha();
                         return;
@@ -1515,7 +1724,7 @@
                     
                     onLogin({ type: 'member', name: name.trim() });
                 } else {
-                    // Validate admin login - UPDATED PASSWORD
+                    // Validate admin login
                     if (password !== 'admin1970') {
                         setError('Invalid admin password');
                         return;
@@ -1587,9 +1796,9 @@
                             
                             {userType === 'member' && (
                                 <div className="form-group">
-                                    <label>Solve the math problem</label>
+                                    <label>Enter the text shown below</label>
                                     <div className="captcha-container">
-                                        <div className="captcha-box">{captcha.text} = ?</div>
+                                        <div className="captcha-box">{captcha}</div>
                                         <button 
                                             type="button" 
                                             className="refresh-captcha"
@@ -1599,11 +1808,11 @@
                                         </button>
                                     </div>
                                     <input
-                                        type="number"
+                                        type="text"
                                         className="form-control"
                                         value={userCaptcha}
                                         onChange={(e) => setUserCaptcha(e.target.value)}
-                                        placeholder="Enter answer"
+                                        placeholder="Enter the text above"
                                     />
                                 </div>
                             )}
@@ -1627,7 +1836,183 @@
             );
         };
 
-        // Members Section Component - FIXED: Photo adjustment now working properly
+        // Chat Component - NEW: Added chat functionality
+        // Chat Component - FIXED: Clear chat only for admin
+const ChatSection = ({ user }) => {
+    const [messages, setMessages] = useState([]);
+    const [newMessage, setNewMessage] = useState('');
+    const [isMinimized, setIsMinimized] = useState(false);
+    const [unreadCount, setUnreadCount] = useState(0);
+    const messagesEndRef = useRef(null);
+    const chatMessagesRef = useRef(null);
+
+    useEffect(() => {
+        const savedMessages = storage.get('chatMessages') || [];
+        setMessages(savedMessages);
+        
+        // Set up auto-refresh for new messages
+        const interval = setInterval(() => {
+            const currentMessages = storage.get('chatMessages') || [];
+            if (currentMessages.length !== messages.length) {
+                setMessages(currentMessages);
+                
+                // Update unread count if chat is minimized
+                if (isMinimized) {
+                    setUnreadCount(currentMessages.length - messages.length);
+                }
+            }
+        }, 2000); // Check every 2 seconds
+
+        return () => clearInterval(interval);
+    }, [messages.length, isMinimized]);
+
+    useEffect(() => {
+        scrollToBottom();
+    }, [messages]);
+
+    const scrollToBottom = () => {
+        messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+    };
+
+    const sendMessage = () => {
+        if (newMessage.trim()) {
+            const message = {
+                id: Date.now(),
+                sender: user.name,
+                text: newMessage.trim(),
+                timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+                date: new Date().toLocaleDateString()
+            };
+            
+            const updatedMessages = [...messages, message];
+            setMessages(updatedMessages);
+            storage.set('chatMessages', updatedMessages);
+            setNewMessage('');
+            setUnreadCount(0);
+        }
+    };
+
+    const handleKeyPress = (e) => {
+        if (e.key === 'Enter' && !e.shiftKey) {
+            e.preventDefault();
+            sendMessage();
+        }
+    };
+
+    const toggleMinimize = () => {
+        setIsMinimized(!isMinimized);
+        if (!isMinimized) {
+            setUnreadCount(0);
+        }
+    };
+
+    // FIXED: Clear chat only for admin
+    const clearChat = () => {
+        if (user.type !== 'admin') {
+            alert('Only administrators can clear the chat.');
+            return;
+        }
+        
+        if (window.confirm('Are you sure you want to clear all chat messages? This action cannot be undone.')) {
+            setMessages([]);
+            storage.set('chatMessages', []);
+        }
+    };
+
+    const formatMessageTime = (timestamp) => {
+        return timestamp;
+    };
+
+    return (
+        <div className={`chat-section ${isMinimized ? 'minimized' : ''}`}>
+            <div className="chat-header" onClick={toggleMinimize}>
+                <div className="chat-title">
+                    <span>💬 Group Chat</span>
+                    {unreadCount > 0 && (
+                        <span className="chat-badge">{unreadCount}</span>
+                    )}
+                </div>
+                <div className="chat-controls">
+                    {/* FIXED: Clear chat button only shown for admin */}
+                    {user.type === 'admin' && (
+                        <button 
+                            className="chat-control-btn"
+                            onClick={(e) => {
+                                e.stopPropagation();
+                                clearChat();
+                            }}
+                            title="Clear chat (Admin only)"
+                        >
+                            🗑️
+                        </button>
+                    )}
+                    <button 
+                        className="chat-control-btn"
+                        onClick={(e) => {
+                            e.stopPropagation();
+                            toggleMinimize();
+                        }}
+                        title={isMinimized ? 'Maximize' : 'Minimize'}
+                    >
+                        {isMinimized ? '➕' : '➖'}
+                    </button>
+                </div>
+            </div>
+            
+            {!isMinimized && (
+                <>
+                    <div className="chat-messages" ref={chatMessagesRef}>
+                        {messages.length === 0 ? (
+                            <div className="no-messages">
+                                No messages yet. Start the conversation!
+                            </div>
+                        ) : (
+                            messages.map((message) => (
+                                <div 
+                                    key={message.id} 
+                                    className={`message ${message.sender === user.name ? 'own' : 'other'}`}
+                                >
+                                    {message.sender !== user.name && (
+                                        <div className="message-sender">{message.sender}</div>
+                                    )}
+                                    <div>{message.text}</div>
+                                    <div className="message-time">
+                                        {formatMessageTime(message.timestamp)}
+                                    </div>
+                                </div>
+                            ))
+                        )}
+                        <div ref={messagesEndRef} />
+                    </div>
+                    
+                    <div className="chat-input-container">
+                        <div className="chat-input-row">
+                            <input
+                                type="text"
+                                className="chat-input"
+                                value={newMessage}
+                                onChange={(e) => setNewMessage(e.target.value)}
+                                onKeyPress={handleKeyPress}
+                                placeholder="Type your message..."
+                                maxLength="500"
+                            />
+                            <button 
+                                className="send-btn"
+                                onClick={sendMessage}
+                                disabled={!newMessage.trim()}
+                                title="Send message"
+                            >
+                                ➤
+                            </button>
+                        </div>
+                    </div>
+                </>
+            )}
+        </div>
+    );
+};
+
+        // Members Section Component
         const MembersSection = ({ user }) => {
             const [members, setMembers] = useState([]);
             const [newMember, setNewMember] = useState('');
@@ -2062,7 +2447,7 @@
             );
         };
 
-        // Hundi Section Component
+        // Hundi Section Component - FIXED: Money falling animation for members
         const HundiSection = ({ user }) => {
             const [total, setTotal] = useState(0);
             const [showModal, setShowModal] = useState(false);
@@ -2078,7 +2463,31 @@
                 const savedTransactions = storage.get('hundiTransactions') || [];
                 setTotal(savedTotal);
                 setTransactions(savedTransactions);
-            }, []);
+                
+                // Trigger money falling animation for members whenever they view the section
+                if (user.type === 'member') {
+                    triggerMoneyAnimation();
+                }
+            }, [user.type]);
+
+            // FIXED: Money falling animation for members
+            const triggerMoneyAnimation = () => {
+                const newNotes = [];
+                for (let i = 0; i < 10; i++) {
+                    newNotes.push({
+                        id: Date.now() + i,
+                        left: Math.random() * 70 + 15, // Keep within Hundi bounds
+                        delay: Math.random() * 1.5,
+                        duration: 2 + Math.random() * 1.5
+                    });
+                }
+                setMoneyNotes(newNotes);
+                
+                // Clear animation after 3.5 seconds
+                setTimeout(() => {
+                    setMoneyNotes([]);
+                }, 3500);
+            };
 
             const addMoney = () => {
                 const moneyAmount = parseFloat(amount);
@@ -2101,21 +2510,7 @@
                     storage.set('hundiTransactions', updatedTransactions);
                     
                     // Create falling money animation inside the Hundi
-                    const newNotes = [];
-                    for (let i = 0; i < 10; i++) {
-                        newNotes.push({
-                            id: Date.now() + i,
-                            left: Math.random() * 70 + 15, // Keep within Hundi bounds
-                            delay: Math.random() * 1.5,
-                            duration: 2 + Math.random() * 1.5
-                        });
-                    }
-                    setMoneyNotes(newNotes);
-                    
-                    // Clear animation after 3.5 seconds
-                    setTimeout(() => {
-                        setMoneyNotes([]);
-                    }, 3500);
+                    triggerMoneyAnimation();
                     
                     setShowModal(false);
                     setAmount('');
@@ -2558,7 +2953,7 @@
             );
         };
 
-        // Plan Section Component - UPDATED: Removed YG/YH prefixes and improved winner display
+        // Plan Section Component
         const PlanSection = ({ user }) => {
             const [events, setEvents] = useState([]);
             const [newEvent, setNewEvent] = useState('');
@@ -2894,7 +3289,7 @@
             );
         };
 
-        // Gallery Section Component
+        // Gallery Section Component - UPDATED: Added download functionality for members
         const GallerySection = ({ user, setActiveSection }) => {
             const [media, setMedia] = useState([]);
             const [showUploadModal, setShowUploadModal] = useState(false);
@@ -2941,6 +3336,27 @@
                 storage.set('galleryMedia', updatedMedia);
             };
 
+            // Download media function
+            const downloadMedia = (mediaItem) => {
+                const link = document.createElement('a');
+                link.href = mediaItem.url;
+                
+                // Get file extension from the data URL or type
+                let extension = 'jpg';
+                if (mediaItem.type === 'video') {
+                    extension = 'mp4';
+                } else if (mediaItem.url.includes('png')) {
+                    extension = 'png';
+                } else if (mediaItem.url.includes('gif')) {
+                    extension = 'gif';
+                }
+                
+                link.download = `${mediaItem.title}_${mediaItem.date}.${extension}`;
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            };
+
             // Auto-redirect to gallery when admin selects to add media
             useEffect(() => {
                 if (user.type === 'admin' && showUploadModal) {
@@ -2982,16 +3398,26 @@
                                             <div className="gallery-title">{item.title}</div>
                                             <div className="gallery-date">{item.date}</div>
                                         </div>
-                                        {user.type === 'admin' && (
-                                            <div className="gallery-actions">
+                                        <div className="gallery-actions">
+                                            {/* Download button - visible to all users */}
+                                            <button 
+                                                onClick={() => downloadMedia(item)}
+                                                title="Download media"
+                                                className="download-btn-gallery"
+                                            >
+                                                ⬇️
+                                            </button>
+                                            
+                                            {/* Delete button - only for admin */}
+                                            {user.type === 'admin' && (
                                                 <button 
                                                     onClick={() => deleteMedia(item.id)}
                                                     title="Delete media"
                                                 >
                                                     ×
                                                 </button>
-                                            </div>
-                                        )}
+                                            )}
+                                        </div>
                                     </div>
                                 ))}
                             </div>
@@ -3089,7 +3515,7 @@
             );
         };
 
-        // Yearly Report Component - FIXED: Removed unwanted symbols and improved PDF generation
+        // Yearly Report Component
         const YearlyReportSection = ({ user }) => {
             const [year, setYear] = useState(new Date().getFullYear());
 
@@ -3125,7 +3551,14 @@
                     doc.circle(10 + i * 50, 285, 2, 'F');
                 }
                 
-                let startY = 50;
+                // Add Lord Ganesha Symbol at the beginning
+                doc.setFontSize(14);
+                doc.setTextColor(128, 0, 0);
+                doc.text('🕉️', 105, 45, { align: 'center' });
+                doc.setFontSize(10);
+                doc.text('ॐ श्री गणेशाय नमः', 105, 52, { align: 'center' });
+                
+                let startY = 60;
                 
                 // Budget Section
                 const budgetItems = storage.get('budgetItems') || [];
@@ -3167,7 +3600,10 @@
                             fontSize: 10,
                             cellPadding: 5,
                         },
-                        margin: { left: 14, right: 14 }
+                        margin: { left: 14, right: 14 },
+                        didDrawPage: function(data) {
+                            // This ensures clean rendering
+                        }
                     });
                     
                     startY = doc.lastAutoTable.finalY + 15;
@@ -3208,7 +3644,7 @@
                             // Clean winner name
                             const cleanWinnerName = winner.name.replace(/@>Y[GH]\s*(First|Second|Third)?\s*/gi, '').trim();
                             const position = index === 0 ? 'First' : 
-                                           index === 1 ? 'Second' : 'Third';
+                                        index === 1 ? 'Second' : 'Third';
                             eventData.push([position, cleanWinnerName]);
                         });
                         
@@ -3235,7 +3671,10 @@
                             fontSize: 10,
                             cellPadding: 5,
                         },
-                        margin: { left: 14, right: 14 }
+                        margin: { left: 14, right: 14 },
+                        didDrawPage: function(data) {
+                            // This ensures clean rendering
+                        }
                     });
                     
                     startY = doc.lastAutoTable.finalY + 15;
@@ -3272,20 +3711,43 @@
                         fontSize: 10,
                         cellPadding: 5,
                     },
-                    margin: { left: 14, right: 14 }
+                    margin: { left: 14, right: 14 },
+                    didDrawPage: function(data) {
+                        // This ensures clean rendering
+                    }
                 });
                 
-                // Footer with Traditional Blessing - FIXED: Removed unwanted symbols
-                const finalY = doc.lastAutoTable.finalY + 20;
+                // Traditional Footer with Lord Ganesha Blessings
+                const finalY = Math.max(doc.lastAutoTable.finalY + 25, 250);
+                
+                // Add decorative separator
+                doc.setDrawColor(255, 153, 51);
+                doc.setLineWidth(0.5);
+                doc.line(50, finalY - 10, 160, finalY - 10);
+                
+                // Lord Ganesha Photo Placeholder with traditional symbol
+                doc.setFontSize(16);
+                doc.setTextColor(128, 0, 0);
+                doc.text('🕉️', 105, finalY, { align: 'center' });
+                
+                // Traditional Blessings
                 doc.setFontSize(12);
                 doc.setTextColor(128, 0, 0);
-                doc.text('ॐ श्री गणेशाय नमः', 105, finalY, { align: 'center' });
+                doc.text('ॐ श्री गणेशाय नमः', 105, finalY + 8, { align: 'center' });
+                
                 doc.setFontSize(10);
                 doc.setTextColor(100, 100, 100);
-                doc.text('May Lord Ganesha bless our community with prosperity and harmony', 105, finalY + 7, { align: 'center' });
+                doc.text('May Lord Ganesha bless our community', 105, finalY + 16, { align: 'center' });
+                doc.text('with prosperity, wisdom and harmony', 105, finalY + 22, { align: 'center' });
+                
+                // Final decorative elements
+                doc.setFillColor(255, 215, 0);
+                doc.circle(30, finalY + 5, 2, 'F');
+                doc.circle(180, finalY + 5, 2, 'F');
                 
                 // Save the PDF
-                doc.save(`Sri_Vinayaka_Geleyara_Balaga_${year}_Report.pdf`);
+                const cleanFileName = `Sri_Vinayaka_Geleyara_Balaga_${year}_Report.pdf`;
+                doc.save(cleanFileName);
             };
 
             return (
@@ -3317,7 +3779,7 @@
                                     <li>Budget summary with itemized expenses</li>
                                     <li>Events and winners (up to 3 per event)</li>
                                     <li>Hundi collection total</li>
-                                    <li>Traditional blessings and decorative elements</li>
+                                    <li>Traditional Lord Ganesha blessings and decorative elements</li>
                                 </ul>
                             </div>
                         </div>
@@ -3332,25 +3794,24 @@
 
         // Navbar Component
         const Navbar = ({ user, activeSection, setActiveSection, onLogout }) => {
+            const sections = [
+                { id: 'members', name: 'Members', adminOnly: false },
+                { id: 'hundi', name: 'Hundi', adminOnly: false },
+                { id: 'budget', name: 'Budget', adminOnly: false },
+                { id: 'plan', name: 'Events', adminOnly: false },
+                { id: 'gallery', name: 'Gallery', adminOnly: false },
+                { id: 'yearly-report', name: 'Yearly Report', adminOnly: true }
+            ];
+
             return (
                 <div>
                     <div className="navbar">
                         <div className="navbar-brand">
                             <div className="navbar-logo">
-                                <img 
-                                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Ganesha_-_Sri_Lanka.jpg/240px-Ganesha_-_Sri_Lanka.jpg" 
-                                    alt="Lord Ganesha" 
-                                    style={{width: '40px', height: '40px', borderRadius: '50%'}}
-                                    onError={(e) => {
-                                        e.target.style.display = 'none';
-                                        e.target.nextSibling.style.display = 'block';
-                                    }}
-                                />
-                                <div style={{display: 'none', fontSize: '30px'}}>🕉️</div>
+                                <span style={{fontSize: '24px'}}>🕉️</span>
                                 <div className="navbar-title">Sri Vinayaka Geleyara Balaga</div>
                             </div>
                         </div>
-                        
                         <div className="navbar-user">
                             <div className="user-info">
                                 <div className="user-badge">
@@ -3362,50 +3823,25 @@
                             </button>
                         </div>
                     </div>
-                    
                     <div className="nav-links">
-                        <div 
-                            className={`nav-link ${activeSection === 'members' ? 'active' : ''}`}
-                            onClick={() => setActiveSection('members')}
-                        >
-                            Members
-                        </div>
-                        <div 
-                            className={`nav-link ${activeSection === 'hundi' ? 'active' : ''}`}
-                            onClick={() => setActiveSection('hundi')}
-                        >
-                            Hundi
-                        </div>
-                        <div 
-                            className={`nav-link ${activeSection === 'budget' ? 'active' : ''}`}
-                            onClick={() => setActiveSection('budget')}
-                        >
-                            Budget
-                        </div>
-                        <div 
-                            className={`nav-link ${activeSection === 'plan' ? 'active' : ''}`}
-                            onClick={() => setActiveSection('plan')}
-                        >
-                            Events
-                        </div>
-                        <div 
-                            className={`nav-link ${activeSection === 'gallery' ? 'active' : ''}`}
-                            onClick={() => setActiveSection('gallery')}
-                        >
-                            Gallery
-                        </div>
-                        <div 
-                            className={`nav-link ${activeSection === 'yearly-report' ? 'active' : ''}`}
-                            onClick={() => setActiveSection('yearly-report')}
-                        >
-                            Yearly Report
-                        </div>
+                        {sections.map(section => {
+                            if (section.adminOnly && user.type !== 'admin') return null;
+                            return (
+                                <div
+                                    key={section.id}
+                                    className={`nav-link ${activeSection === section.id ? 'active' : ''}`}
+                                    onClick={() => setActiveSection(section.id)}
+                                >
+                                    {section.name}
+                                </div>
+                            );
+                        })}
                     </div>
                 </div>
             );
         };
 
-        // Main App Component
+        // Main App Component - UPDATED: Added ChatSection
         const App = () => {
             const [user, setUser] = useState(null);
             const [activeSection, setActiveSection] = useState('members');
@@ -3461,6 +3897,9 @@
                             <YearlyReportSection user={user} />
                         </div>
                     </div>
+
+                    {/* Chat Section - Always visible for logged-in users */}
+                    <ChatSection user={user} />
                 </div>
             );
         };
