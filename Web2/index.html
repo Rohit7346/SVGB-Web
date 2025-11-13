@@ -69,21 +69,6 @@
             margin-bottom: 25px;
         }
 
-        .ganesha-img {
-            width: 70px;
-            height: 70px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin-bottom: 15px;
-            animation: float 3s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-8px); }
-            100% { transform: translateY(0px); }
-        }
-
         .trust-name {
             color: var(--maroon);
             font-size: 20px;
@@ -208,14 +193,13 @@
             font-size: 14px;
         }
 
-        /* Main App Styles - Mobile Optimized */
+        /* Main App Styles */
         .main-app {
             display: flex;
             flex-direction: column;
             min-height: 100vh;
         }
 
-        /* Mobile Navbar */
         .navbar {
             background: linear-gradient(to right, var(--maroon), var(--saffron));
             color: white;
@@ -235,12 +219,6 @@
             gap: 12px;
         }
 
-        .navbar-logo {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
         .navbar-title {
             font-size: 18px;
             font-weight: bold;
@@ -251,12 +229,6 @@
             display: flex;
             align-items: center;
             gap: 12px;
-        }
-
-        .user-info {
-            display: flex;
-            align-items: center;
-            gap: 8px;
         }
 
         .user-badge {
@@ -277,15 +249,12 @@
             font-size: 12px;
         }
 
-        /* Mobile Navigation */
         .nav-links {
             display: flex;
             background: var(--light-gold);
             padding: 0 10px;
             overflow-x: auto;
             -webkit-overflow-scrolling: touch;
-            scrollbar-width: none;
-            -ms-overflow-style: none;
         }
 
         .nav-links::-webkit-scrollbar {
@@ -310,7 +279,6 @@
             background: rgba(255, 153, 51, 0.1);
         }
 
-        /* Mobile Content Area */
         .content {
             flex: 1;
             padding: 20px 15px;
@@ -341,7 +309,6 @@
             border-bottom: 2px solid var(--gold);
         }
 
-        /* Mobile Form Styles */
         .form-card {
             background: white;
             border-radius: 16px;
@@ -411,7 +378,6 @@
             min-height: 44px;
         }
 
-        /* Mobile Members Section */
         .members-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
@@ -428,11 +394,6 @@
             position: relative;
             transition: transform 0.3s, box-shadow 0.3s;
             border: 1px solid #f0f0f0;
-        }
-
-        .member-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
         }
 
         .member-avatar {
@@ -488,239 +449,50 @@
             font-size: 16px;
         }
 
-        /* Mobile Hundi Section */
-        .hundi-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 25px;
-        }
-
-        .temple-scene {
-            position: relative;
-            width: 280px;
-            height: 350px;
-            background: linear-gradient(135deg, var(--temple-stone) 0%, #b8a99a 100%);
-            border-radius: 16px;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-            overflow: hidden;
+        .sync-status {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 12px;
             padding: 15px;
-        }
-
-        .south-indian-hundi {
-            position: absolute;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 150px;
-            height: 180px;
-            z-index: 2;
-        }
-
-        .hundi-body {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(45deg, var(--dark-metal) 0%, #5a5a5a 50%, var(--dark-metal) 100%);
-            border: 6px solid #3a3a3a;
-            border-radius: 6px;
-            box-shadow: inset 0 -12px 15px rgba(0,0,0,0.4), 0 4px 10px rgba(0,0,0,0.2);
-            overflow: hidden;
-        }
-
-        .hundi-total {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            color: white;
-            font-weight: bold;
-            font-size: 18px;
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
-            z-index: 4;
-        }
-
-        .hundi-actions {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            margin-top: 20px;
-            width: 100%;
-            max-width: 280px;
-        }
-
-        .add-money-btn {
-            padding: 16px 20px;
-            font-size: 16px;
-        }
-
-        /* Mobile Modal Styles */
-        .modal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.7);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-            padding: 20px;
-        }
-
-        .modal {
-            background: white;
-            border-radius: 20px;
-            padding: 25px;
-            width: 100%;
-            max-width: 350px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-            max-height: 90vh;
-            overflow-y: auto;
-        }
-
-        .modal-title {
-            font-size: 20px;
             margin-bottom: 20px;
-            color: var(--maroon);
             text-align: center;
         }
 
-        .modal-actions {
+        .sync-controls {
             display: flex;
             gap: 10px;
             justify-content: center;
-            margin-top: 20px;
             flex-wrap: wrap;
+            margin-top: 10px;
         }
 
-        /* Mobile Budget Section */
-        .budget-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-            background: white;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
-            font-size: 14px;
-        }
-
-        .budget-table th, .budget-table td {
-            padding: 12px 8px;
-            text-align: left;
-            border-bottom: 1px solid #eee;
-        }
-
-        .budget-table th {
-            background: var(--saffron);
-            color: white;
-            font-weight: 600;
-            font-size: 13px;
-        }
-
-        .download-btn {
-            margin-bottom: 20px;
-        }
-
-        /* Mobile Events Section */
-        .events-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 15px;
-            margin-top: 20px;
-        }
-
-        .event-card {
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
-            padding: 20px;
-            position: relative;
-        }
-
-        .event-name {
-            font-size: 16px;
-            font-weight: 600;
-            color: var(--maroon);
-            margin-bottom: 15px;
-        }
-
-        .event-actions {
-            display: flex;
-            gap: 8px;
-            margin-top: 15px;
-            flex-wrap: wrap;
-        }
-
-        .event-actions .btn {
-            flex: 1;
-            min-width: 80px;
-        }
-
-        /* Mobile Gallery Section */
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-            gap: 12px;
-            margin-top: 20px;
-        }
-
-        .gallery-item {
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
-            overflow: hidden;
-            position: relative;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .gallery-media {
-            width: 100%;
-            height: 150px;
-            object-fit: cover;
-        }
-
-        .gallery-info {
-            padding: 12px;
-        }
-
-        .gallery-title {
-            font-weight: 600;
-            color: var(--maroon);
-            margin-bottom: 4px;
-            font-size: 13px;
-        }
-
-        .gallery-date {
-            color: #666;
-            font-size: 11px;
-        }
-
-        .gallery-actions {
-            position: absolute;
-            top: 8px;
-            right: 8px;
-            display: flex;
-            gap: 4px;
-        }
-
-        .gallery-actions button {
-            background: rgba(0, 0, 0, 0.7);
+        .sync-btn {
+            background: linear-gradient(135deg, var(--saffron), var(--gold));
             color: white;
             border: none;
-            border-radius: 4px;
-            width: 28px;
-            height: 28px;
+            border-radius: 8px;
+            padding: 10px 16px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 600;
             display: flex;
             align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            font-size: 12px;
+            gap: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
 
-        /* Mobile Chat Section - Updated to circular button */
+        .sync-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        }
+
+        .sync-btn:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
         .chat-button {
             position: fixed;
             bottom: 20px;
@@ -759,11 +531,6 @@
             display: flex;
             flex-direction: column;
             z-index: 999;
-            transition: all 0.3s ease;
-        }
-
-        .chat-section.minimized {
-            height: 50px;
         }
 
         .chat-header {
@@ -774,7 +541,6 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            cursor: pointer;
         }
 
         .chat-title {
@@ -873,52 +639,46 @@
             font-size: 14px;
         }
 
-        /* Sync Status Styles - Updated for better UI */
-        .sync-status {
-            background: #f8f9fa;
-            border: 1px solid #e9ecef;
-            border-radius: 12px;
-            padding: 15px;
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            padding: 20px;
+        }
+
+        .modal {
+            background: white;
+            border-radius: 20px;
+            padding: 25px;
+            width: 100%;
+            max-width: 350px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .modal-title {
+            font-size: 20px;
             margin-bottom: 20px;
+            color: var(--maroon);
             text-align: center;
         }
 
-        .sync-controls {
+        .modal-actions {
             display: flex;
             gap: 10px;
             justify-content: center;
+            margin-top: 20px;
             flex-wrap: wrap;
-            margin-top: 10px;
         }
 
-        .sync-btn {
-            background: linear-gradient(135deg, var(--saffron), var(--gold));
-            color: white;
-            border: none;
-            border-radius: 8px;
-            padding: 10px 16px;
-            cursor: pointer;
-            transition: all 0.3s;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-
-        .sync-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
-        }
-
-        .sync-btn:disabled {
-            opacity: 0.7;
-            cursor: not-allowed;
-            transform: none;
-            box-shadow: none;
-        }
-
-        /* Responsive Design for Tablets */
         @media (min-width: 768px) {
             .content {
                 padding: 30px 25px;
@@ -938,27 +698,12 @@
                 gap: 20px;
             }
             
-            .member-avatar {
-                width: 70px;
-                height: 70px;
-            }
-            
-            .events-grid {
-                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            }
-            
-            .gallery-grid {
-                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-                gap: 15px;
-            }
-            
             .chat-section {
                 width: 350px;
                 height: 500px;
             }
         }
 
-        /* Responsive Design for Desktop */
         @media (min-width: 1024px) {
             .navbar {
                 padding: 15px 30px;
@@ -971,58 +716,6 @@
             .content {
                 padding: 40px;
             }
-            
-            .members-grid {
-                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            }
-        }
-
-        /* Touch-friendly improvements */
-        @media (max-width: 480px) {
-            .btn {
-                padding: 14px 16px;
-                font-size: 14px;
-                min-height: 48px;
-            }
-            
-            .form-control {
-                padding: 14px;
-            }
-            
-            .modal {
-                padding: 20px;
-            }
-            
-            .members-grid {
-                grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
-                gap: 12px;
-            }
-            
-            .member-card {
-                padding: 12px;
-            }
-        }
-
-        /* Loading states */
-        .loading {
-            opacity: 0.7;
-            pointer-events: none;
-        }
-
-        .spinner {
-            border: 2px solid #f3f3f3;
-            border-top: 2px solid var(--saffron);
-            border-radius: 50%;
-            width: 20px;
-            height: 20px;
-            animation: spin 1s linear infinite;
-            display: inline-block;
-            margin-right: 8px;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
         }
     </style>
 </head>
@@ -1033,17 +726,20 @@
         const { useState, useEffect, useRef } = React;
         const { jsPDF } = window.jspdf;
 
-        // Cloud Sync Service
-        const CloudSyncService = {
-            CLOUD_KEY: 'sri_vinayaka_cloud_data',
+        // Enhanced Cloud Storage with Firebase-like functionality
+        const CloudStorage = {
+            CLOUD_KEY: 'sri_vinayaka_cloud_data_v2',
             
+            // Save all data to cloud
             saveToCloud: (data) => {
                 try {
-                    localStorage.setItem(CloudSyncService.CLOUD_KEY, JSON.stringify({
+                    const cloudData = {
                         ...data,
                         lastUpdated: Date.now(),
-                        syncId: Math.random().toString(36).substr(2, 9)
-                    }));
+                        syncId: Math.random().toString(36).substr(2, 9),
+                        version: '2.0'
+                    };
+                    localStorage.setItem(CloudStorage.CLOUD_KEY, JSON.stringify(cloudData));
                     return true;
                 } catch (error) {
                     console.error('Error saving to cloud:', error);
@@ -1051,46 +747,64 @@
                 }
             },
             
+            // Load all data from cloud
             loadFromCloud: () => {
                 try {
-                    const cloudData = localStorage.getItem(CloudSyncService.CLOUD_KEY);
+                    const cloudData = localStorage.getItem(CloudStorage.CLOUD_KEY);
                     return cloudData ? JSON.parse(cloudData) : null;
                 } catch (error) {
                     console.error('Error loading from cloud:', error);
                     return null;
                 }
+            },
+            
+            // Get specific data from cloud
+            getCloudData: (key) => {
+                const cloudData = CloudStorage.loadFromCloud();
+                return cloudData ? cloudData[key] : null;
+            },
+            
+            // Update specific data in cloud
+            updateCloudData: (key, value) => {
+                const cloudData = CloudStorage.loadFromCloud() || {};
+                cloudData[key] = value;
+                cloudData.lastUpdated = Date.now();
+                return CloudStorage.saveToCloud(cloudData);
             }
         };
 
-        // Enhanced storage with cloud sync
+        // Enhanced storage with proper cloud sync
         const storage = {
             get: (key) => {
                 try {
+                    // First try to get from cloud
+                    const cloudData = CloudStorage.getCloudData(key);
+                    if (cloudData !== null) {
+                        return cloudData;
+                    }
+                    
+                    // Fallback to local storage
                     const item = localStorage.getItem(key);
                     return item ? JSON.parse(item) : null;
                 } catch (error) {
-                    console.error(`Error getting ${key} from localStorage:`, error);
+                    console.error(`Error getting ${key}:`, error);
                     return null;
                 }
             },
             
             set: (key, value) => {
                 try {
+                    // Save to local storage
                     localStorage.setItem(key, JSON.stringify(value));
                     
                     // Sync critical data to cloud
-                    if (['members', 'eventTypes', 'budgetItems', 'hundiTotal', 'hundiTransactions'].includes(key)) {
-                        const currentCloudData = CloudSyncService.loadFromCloud() || {};
-                        CloudSyncService.saveToCloud({
-                            ...currentCloudData,
-                            [key]: value,
-                            lastSync: Date.now()
-                        });
+                    if (['members', 'eventTypes', 'budgetItems', 'hundiTotal', 'hundiTransactions', 'galleryMedia', 'chatMessages'].includes(key)) {
+                        CloudStorage.updateCloudData(key, value);
                     }
                     
                     return true;
                 } catch (error) {
-                    console.error(`Error setting ${key} in localStorage:`, error);
+                    console.error(`Error setting ${key}:`, error);
                     return false;
                 }
             },
@@ -1100,39 +814,65 @@
                     localStorage.removeItem(key);
                     return true;
                 } catch (error) {
-                    console.error(`Error removing ${key} from localStorage:`, error);
+                    console.error(`Error removing ${key}:`, error);
                     return false;
                 }
             },
             
-            initializeFromCloud: () => {
-                const cloudData = CloudSyncService.loadFromCloud();
-                if (cloudData) {
-                    Object.keys(cloudData).forEach(key => {
-                        if (key !== 'lastUpdated' && key !== 'syncId' && key !== 'lastSync') {
-                            localStorage.setItem(key, JSON.stringify(cloudData[key]));
-                        }
-                    });
-                    return true;
-                }
-                return false;
-            },
-            
+            // Force sync from cloud to local storage
             syncFromCloud: () => {
-                return storage.initializeFromCloud();
+                try {
+                    const cloudData = CloudStorage.loadFromCloud();
+                    if (cloudData) {
+                        Object.keys(cloudData).forEach(key => {
+                            if (key !== 'lastUpdated' && key !== 'syncId' && key !== 'version' && key !== 'lastSync') {
+                                localStorage.setItem(key, JSON.stringify(cloudData[key]));
+                            }
+                        });
+                        return true;
+                    }
+                    return false;
+                } catch (error) {
+                    console.error('Error syncing from cloud:', error);
+                    return false;
+                }
             },
             
+            // Get sync status
             getSyncStatus: () => {
-                const cloudData = CloudSyncService.loadFromCloud();
+                const cloudData = CloudStorage.loadFromCloud();
                 return {
                     hasCloudData: !!cloudData,
                     lastUpdated: cloudData?.lastUpdated || null,
-                    memberCount: cloudData?.members?.length || 0
+                    memberCount: cloudData?.members?.length || 0,
+                    version: cloudData?.version || '1.0'
                 };
+            },
+            
+            // Initialize with default data if empty
+            initialize: () => {
+                const members = storage.get('members');
+                if (!members || members.length === 0) {
+                    const defaultMembers = [
+                        {
+                            id: 'admin_default',
+                            name: 'Admin',
+                            avatar: null,
+                            addedBy: 'System',
+                            addedDate: new Date().toISOString(),
+                            isAdmin: true
+                        }
+                    ];
+                    storage.set('members', defaultMembers);
+                    CloudStorage.updateCloudData('members', defaultMembers);
+                }
             }
         };
 
-        // Mobile-Optimized Login Component
+        // Initialize storage
+        storage.initialize();
+
+        // Enhanced Login Component with proper member verification
         const Login = ({ onLogin }) => {
             const [userType, setUserType] = useState('member');
             const [name, setName] = useState('');
@@ -1169,9 +909,9 @@
                     if (success) {
                         const newStatus = storage.getSyncStatus();
                         setSyncStatus(newStatus);
-                        alert('✅ Successfully synced data from cloud!');
+                        alert('✅ Successfully synced data from cloud! Members list updated.');
                     } else {
-                        alert('❌ No cloud data found.');
+                        alert('❌ No cloud data found. Admin needs to add members first.');
                     }
                 } catch (error) {
                     alert('❌ Sync failed. Please try again.');
@@ -1185,6 +925,12 @@
                 setError('');
 
                 if (userType === 'member') {
+                    // Validate inputs
+                    if (!name.trim()) {
+                        setError('Please enter your name');
+                        return;
+                    }
+
                     if (password !== 'pass123') {
                         setError('Invalid password for member');
                         return;
@@ -1195,13 +941,11 @@
                         generateCaptcha();
                         return;
                     }
-                    
-                    if (!name.trim()) {
-                        setError('Please enter your name');
-                        return;
-                    }
 
+                    // Get members from cloud storage
                     const members = storage.get('members') || [];
+                    
+                    // Find member (case insensitive)
                     const memberExists = members.some(member => 
                         member.name.toLowerCase() === name.trim().toLowerCase()
                     );
@@ -1211,14 +955,24 @@
                         return;
                     }
                     
-                    onLogin({ type: 'member', name: name.trim() });
+                    // Successful login
+                    onLogin({ 
+                        type: 'member', 
+                        name: name.trim(),
+                        memberData: members.find(m => m.name.toLowerCase() === name.trim().toLowerCase())
+                    });
                 } else {
+                    // Admin login
                     if (password !== 'admin1970') {
                         setError('Invalid admin password');
                         return;
                     }
                     
-                    onLogin({ type: 'admin', name: 'Admin' });
+                    onLogin({ 
+                        type: 'admin', 
+                        name: 'Admin',
+                        memberData: { isAdmin: true }
+                    });
                 }
             };
 
@@ -1233,13 +987,13 @@
 
                         {/* Sync Status */}
                         <div className="sync-status">
-                            <h4 style={{color: 'var(--maroon)', marginBottom: '10px'}}>🔗 Cloud Sync</h4>
+                            <h4 style={{color: 'var(--maroon)', marginBottom: '10px'}}>🔗 Cloud Sync Status</h4>
                             {syncStatus ? (
                                 <div>
                                     <p style={{fontSize: '13px', color: '#666', marginBottom: '10px'}}>
                                         {syncStatus.hasCloudData ? 
-                                            `✅ ${syncStatus.memberCount} members registered` : 
-                                            '❌ No cloud data'
+                                            `✅ ${syncStatus.memberCount} members registered in cloud` : 
+                                            '❌ No cloud data found'
                                         }
                                     </p>
                                     <button 
@@ -1247,11 +1001,11 @@
                                         disabled={isSyncing}
                                         className="sync-btn"
                                     >
-                                        {isSyncing ? '🔄 Syncing...' : '🔄 Sync Data'}
+                                        {isSyncing ? '🔄 Syncing...' : '🔄 Sync Members List'}
                                     </button>
                                 </div>
                             ) : (
-                                <p style={{fontSize: '13px', color: '#666'}}>Checking...</p>
+                                <p style={{fontSize: '13px', color: '#666'}}>Checking cloud status...</p>
                             )}
                         </div>
                         
@@ -1273,33 +1027,37 @@
                         <form onSubmit={handleLogin}>
                             {userType === 'member' && (
                                 <div className="form-group">
-                                    <label htmlFor="name">Your Name</label>
+                                    <label htmlFor="name">Your Registered Name</label>
                                     <input
                                         type="text"
                                         id="name"
                                         className="form-control"
                                         value={name}
                                         onChange={(e) => setName(e.target.value)}
-                                        placeholder="Enter your registered name"
+                                        placeholder="Enter your exact registered name"
+                                        required
                                     />
                                 </div>
                             )}
                             
                             <div className="form-group">
-                                <label htmlFor="password">Password</label>
+                                <label htmlFor="password">
+                                    Password {userType === 'member' && '(Default: pass123)'}
+                                </label>
                                 <input
                                     type="password"
                                     id="password"
                                     className="form-control"
                                     value={password}
                                     onChange={(e) => setPassword(e.target.value)}
-                                    placeholder="Enter password"
+                                    placeholder={userType === 'member' ? "Enter password: pass123" : "Enter admin password"}
+                                    required
                                 />
                             </div>
                             
                             {userType === 'member' && (
                                 <div className="form-group">
-                                    <label>Enter the code shown below</label>
+                                    <label>Security Verification</label>
                                     <div className="captcha-container">
                                         <div className="captcha-box">{captcha}</div>
                                         <button 
@@ -1316,6 +1074,7 @@
                                         value={userCaptcha}
                                         onChange={(e) => setUserCaptcha(e.target.value)}
                                         placeholder="Enter the code above"
+                                        required
                                     />
                                 </div>
                             )}
@@ -1330,7 +1089,7 @@
 
                             {userType === 'member' && (
                                 <div style={{marginTop: '15px', fontSize: '13px', color: '#666', textAlign: 'center'}}>
-                                    <strong>Note:</strong> Registered by admin only
+                                    <strong>Note:</strong> Must be registered by admin. Sync data if not visible.
                                 </div>
                             )}
                         </form>
@@ -1339,11 +1098,353 @@
             );
         };
 
-        // Mobile Chat Component - Updated with circular button
+        // Enhanced Members Section with proper cloud sync
+        const MembersSection = ({ user }) => {
+            const [members, setMembers] = useState([]);
+            const [newMember, setNewMember] = useState('');
+            const [showDpModal, setShowDpModal] = useState(false);
+            const [selectedMember, setSelectedMember] = useState(null);
+            const [avatarPreview, setAvatarPreview] = useState(null);
+            const [isSyncing, setIsSyncing] = useState(false);
+
+            useEffect(() => {
+                loadMembers();
+            }, []);
+
+            const loadMembers = () => {
+                const savedMembers = storage.get('members') || [];
+                setMembers(savedMembers);
+            };
+
+            const syncToCloud = () => {
+                setIsSyncing(true);
+                try {
+                    const currentData = {
+                        members: storage.get('members') || [],
+                        eventTypes: storage.get('eventTypes') || [],
+                        budgetItems: storage.get('budgetItems') || [],
+                        hundiTotal: storage.get('hundiTotal') || 0,
+                        hundiTransactions: storage.get('hundiTransactions') || [],
+                        galleryMedia: storage.get('galleryMedia') || [],
+                        chatMessages: storage.get('chatMessages') || [],
+                        lastUpdated: Date.now(),
+                        syncedBy: user.name
+                    };
+                    
+                    const success = CloudStorage.saveToCloud(currentData);
+                    if (success) {
+                        alert('✅ All data synced to cloud! Members can now login from other devices.');
+                    } else {
+                        alert('❌ Sync failed.');
+                    }
+                } catch (error) {
+                    alert('❌ Sync failed.');
+                } finally {
+                    setIsSyncing(false);
+                }
+            };
+
+            const syncFromCloud = () => {
+                setIsSyncing(true);
+                try {
+                    const success = storage.syncFromCloud();
+                    if (success) {
+                        loadMembers();
+                        alert('✅ Data synced from cloud!');
+                    } else {
+                        alert('❌ No cloud data found.');
+                    }
+                } catch (error) {
+                    alert('❌ Sync failed.');
+                } finally {
+                    setIsSyncing(false);
+                }
+            };
+
+            const addMember = () => {
+                if (newMember.trim()) {
+                    const memberData = {
+                        name: newMember.trim(),
+                        avatar: null,
+                        addedBy: user.name,
+                        addedDate: new Date().toISOString(),
+                        id: Date.now() + Math.random().toString(36).substr(2, 9)
+                    };
+                    const updatedMembers = [...members, memberData];
+                    setMembers(updatedMembers);
+                    storage.set('members', updatedMembers);
+                    
+                    // Auto-sync to cloud when admin adds members
+                    if (user.type === 'admin') {
+                        CloudStorage.updateCloudData('members', updatedMembers);
+                    }
+                    
+                    setNewMember('');
+                    alert(`✅ Member "${newMember.trim()}" added! They can now login with password: pass123`);
+                }
+            };
+
+            const deleteMember = (index) => {
+                const memberName = members[index].name;
+                const updatedMembers = members.filter((_, i) => i !== index);
+                setMembers(updatedMembers);
+                storage.set('members', updatedMembers);
+                CloudStorage.updateCloudData('members', updatedMembers);
+                alert(`✅ Member "${memberName}" removed!`);
+            };
+
+            const openDpModal = (member, index) => {
+                setSelectedMember({ ...member, index });
+                setAvatarPreview(member.avatar);
+                setShowDpModal(true);
+            };
+
+            const handleAvatarChange = (e) => {
+                const file = e.target.files[0];
+                if (file) {
+                    if (file.size > 10 * 1024 * 1024) {
+                        alert('File too large. Max 10MB.');
+                        return;
+                    }
+                    
+                    if (!file.type.match('image.*')) {
+                        alert('Please select a valid image file.');
+                        return;
+                    }
+                    
+                    const reader = new FileReader();
+                    reader.onload = (e) => {
+                        setAvatarPreview(e.target.result);
+                    };
+                    reader.readAsDataURL(file);
+                }
+            };
+
+            const saveAvatar = () => {
+                if (selectedMember && avatarPreview) {
+                    const updatedMembers = [...members];
+                    updatedMembers[selectedMember.index].avatar = avatarPreview;
+                    setMembers(updatedMembers);
+                    storage.set('members', updatedMembers);
+                    CloudStorage.updateCloudData('members', updatedMembers);
+                    setShowDpModal(false);
+                    setSelectedMember(null);
+                    setAvatarPreview(null);
+                }
+            };
+
+            const getInitials = (name) => {
+                return name.split(' ').map(n => n[0]).join('').toUpperCase();
+            };
+
+            return (
+                <div>
+                    <h2 className="section-title">Trust Members</h2>
+                    
+                    {user.type === 'admin' && (
+                        <div className="form-card">
+                            <h3 style={{marginBottom: '15px', color: 'var(--maroon)'}}>🌐 Cloud Sync Management</h3>
+                            <div style={{marginBottom: '15px', padding: '12px', background: '#e8f5e8', borderRadius: '8px'}}>
+                                <p style={{fontSize: '13px', color: '#2e7d32', margin: 0}}>
+                                    <strong>Important:</strong> After adding members, click "Sync to Cloud" to make them available on other devices.
+                                </p>
+                            </div>
+                            <div className="sync-controls">
+                                <button 
+                                    className="sync-btn"
+                                    onClick={syncToCloud}
+                                    disabled={isSyncing}
+                                >
+                                    {isSyncing ? '🔄' : '📤'} Sync All Data to Cloud
+                                </button>
+                                <button 
+                                    className="sync-btn"
+                                    onClick={syncFromCloud}
+                                    disabled={isSyncing}
+                                >
+                                    {isSyncing ? '🔄' : '📥'} Sync from Cloud
+                                </button>
+                            </div>
+                        </div>
+                    )}
+                    
+                    {user.type === 'admin' ? (
+                        <>
+                            <div className="form-card">
+                                <h3 style={{marginBottom: '15px', color: 'var(--maroon)'}}>Add New Member</h3>
+                                <div className="form-row">
+                                    <div className="form-field">
+                                        <input
+                                            type="text"
+                                            className="form-control"
+                                            value={newMember}
+                                            onChange={(e) => setNewMember(e.target.value)}
+                                            placeholder="Enter member full name"
+                                            onKeyPress={(e) => e.key === 'Enter' && addMember()}
+                                        />
+                                    </div>
+                                    <button className="btn btn-primary" onClick={addMember}>
+                                        Add Member
+                                    </button>
+                                </div>
+                                <div style={{marginTop: '10px', fontSize: '13px', color: '#666'}}>
+                                    <strong>Login Details:</strong> Name (exact) + Password: <strong>pass123</strong>
+                                </div>
+                            </div>
+                            
+                            <div className="members-grid">
+                                {members.map((member, index) => (
+                                    <div key={member.id || index} className="member-card">
+                                        <button 
+                                            className="delete-member"
+                                            onClick={() => deleteMember(index)}
+                                            title="Delete member"
+                                        >
+                                            ×
+                                        </button>
+                                        
+                                        <div className="member-avatar">
+                                            {member.avatar ? (
+                                                <img src={member.avatar} alt={member.name} />
+                                            ) : (
+                                                getInitials(member.name)
+                                            )}
+                                        </div>
+                                        
+                                        <div className="member-name">{member.name}</div>
+                                        <div style={{fontSize: '11px', color: '#666', marginBottom: '8px'}}>
+                                            by {member.addedBy}
+                                        </div>
+                                        
+                                        <button 
+                                            className="change-dp-btn"
+                                            onClick={() => openDpModal(member, index)}
+                                        >
+                                            Change Photo
+                                        </button>
+                                    </div>
+                                ))}
+                            </div>
+                            
+                            {members.length === 0 && (
+                                <div style={{textAlign: 'center', padding: '40px', color: '#666'}}>
+                                    No members added yet. Add members and sync to cloud.
+                                </div>
+                            )}
+                        </>
+                    ) : (
+                        <>
+                            <div style={{
+                                background: '#e8f5e8',
+                                border: '1px solid #c8e6c9',
+                                borderRadius: '12px',
+                                padding: '15px',
+                                marginBottom: '20px',
+                                textAlign: 'center',
+                                color: '#2e7d32'
+                            }}>
+                                All registered members can view each other and manage their own profile pictures.
+                            </div>
+                            <div className="members-grid">
+                                {members.map((member, index) => (
+                                    <div key={member.id || index} className="member-card">
+                                        <div className="member-avatar">
+                                            {member.avatar ? (
+                                                <img src={member.avatar} alt={member.name} />
+                                            ) : (
+                                                getInitials(member.name)
+                                            )}
+                                        </div>
+                                        
+                                        <div className="member-name">{member.name}</div>
+                                        
+                                        {user.name === member.name && (
+                                            <button 
+                                                className="change-dp-btn"
+                                                onClick={() => openDpModal(member, index)}
+                                            >
+                                                Change My Photo
+                                            </button>
+                                        )}
+                                    </div>
+                                ))}
+                            </div>
+                        </>
+                    )}
+
+                    {/* Avatar Modal */}
+                    {showDpModal && (
+                        <div className="modal-overlay">
+                            <div className="modal">
+                                <h3 className="modal-title">Profile Picture</h3>
+                                <p style={{textAlign: 'center', marginBottom: '20px', color: '#666'}}>
+                                    {selectedMember?.name}
+                                </p>
+                                
+                                <div style={{
+                                    width: '150px',
+                                    height: '150px',
+                                    borderRadius: '75px',
+                                    overflow: 'hidden',
+                                    margin: '0 auto 20px',
+                                    border: '3px solid var(--gold)',
+                                    background: avatarPreview ? 'none' : 'var(--light-gold)',
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    justifyContent: 'center',
+                                    fontSize: '40px',
+                                    color: 'var(--maroon)'
+                                }}>
+                                    {avatarPreview ? (
+                                        <img 
+                                            src={avatarPreview} 
+                                            alt="Preview" 
+                                            style={{width: '100%', height: '100%', objectFit: 'cover'}}
+                                        />
+                                    ) : (
+                                        getInitials(selectedMember?.name || '')
+                                    )}
+                                </div>
+                                
+                                <input
+                                    type="file"
+                                    accept="image/*"
+                                    onChange={handleAvatarChange}
+                                    style={{display: 'none'}}
+                                    id="avatarInput"
+                                />
+                                
+                                <div className="modal-actions">
+                                    <button 
+                                        className="btn"
+                                        onClick={() => setShowDpModal(false)}
+                                        style={{background: '#f5f5f5'}}
+                                    >
+                                        Cancel
+                                    </button>
+                                    <label htmlFor="avatarInput" className="btn btn-primary">
+                                        Choose Photo
+                                    </label>
+                                    {avatarPreview && (
+                                        <button 
+                                            className="btn btn-success"
+                                            onClick={saveAvatar}
+                                        >
+                                            Save
+                                        </button>
+                                    )}
+                                </div>
+                            </div>
+                        </div>
+                    )}
+                </div>
+            );
+        };
+
+        // Chat Component
         const ChatSection = ({ user }) => {
             const [messages, setMessages] = useState([]);
             const [newMessage, setNewMessage] = useState('');
-            const [unreadCount, setUnreadCount] = useState(0);
             const [showChat, setShowChat] = useState(false);
             const messagesEndRef = useRef(null);
 
@@ -1373,8 +1474,8 @@
                     const updatedMessages = [...messages, message];
                     setMessages(updatedMessages);
                     storage.set('chatMessages', updatedMessages);
+                    CloudStorage.updateCloudData('chatMessages', updatedMessages);
                     setNewMessage('');
-                    setUnreadCount(0);
                 }
             };
 
@@ -1387,9 +1488,6 @@
 
             const toggleChat = () => {
                 setShowChat(!showChat);
-                if (showChat) {
-                    setUnreadCount(0);
-                }
             };
 
             const clearChat = () => {
@@ -1401,6 +1499,7 @@
                 if (window.confirm('Clear all chat messages?')) {
                     setMessages([]);
                     storage.set('chatMessages', []);
+                    CloudStorage.updateCloudData('chatMessages', []);
                 }
             };
 
@@ -1415,20 +1514,6 @@
                             <div className="chat-header">
                                 <div className="chat-title">
                                     <span>💬 Group Chat</span>
-                                    {unreadCount > 0 && (
-                                        <span style={{
-                                            background: '#ff4444',
-                                            color: 'white',
-                                            borderRadius: '50%',
-                                            width: '18px',
-                                            height: '18px',
-                                            fontSize: '10px',
-                                            display: 'flex',
-                                            alignItems: 'center',
-                                            justifyContent: 'center',
-                                            marginLeft: '5px'
-                                        }}>{unreadCount}</span>
-                                    )}
                                 </div>
                                 <div className="chat-controls">
                                     {user.type === 'admin' && (
@@ -1507,1319 +1592,7 @@
             );
         };
 
-        // Mobile Members Section
-       const MembersSection = ({ user }) => {
-    const [members, setMembers] = useState([]);
-    const [newMember, setNewMember] = useState('');
-    const [showDpModal, setShowDpModal] = useState(false);
-    const [selectedMember, setSelectedMember] = useState(null);
-    const [avatarPreview, setAvatarPreview] = useState(null);
-    const [isSyncing, setIsSyncing] = useState(false);
-
-    useEffect(() => {
-        const savedMembers = storage.get('members') || [];
-        setMembers(savedMembers);
-    }, []);
-
-    const syncToCloud = () => {
-        setIsSyncing(true);
-        try {
-            const currentData = {
-                members: storage.get('members') || [],
-                eventTypes: storage.get('eventTypes') || [],
-                budgetItems: storage.get('budgetItems') || [],
-                hundiTotal: storage.get('hundiTotal') || 0,
-                hundiTransactions: storage.get('hundiTransactions') || [],
-                lastUpdated: Date.now(),
-                syncedBy: user.name
-            };
-            
-            const success = CloudSyncService.saveToCloud(currentData);
-            if (success) {
-                alert('✅ Data synced to cloud!');
-            } else {
-                alert('❌ Sync failed.');
-            }
-        } catch (error) {
-            alert('❌ Sync failed.');
-        } finally {
-            setIsSyncing(false);
-        }
-    };
-
-    const syncFromCloud = () => {
-        setIsSyncing(true);
-        try {
-            const success = storage.syncFromCloud();
-            if (success) {
-                const savedMembers = storage.get('members') || [];
-                setMembers(savedMembers);
-                alert('✅ Data synced from cloud!');
-            } else {
-                alert('❌ No cloud data found.');
-            }
-        } catch (error) {
-            alert('❌ Sync failed.');
-        } finally {
-            setIsSyncing(false);
-        }
-    };
-
-    const addMember = () => {
-        if (newMember.trim()) {
-            const memberData = {
-                name: newMember.trim(),
-                avatar: null,
-                addedBy: user.name,
-                addedDate: new Date().toISOString(),
-                id: Date.now() + Math.random().toString(36).substr(2, 9)
-            };
-            const updatedMembers = [...members, memberData];
-            setMembers(updatedMembers);
-            storage.set('members', updatedMembers);
-            setNewMember('');
-        }
-    };
-
-    const deleteMember = (index) => {
-        const updatedMembers = members.filter((_, i) => i !== index);
-        setMembers(updatedMembers);
-        storage.set('members', updatedMembers);
-    };
-
-    const openDpModal = (member, index) => {
-        setSelectedMember({ ...member, index });
-        setAvatarPreview(member.avatar);
-        setShowDpModal(true);
-    };
-
-    const handleAvatarChange = (e) => {
-        const file = e.target.files[0];
-        if (file) {
-            if (file.size > 10 * 1024 * 1024) {
-                alert('File too large. Max 10MB.');
-                return;
-            }
-            
-            if (!file.type.match('image.*')) {
-                alert('Please select a valid image file.');
-                return;
-            }
-            
-            const reader = new FileReader();
-            reader.onload = (e) => {
-                setAvatarPreview(e.target.result);
-            };
-            reader.readAsDataURL(file);
-        }
-    };
-
-    const saveAvatar = () => {
-        if (selectedMember && avatarPreview) {
-            const updatedMembers = [...members];
-            updatedMembers[selectedMember.index].avatar = avatarPreview;
-            setMembers(updatedMembers);
-            storage.set('members', updatedMembers);
-            setShowDpModal(false);
-            setSelectedMember(null);
-            setAvatarPreview(null);
-        }
-    };
-
-    const getInitials = (name) => {
-        return name.split(' ').map(n => n[0]).join('').toUpperCase();
-    };
-
-    return (
-        <div>
-            <h2 className="section-title">Trust Members</h2>
-            
-            {user.type === 'admin' && (
-                <div className="form-card">
-                    <h3 style={{marginBottom: '15px', color: 'var(--maroon)'}}>🌐 Cloud Sync</h3>
-                    <div className="sync-controls">
-                        <button 
-                            className="sync-btn"
-                            onClick={syncToCloud}
-                            disabled={isSyncing}
-                        >
-                            {isSyncing ? '🔄' : '📤'} Sync to Cloud
-                        </button>
-                        <button 
-                            className="sync-btn"
-                            onClick={syncFromCloud}
-                            disabled={isSyncing}
-                        >
-                            {isSyncing ? '🔄' : '📥'} Sync from Cloud
-                        </button>
-                    </div>
-                </div>
-            )}
-            
-            {user.type === 'admin' ? (
-                <>
-                    <div className="form-card">
-                        <h3 style={{marginBottom: '15px', color: 'var(--maroon)'}}>Add New Member</h3>
-                        <div className="form-row">
-                            <div className="form-field">
-                                <input
-                                    type="text"
-                                    className="form-control"
-                                    value={newMember}
-                                    onChange={(e) => setNewMember(e.target.value)}
-                                    placeholder="Enter member name"
-                                    onKeyPress={(e) => e.key === 'Enter' && addMember()}
-                                />
-                            </div>
-                            <button className="btn btn-primary" onClick={addMember}>
-                                Add Member
-                            </button>
-                        </div>
-                        <div style={{marginTop: '10px', fontSize: '13px', color: '#666'}}>
-                            <strong>Note:</strong> Password: <strong>pass123</strong>
-                        </div>
-                    </div>
-                    
-                    <div className="members-grid">
-                        {members.map((member, index) => (
-                            <div key={member.id || index} className="member-card">
-                                <button 
-                                    className="delete-member"
-                                    onClick={() => deleteMember(index)}
-                                >
-                                    ×
-                                </button>
-                                
-                                <div className="member-avatar">
-                                    {member.avatar ? (
-                                        <img src={member.avatar} alt={member.name} />
-                                    ) : (
-                                        getInitials(member.name)
-                                    )}
-                                </div>
-                                
-                                <div className="member-name">{member.name}</div>
-                                <div style={{fontSize: '11px', color: '#666', marginBottom: '8px'}}>
-                                    by {member.addedBy}
-                                </div>
-                                
-                                <button 
-                                    className="change-dp-btn"
-                                    onClick={() => openDpModal(member, index)}
-                                >
-                                    Change Photo
-                                </button>
-                            </div>
-                        ))}
-                    </div>
-                    
-                    {members.length === 0 && (
-                        <div style={{textAlign: 'center', padding: '40px', color: '#666'}}>
-                            No members added yet.
-                        </div>
-                    )}
-                </>
-            ) : (
-                <>
-                    <div style={{
-                        background: '#e8f5e8',
-                        border: '1px solid #c8e6c9',
-                        borderRadius: '12px',
-                        padding: '15px',
-                        marginBottom: '20px',
-                        textAlign: 'center',
-                        color: '#2e7d32'
-                    }}>
-                        All registered members can view each other and manage their own profile pictures.
-                    </div>
-                    <div className="members-grid">
-                        {members.map((member, index) => (
-                            <div key={member.id || index} className="member-card">
-                                <div className="member-avatar">
-                                    {member.avatar ? (
-                                        <img src={member.avatar} alt={member.name} />
-                                    ) : (
-                                        getInitials(member.name)
-                                    )}
-                                </div>
-                                
-                                <div className="member-name">{member.name}</div>
-                                
-                                {user.name === member.name && (
-                                    <button 
-                                        className="change-dp-btn"
-                                        onClick={() => openDpModal(member, index)}
-                                    >
-                                        Change My Photo
-                                    </button>
-                                )}
-                            </div>
-                        ))}
-                    </div>
-                </>
-            )}
-
-            {/* Avatar Modal */}
-            {showDpModal && (
-                <div className="modal-overlay">
-                    <div className="modal">
-                        <h3 className="modal-title">Profile Picture</h3>
-                        <p style={{textAlign: 'center', marginBottom: '20px', color: '#666'}}>
-                            {selectedMember?.name}
-                        </p>
-                        
-                        <div style={{
-                            width: '150px',
-                            height: '150px',
-                            borderRadius: '75px',
-                            overflow: 'hidden',
-                            margin: '0 auto 20px',
-                            border: '3px solid var(--gold)',
-                            background: avatarPreview ? 'none' : 'var(--light-gold)',
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            fontSize: '40px',
-                            color: 'var(--maroon)'
-                        }}>
-                            {avatarPreview ? (
-                                <img 
-                                    src={avatarPreview} 
-                                    alt="Preview" 
-                                    style={{width: '100%', height: '100%', objectFit: 'cover'}}
-                                />
-                            ) : (
-                                getInitials(selectedMember?.name || '')
-                            )}
-                        </div>
-                        
-                        <input
-                            type="file"
-                            accept="image/*"
-                            onChange={handleAvatarChange}
-                            style={{display: 'none'}}
-                            id="avatarInput"
-                        />
-                        
-                        <div className="modal-actions">
-                            <button 
-                                className="btn"
-                                onClick={() => setShowDpModal(false)}
-                                style={{background: '#f5f5f5'}}
-                            >
-                                Cancel
-                            </button>
-                            <label htmlFor="avatarInput" className="btn btn-primary">
-                                Choose Photo
-                            </label>
-                            {avatarPreview && (
-                                <button 
-                                    className="btn btn-success"
-                                    onClick={saveAvatar}
-                                >
-                                    Save
-                                </button>
-                            )}
-                        </div>
-                    </div>
-                </div>
-            )}
-        </div>
-    );
-};
-
-        // Mobile Hundi Section
-        const HundiSection = ({ user }) => {
-            const [total, setTotal] = useState(0);
-            const [showModal, setShowModal] = useState(false);
-            const [amount, setAmount] = useState('');
-            const [moneyNotes, setMoneyNotes] = useState([]);
-
-            useEffect(() => {
-                const savedTotal = storage.get('hundiTotal') || 0;
-                setTotal(savedTotal);
-                
-                if (user.type === 'member') {
-                    triggerMoneyAnimation();
-                }
-            }, [user.type]);
-
-            const triggerMoneyAnimation = () => {
-                const newNotes = [];
-                for (let i = 0; i < 8; i++) {
-                    newNotes.push({
-                        id: Date.now() + i,
-                        left: Math.random() * 70 + 15,
-                        delay: Math.random() * 1.5,
-                        duration: 2 + Math.random() * 1.5
-                    });
-                }
-                setMoneyNotes(newNotes);
-                
-                setTimeout(() => {
-                    setMoneyNotes([]);
-                }, 3500);
-            };
-
-            const addMoney = () => {
-                const moneyAmount = parseFloat(amount);
-                if (moneyAmount && moneyAmount > 0) {
-                    const newTotal = total + moneyAmount;
-                    setTotal(newTotal);
-                    
-                    const newTransaction = {
-                        id: Date.now(),
-                        amount: moneyAmount,
-                        date: new Date().toLocaleString(),
-                        type: 'deposit'
-                    };
-                    
-                    const transactions = storage.get('hundiTransactions') || [];
-                    const updatedTransactions = [...transactions, newTransaction];
-                    
-                    storage.set('hundiTotal', newTotal);
-                    storage.set('hundiTransactions', updatedTransactions);
-                    
-                    triggerMoneyAnimation();
-                    setShowModal(false);
-                    setAmount('');
-                }
-            };
-
-            const moneyLevel = Math.min((total / 15000) * 85, 85);
-
-            return (
-                <div>
-                    <h2 className="section-title">Hundi Collection</h2>
-                    
-                    <div className="hundi-container">
-                        <div className="temple-scene">
-                            <div style={{
-                                position: 'absolute',
-                                top: 0,
-                                left: 0,
-                                width: '100%',
-                                height: '100%',
-                                background: 'radial-gradient(circle at 20% 30%, rgba(255,215,0,0.3) 0%, transparent 50%), radial-gradient(circle at 80% 20%, rgba(255,215,0,0.2) 0%, transparent 50%)'
-                            }}></div>
-                            
-                            <div className="south-indian-hundi">
-                                <div className="hundi-body">
-                                    <div style={{
-                                        position: 'absolute',
-                                        bottom: 0,
-                                        left: 0,
-                                        right: 0,
-                                        background: 'linear-gradient(to bottom, #4CAF50 0%, #2E7D32 100%)',
-                                        height: `${moneyLevel}%`,
-                                        transition: 'height 1.5s ease'
-                                    }}>
-                                        <div style={{
-                                            position: 'absolute',
-                                            top: 0,
-                                            left: 0,
-                                            width: '100%',
-                                            height: '100%',
-                                            pointerEvents: 'none',
-                                            overflow: 'hidden'
-                                        }}>
-                                            {moneyNotes.map(note => (
-                                                <div 
-                                                    key={note.id}
-                                                    style={{
-                                                        position: 'absolute',
-                                                        fontSize: '14px',
-                                                        color: '#4CAF50',
-                                                        animation: `fall linear forwards ${note.duration}s`,
-                                                        animationDelay: `${note.delay}s`,
-                                                        left: `${note.left}%`,
-                                                        zIndex: 3
-                                                    }}
-                                                >
-                                                    💵
-                                                </div>
-                                            ))}
-                                        </div>
-                                    </div>
-                                    <div className="hundi-total">₹{total}</div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        {user.type === 'admin' ? (
-                            <div className="hundi-actions">
-                                <button 
-                                    className="btn btn-primary add-money-btn"
-                                    onClick={() => setShowModal(true)}
-                                >
-                                    Add Money
-                                </button>
-                            </div>
-                        ) : (
-                            <div style={{
-                                background: '#e8f5e8',
-                                border: '1px solid #c8e6c9',
-                                borderRadius: '12px',
-                                padding: '15px',
-                                textAlign: 'center',
-                                color: '#2e7d32',
-                                width: '100%',
-                                maxWidth: '280px'
-                            }}>
-                                Only administrators can manage the Hundi.
-                            </div>
-                        )}
-                    </div>
-
-                    {/* Add Money Modal */}
-                    {showModal && (
-                        <div className="modal-overlay">
-                            <div className="modal">
-                                <h3 className="modal-title">Add Money to Hundi</h3>
-                                <div className="form-group">
-                                    <label>Amount (₹)</label>
-                                    <input
-                                        type="number"
-                                        className="form-control"
-                                        value={amount}
-                                        onChange={(e) => setAmount(e.target.value)}
-                                        placeholder="Enter amount"
-                                        min="1"
-                                    />
-                                </div>
-                                <div className="modal-actions">
-                                    <button 
-                                        className="btn"
-                                        onClick={() => setShowModal(false)}
-                                        style={{background: '#f5f5f5'}}
-                                    >
-                                        Cancel
-                                    </button>
-                                    <button 
-                                        className="btn btn-primary"
-                                        onClick={addMoney}
-                                    >
-                                        Add Money
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    )}
-                </div>
-            );
-        };
-
-        // Mobile Budget Section
-        const BudgetSection = ({ user }) => {
-            const [items, setItems] = useState([]);
-            const [newItem, setNewItem] = useState({ name: '', amount: '' });
-
-            useEffect(() => {
-                const savedItems = storage.get('budgetItems') || [];
-                setItems(savedItems);
-            }, []);
-
-            const addItem = () => {
-                if (newItem.name.trim() && newItem.amount) {
-                    const amount = parseFloat(newItem.amount);
-                    if (amount > 0) {
-                        const updatedItems = [...items, { ...newItem, amount }];
-                        setItems(updatedItems);
-                        storage.set('budgetItems', updatedItems);
-                        setNewItem({ name: '', amount: '' });
-                    }
-                }
-            };
-
-            const deleteItem = (index) => {
-                const updatedItems = items.filter((_, i) => i !== index);
-                setItems(updatedItems);
-                storage.set('budgetItems', updatedItems);
-            };
-
-            const calculateRunningTotal = () => {
-                let total = 0;
-                return items.map(item => {
-                    total += item.amount;
-                    return { ...item, runningTotal: total };
-                });
-            };
-
-            const downloadBudgetPDF = () => {
-                const doc = new jsPDF();
-                const itemsWithTotal = calculateRunningTotal();
-                const grandTotal = itemsWithTotal.length > 0 ? itemsWithTotal[itemsWithTotal.length - 1].runningTotal : 0;
-
-                doc.setFontSize(16);
-                doc.setTextColor(128, 0, 0);
-                doc.text('Sri Vinayaka Geleyara Balaga', 105, 20, { align: 'center' });
-                
-                doc.setFontSize(14);
-                doc.setTextColor(255, 153, 51);
-                doc.text('Budget Report', 105, 30, { align: 'center' });
-
-                const tableData = itemsWithTotal.map(item => [
-                    item.name,
-                    `₹${item.amount.toFixed(2)}`,
-                    `₹${item.runningTotal.toFixed(2)}`
-                ]);
-
-                if (itemsWithTotal.length > 0) {
-                    tableData.push(['', 'Grand Total:', `₹${grandTotal.toFixed(2)}`]);
-                }
-
-                doc.autoTable({
-                    startY: 40,
-                    head: [['Item Name', 'Amount', 'Running Total']],
-                    body: tableData,
-                    theme: 'grid',
-                    headStyles: {
-                        fillColor: [255, 153, 51],
-                        textColor: [255, 255, 255],
-                        fontStyle: 'bold'
-                    }
-                });
-
-                doc.save('Budget_Report.pdf');
-            };
-
-            const itemsWithTotal = calculateRunningTotal();
-            const grandTotal = itemsWithTotal.length > 0 ? itemsWithTotal[itemsWithTotal.length - 1].runningTotal : 0;
-
-            return (
-                <div>
-                    <h2 className="section-title">Budget Management</h2>
-                    
-                    <div className="download-btn">
-                        <button className="btn btn-info" onClick={downloadBudgetPDF}>
-                            Download Budget PDF
-                        </button>
-                    </div>
-                    
-                    {user.type === 'admin' ? (
-                        <>
-                            <div className="form-card">
-                                <h3 style={{marginBottom: '15px', color: 'var(--maroon)'}}>Add Budget Item</h3>
-                                <div className="form-row">
-                                    <div className="form-field">
-                                        <input
-                                            type="text"
-                                            className="form-control"
-                                            value={newItem.name}
-                                            onChange={(e) => setNewItem({...newItem, name: e.target.value})}
-                                            placeholder="Item name"
-                                        />
-                                    </div>
-                                    <div className="form-field">
-                                        <input
-                                            type="number"
-                                            className="form-control"
-                                            value={newItem.amount}
-                                            onChange={(e) => setNewItem({...newItem, amount: e.target.value})}
-                                            placeholder="Amount (₹)"
-                                            min="1"
-                                        />
-                                    </div>
-                                    <button className="btn btn-primary" onClick={addItem}>
-                                        Add Item
-                                    </button>
-                                </div>
-                            </div>
-                            
-                            {items.length > 0 ? (
-                                <div style={{overflowX: 'auto'}}>
-                                    <table className="budget-table">
-                                        <thead>
-                                            <tr>
-                                                <th>Name</th>
-                                                <th>Amount (₹)</th>
-                                                <th>Total (₹)</th>
-                                                <th>Action</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            {itemsWithTotal.map((item, index) => (
-                                                <tr key={index}>
-                                                    <td>{item.name}</td>
-                                                    <td>₹{item.amount.toFixed(2)}</td>
-                                                    <td>₹{item.runningTotal.toFixed(2)}</td>
-                                                    <td>
-                                                        <button 
-                                                            className="btn btn-danger btn-sm"
-                                                            onClick={() => deleteItem(index)}
-                                                            style={{padding: '8px 12px', fontSize: '12px'}}
-                                                        >
-                                                            Delete
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                            ))}
-                                            <tr style={{fontWeight: 'bold', background: 'var(--light-gold)'}}>
-                                                <td colSpan="2">Grand Total</td>
-                                                <td>₹{grandTotal.toFixed(2)}</td>
-                                                <td></td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            ) : (
-                                <div style={{textAlign: 'center', padding: '40px', color: '#666'}}>
-                                    No budget items added yet.
-                                </div>
-                            )}
-                        </>
-                    ) : (
-                        <>
-                            {items.length > 0 ? (
-                                <div style={{overflowX: 'auto'}}>
-                                    <table className="budget-table">
-                                        <thead>
-                                            <tr>
-                                                <th>Name</th>
-                                                <th>Amount (₹)</th>
-                                                <th>Total (₹)</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            {itemsWithTotal.map((item, index) => (
-                                                <tr key={index}>
-                                                    <td>{item.name}</td>
-                                                    <td>₹{item.amount.toFixed(2)}</td>
-                                                    <td>₹{item.runningTotal.toFixed(2)}</td>
-                                                </tr>
-                                            ))}
-                                            <tr style={{fontWeight: 'bold', background: 'var(--light-gold)'}}>
-                                                <td colSpan="2">Grand Total</td>
-                                                <td>₹{grandTotal.toFixed(2)}</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            ) : (
-                                <div style={{textAlign: 'center', padding: '40px', color: '#666'}}>
-                                    No budget items available.
-                                </div>
-                            )}
-                        </>
-                    )}
-                </div>
-            );
-        };
-
-        // Mobile Events Section
-        const PlanSection = ({ user }) => {
-            const [events, setEvents] = useState([]);
-            const [newEvent, setNewEvent] = useState('');
-            const [selectedEvent, setSelectedEvent] = useState(null);
-            const [newWinner, setNewWinner] = useState('');
-
-            useEffect(() => {
-                const savedEvents = storage.get('eventTypes') || [];
-                const cleanedEvents = savedEvents.map(event => ({
-                    ...event,
-                    name: event.name.replace(/@>Y[GH]\s*(First|Second|Third)?\s*/gi, '').trim(),
-                    winners: event.winners ? event.winners.map(winner => ({
-                        ...winner,
-                        name: winner.name.replace(/@>Y[GH]\s*(First|Second|Third)?\s*/gi, '').trim(),
-                        position: winner.position || ''
-                    })).filter(winner => winner && winner.name) : []
-                }));
-                setEvents(cleanedEvents);
-            }, []);
-
-            const addEvent = () => {
-                if (newEvent.trim()) {
-                    const cleanEventName = newEvent.trim().replace(/@>Y[GH]\s*(First|Second|Third)?\s*/gi, '').trim();
-                    
-                    const eventData = {
-                        name: cleanEventName,
-                        winners: [],
-                        createdDate: new Date().toISOString(),
-                        id: Date.now() + Math.random().toString(36).substr(2, 9)
-                    };
-                    const updatedEvents = [...events, eventData];
-                    setEvents(updatedEvents);
-                    storage.set('eventTypes', updatedEvents);
-                    setNewEvent('');
-                }
-            };
-
-            const deleteEvent = (index) => {
-                const updatedEvents = events.filter((_, i) => i !== index);
-                setEvents(updatedEvents);
-                storage.set('eventTypes', updatedEvents);
-            };
-
-            const addWinner = (eventIndex) => {
-                if (newWinner.trim()) {
-                    const updatedEvents = [...events];
-                    if (!updatedEvents[eventIndex].winners) {
-                        updatedEvents[eventIndex].winners = [];
-                    }
-                    
-                    if (updatedEvents[eventIndex].winners.length >= 3) {
-                        alert('Maximum of 3 winners allowed per event');
-                        return;
-                    }
-                    
-                    const cleanWinnerName = newWinner.trim().replace(/@>Y[GH]\s*(First|Second|Third)?\s*/gi, '').trim();
-                    
-                    const position = updatedEvents[eventIndex].winners.length === 0 ? 'First' : 
-                                   updatedEvents[eventIndex].winners.length === 1 ? 'Second' : 'Third';
-                    
-                    updatedEvents[eventIndex].winners.push({
-                        name: cleanWinnerName,
-                        date: new Date().toISOString(),
-                        position: position
-                    });
-                    setEvents(updatedEvents);
-                    storage.set('eventTypes', updatedEvents);
-                    setNewWinner('');
-                    setSelectedEvent(null);
-                }
-            };
-
-            const deleteWinner = (eventIndex, winnerIndex) => {
-                const updatedEvents = [...events];
-                updatedEvents[eventIndex].winners.splice(winnerIndex, 1);
-                updatedEvents[eventIndex].winners.forEach((winner, idx) => {
-                    winner.position = idx === 0 ? 'First' : idx === 1 ? 'Second' : 'Third';
-                });
-                setEvents(updatedEvents);
-                storage.set('eventTypes', updatedEvents);
-            };
-
-            const getPositionIcon = (position) => {
-                switch(position) {
-                    case 'First': return '🥇';
-                    case 'Second': return '🥈';
-                    case 'Third': return '🥉';
-                    default: return '';
-                }
-            };
-
-            return (
-                <div>
-                    <h2 className="section-title">Event Planning</h2>
-                    
-                    {user.type === 'admin' ? (
-                        <>
-                            <div className="form-card">
-                                <h3 style={{marginBottom: '15px', color: 'var(--maroon)'}}>Add Event Type</h3>
-                                <div className="form-row">
-                                    <div className="form-field">
-                                        <input
-                                            type="text"
-                                            className="form-control"
-                                            value={newEvent}
-                                            onChange={(e) => setNewEvent(e.target.value)}
-                                            placeholder="Enter event type"
-                                            onKeyPress={(e) => e.key === 'Enter' && addEvent()}
-                                        />
-                                    </div>
-                                    <button className="btn btn-primary" onClick={addEvent}>
-                                        Add Event
-                                    </button>
-                                </div>
-                            </div>
-                            
-                            <div className="events-grid">
-                                {events.map((event, index) => (
-                                    <div key={event.id || index} className="event-card">
-                                        <div className="event-name">{event.name}</div>
-                                        
-                                        {event.winners && event.winners.length > 0 && (
-                                            <div style={{marginTop: '15px', paddingTop: '15px', borderTop: '1px solid #eee'}}>
-                                                <h4 style={{marginBottom: '10px', color: 'var(--maroon)', fontSize: '14px'}}>Winners</h4>
-                                                {event.winners.map((winner, winnerIndex) => (
-                                                    <div key={winnerIndex} style={{
-                                                        display: 'flex',
-                                                        justifyContent: 'space-between',
-                                                        alignItems: 'center',
-                                                        padding: '8px 0',
-                                                        borderBottom: '1px solid #f5f5f5'
-                                                    }}>
-                                                        <div style={{fontWeight: 'bold', color: 'var(--maroon)', marginRight: '10px', minWidth: '60px'}}>
-                                                            {getPositionIcon(winner.position)} {winner.position}
-                                                        </div>
-                                                        <div style={{flex: 1}}>{winner.name}</div>
-                                                        <div>
-                                                            <button 
-                                                                className="btn btn-danger btn-sm"
-                                                                onClick={() => deleteWinner(index, winnerIndex)}
-                                                                style={{padding: '6px 10px', fontSize: '12px'}}
-                                                            >
-                                                                ×
-                                                            </button>
-                                                        </div>
-                                                    </div>
-                                                ))}
-                                            </div>
-                                        )}
-                                        
-                                        <div className="event-actions">
-                                            <button 
-                                                className="btn btn-success btn-sm"
-                                                onClick={() => setSelectedEvent(index)}
-                                                disabled={event.winners && event.winners.length >= 3}
-                                            >
-                                                Add Winner
-                                            </button>
-                                            <button 
-                                                className="btn btn-danger btn-sm"
-                                                onClick={() => deleteEvent(index)}
-                                            >
-                                                Delete
-                                            </button>
-                                        </div>
-                                    </div>
-                                ))}
-                            </div>
-                            
-                            {events.length === 0 && (
-                                <div style={{textAlign: 'center', padding: '40px', color: '#666'}}>
-                                    No events added yet.
-                                </div>
-                            )}
-                        </>
-                    ) : (
-                        <>
-                            <div style={{
-                                background: '#e8f5e8',
-                                border: '1px solid #c8e6c9',
-                                borderRadius: '12px',
-                                padding: '15px',
-                                marginBottom: '20px',
-                                textAlign: 'center',
-                                color: '#2e7d32'
-                            }}>
-                                All registered members can view events and winners.
-                            </div>
-                            <div className="events-grid">
-                                {events.map((event, index) => (
-                                    <div key={event.id || index} className="event-card">
-                                        <div className="event-name">{event.name}</div>
-                                        
-                                        {event.winners && event.winners.length > 0 ? (
-                                            <div style={{marginTop: '15px', paddingTop: '15px', borderTop: '1px solid #eee'}}>
-                                                <h4 style={{marginBottom: '10px', color: 'var(--maroon)', fontSize: '14px'}}>Winners</h4>
-                                                {event.winners.map((winner, winnerIndex) => (
-                                                    <div key={winnerIndex} style={{
-                                                        display: 'flex',
-                                                        alignItems: 'center',
-                                                        padding: '8px 0',
-                                                        borderBottom: '1px solid #f5f5f5'
-                                                    }}>
-                                                        <div style={{fontWeight: 'bold', color: 'var(--maroon)', marginRight: '10px', minWidth: '60px'}}>
-                                                            {getPositionIcon(winner.position)} {winner.position}
-                                                        </div>
-                                                        <div>{winner.name}</div>
-                                                    </div>
-                                                ))}
-                                            </div>
-                                        ) : (
-                                            <div style={{color: '#666', fontSize: '13px', marginTop: '15px', textAlign: 'center'}}>
-                                                No winners announced yet
-                                            </div>
-                                        )}
-                                    </div>
-                                ))}
-                            </div>
-                        </>
-                    )}
-
-                    {/* Add Winner Modal */}
-                    {selectedEvent !== null && (
-                        <div className="modal-overlay">
-                            <div className="modal">
-                                <h3 className="modal-title">Add Winner</h3>
-                                <p style={{textAlign: 'center', marginBottom: '20px', color: '#666'}}>
-                                    For: {events[selectedEvent]?.name}
-                                </p>
-                                <div className="form-group">
-                                    <label>Winner Name</label>
-                                    <input
-                                        type="text"
-                                        className="form-control"
-                                        value={newWinner}
-                                        onChange={(e) => setNewWinner(e.target.value)}
-                                        placeholder="Enter winner's name"
-                                    />
-                                </div>
-                                <div className="modal-actions">
-                                    <button 
-                                        className="btn"
-                                        onClick={() => setSelectedEvent(null)}
-                                        style={{background: '#f5f5f5'}}
-                                    >
-                                        Cancel
-                                    </button>
-                                    <button 
-                                        className="btn btn-success"
-                                        onClick={() => addWinner(selectedEvent)}
-                                        disabled={!newWinner.trim()}
-                                    >
-                                        Add Winner
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    )}
-                </div>
-            );
-        };
-
-        // Mobile Gallery Section - Updated with 50MB limit
-        const GallerySection = ({ user }) => {
-            const [media, setMedia] = useState([]);
-            const [showUploadModal, setShowUploadModal] = useState(false);
-            const [newMedia, setNewMedia] = useState({ title: '', date: '', type: 'image' });
-            const [mediaPreview, setMediaPreview] = useState(null);
-
-            useEffect(() => {
-                const savedMedia = storage.get('galleryMedia') || [];
-                setMedia(savedMedia);
-            }, []);
-
-            const handleMediaUpload = (e) => {
-                const file = e.target.files[0];
-                if (file) {
-                    if (file.size > 50 * 1024 * 1024) {
-                        alert('File too large. Max 50MB.');
-                        return;
-                    }
-                    
-                    const reader = new FileReader();
-                    reader.onload = (e) => {
-                        setMediaPreview(e.target.result);
-                    };
-                    reader.readAsDataURL(file);
-                }
-            };
-
-            const addMedia = () => {
-                if (newMedia.title.trim() && mediaPreview) {
-                    const mediaItem = { 
-                        ...newMedia, 
-                        id: Date.now() + Math.random().toString(36).substr(2, 9),
-                        date: newMedia.date || new Date().toISOString().split('T')[0],
-                        url: mediaPreview
-                    };
-                    
-                    const updatedMedia = [...media, mediaItem];
-                    setMedia(updatedMedia);
-                    storage.set('galleryMedia', updatedMedia);
-                    setNewMedia({ title: '', date: '', type: 'image' });
-                    setMediaPreview(null);
-                    setShowUploadModal(false);
-                }
-            };
-
-            const deleteMedia = (id) => {
-                const updatedMedia = media.filter(item => item.id !== id);
-                setMedia(updatedMedia);
-                storage.set('galleryMedia', updatedMedia);
-            };
-
-            const downloadMedia = (mediaItem) => {
-                const link = document.createElement('a');
-                link.href = mediaItem.url;
-                let extension = 'jpg';
-                if (mediaItem.type === 'video') extension = 'mp4';
-                else if (mediaItem.url.includes('png')) extension = 'png';
-                else if (mediaItem.url.includes('gif')) extension = 'gif';
-                
-                link.download = `${mediaItem.title}_${mediaItem.date}.${extension}`;
-                document.body.appendChild(link);
-                link.click();
-                document.body.removeChild(link);
-            };
-
-            return (
-                <div>
-                    <h2 className="section-title">Festival Gallery</h2>
-                    
-                    {user.type === 'admin' && (
-                        <div className="form-card">
-                            <button 
-                                className="btn btn-primary"
-                                onClick={() => setShowUploadModal(true)}
-                            >
-                                Add Media to Gallery
-                            </button>
-                        </div>
-                    )}
-                    
-                    <div>
-                        {media.length > 0 ? (
-                            <div className="gallery-grid">
-                                {media.map(item => (
-                                    <div key={item.id} className="gallery-item">
-                                        {item.type === 'image' ? (
-                                            <img src={item.url} alt={item.title} className="gallery-media" />
-                                        ) : (
-                                            <video controls className="gallery-media">
-                                                <source src={item.url} type="video/mp4" />
-                                                Your browser does not support the video tag.
-                                            </video>
-                                        )}
-                                        <div className="gallery-info">
-                                            <div className="gallery-title">{item.title}</div>
-                                            <div className="gallery-date">{item.date}</div>
-                                        </div>
-                                        <div className="gallery-actions">
-                                            <button 
-                                                onClick={() => downloadMedia(item)}
-                                                title="Download"
-                                                style={{background: 'var(--success)'}}
-                                            >
-                                                ⬇️
-                                            </button>
-                                            {user.type === 'admin' && (
-                                                <button 
-                                                    onClick={() => deleteMedia(item.id)}
-                                                    title="Delete"
-                                                >
-                                                    ×
-                                                </button>
-                                            )}
-                                        </div>
-                                    </div>
-                                ))}
-                            </div>
-                        ) : (
-                            <div style={{textAlign: 'center', padding: '40px', color: '#666'}}>
-                                No media added yet.
-                            </div>
-                        )}
-                    </div>
-                    
-                    {showUploadModal && (
-                        <div className="modal-overlay">
-                            <div className="modal">
-                                <h3 className="modal-title">Add Media</h3>
-                                <div className="form-group">
-                                    <label>Title</label>
-                                    <input
-                                        type="text"
-                                        className="form-control"
-                                        value={newMedia.title}
-                                        onChange={(e) => setNewMedia({...newMedia, title: e.target.value})}
-                                        placeholder="Media title"
-                                    />
-                                </div>
-                                <div className="form-group">
-                                    <label>Date</label>
-                                    <input
-                                        type="date"
-                                        className="form-control"
-                                        value={newMedia.date}
-                                        onChange={(e) => setNewMedia({...newMedia, date: e.target.value})}
-                                    />
-                                </div>
-                                <div className="form-group">
-                                    <label>Type</label>
-                                    <select
-                                        className="form-control"
-                                        value={newMedia.type}
-                                        onChange={(e) => setNewMedia({...newMedia, type: e.target.value})}
-                                    >
-                                        <option value="image">Image</option>
-                                        <option value="video">Video</option>
-                                    </select>
-                                </div>
-                                <div>
-                                    <input 
-                                        type="file" 
-                                        accept="image/*,video/*" 
-                                        onChange={handleMediaUpload}
-                                        style={{display: 'none'}}
-                                        id="mediaInput"
-                                    />
-                                    <label htmlFor="mediaInput" className="btn btn-primary" style={{width: '100%', marginBottom: '10px'}}>
-                                        Choose File
-                                    </label>
-                                    
-                                    {mediaPreview && (
-                                        newMedia.type === 'image' ? (
-                                            <img 
-                                                src={mediaPreview} 
-                                                alt="Preview" 
-                                                style={{
-                                                    width: '100%',
-                                                    height: '150px',
-                                                    objectFit: 'cover',
-                                                    borderRadius: '8px',
-                                                    marginBottom: '10px'
-                                                }}
-                                            />
-                                        ) : (
-                                            <video 
-                                                controls 
-                                                style={{
-                                                    width: '100%',
-                                                    height: '150px',
-                                                    borderRadius: '8px',
-                                                    marginBottom: '10px'
-                                                }}
-                                            >
-                                                <source src={mediaPreview} type="video/mp4" />
-                                            </video>
-                                        )
-                                    )}
-                                </div>
-                                <div className="modal-actions">
-                                    <button 
-                                        className="btn"
-                                        onClick={() => setShowUploadModal(false)}
-                                        style={{background: '#f5f5f5'}}
-                                    >
-                                        Cancel
-                                    </button>
-                                    <button 
-                                        className="btn btn-primary"
-                                        onClick={addMedia}
-                                        disabled={!mediaPreview || !newMedia.title.trim()}
-                                    >
-                                        Add Media
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    )}
-                </div>
-            );
-        };
-
-        // Mobile Yearly Report Section
-        const YearlyReportSection = ({ user }) => {
-            const [year, setYear] = useState(new Date().getFullYear());
-
-            const downloadYearlyPDF = () => {
-                const doc = new jsPDF();
-                
-                doc.setFillColor(128, 0, 0);
-                doc.rect(0, 0, 210, 30, 'F');
-                
-                doc.setFillColor(255, 153, 51);
-                doc.rect(0, 30, 210, 5, 'F');
-                
-                doc.setFontSize(16);
-                doc.setTextColor(255, 255, 255);
-                doc.text('Sri Vinayaka Geleyara Balaga', 105, 18, { align: 'center' });
-                
-                doc.setFontSize(14);
-                doc.setTextColor(255, 255, 255);
-                doc.text(`Yearly Report - ${year}`, 105, 25, { align: 'center' });
-                
-                doc.setFontSize(10);
-                doc.setTextColor(128, 0, 0);
-                doc.text('🕉️', 105, 40, { align: 'center' });
-                doc.text('ॐ श्री गणेशाय नमः', 105, 47, { align: 'center' });
-                
-                // Add sample content
-                doc.setFontSize(12);
-                doc.setTextColor(0, 0, 0);
-                doc.text('This is a sample yearly report.', 20, 70);
-                doc.text(`Generated for the year ${year}`, 20, 80);
-                doc.text('May Lord Ganesha bless our community', 20, 90);
-                doc.text('with prosperity, wisdom and harmony', 20, 100);
-                
-                doc.save(`Yearly_Report_${year}.pdf`);
-            };
-
-            return (
-                <div>
-                    <h2 className="section-title">Yearly Report</h2>
-                    
-                    {user.type === 'admin' ? (
-                        <div className="form-card">
-                            <h3 style={{marginBottom: '15px', color: 'var(--maroon)'}}>Generate Report</h3>
-                            <div style={{display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '20px', flexWrap: 'wrap'}}>
-                                <label style={{fontWeight: '600'}}>Year:</label>
-                                <input
-                                    type="number"
-                                    style={{
-                                        padding: '10px',
-                                        border: '1px solid #ddd',
-                                        borderRadius: '8px',
-                                        fontSize: '16px',
-                                        width: '100px'
-                                    }}
-                                    value={year}
-                                    onChange={(e) => setYear(parseInt(e.target.value))}
-                                    min="2000"
-                                    max="2030"
-                                />
-                                <button className="btn btn-primary" onClick={downloadYearlyPDF}>
-                                    Download Report
-                                </button>
-                            </div>
-                        </div>
-                    ) : (
-                        <div style={{
-                            background: '#e8f5e8',
-                            border: '1px solid #c8e6c9',
-                            borderRadius: '12px',
-                            padding: '15px',
-                            textAlign: 'center',
-                            color: '#2e7d32'
-                        }}>
-                            Only administrators can generate yearly reports.
-                        </div>
-                    )}
-                </div>
-            );
-        };
-
-        // Mobile Navbar Component
-        const Navbar = ({ user, activeSection, setActiveSection, onLogout }) => {
-            const sections = [
-                { id: 'members', name: 'Members', adminOnly: false },
-                { id: 'hundi', name: 'Hundi', adminOnly: false },
-                { id: 'budget', name: 'Budget', adminOnly: false },
-                { id: 'plan', name: 'Events', adminOnly: false },
-                { id: 'gallery', name: 'Gallery', adminOnly: false },
-                { id: 'yearly-report', name: 'Reports', adminOnly: true }
-            ];
-
-            return (
-                <div>
-                    <div className="navbar">
-                        <div className="navbar-brand">
-                            <div className="navbar-logo">
-                                <span style={{fontSize: '20px'}}>🕉️</span>
-                                <div className="navbar-title">Sri Vinayaka Geleyara Balaga</div>
-                            </div>
-                        </div>
-                        <div className="navbar-user">
-                            <div className="user-badge">
-                                {user.name} ({user.type})
-                            </div>
-                            <button className="logout-btn" onClick={onLogout}>
-                                Logout
-                            </button>
-                        </div>
-                    </div>
-                    <div className="nav-links">
-                        {sections.map(section => {
-                            if (section.adminOnly && user.type !== 'admin') return null;
-                            return (
-                                <div
-                                    key={section.id}
-                                    className={`nav-link ${activeSection === section.id ? 'active' : ''}`}
-                                    onClick={() => setActiveSection(section.id)}
-                                >
-                                    {section.name}
-                                </div>
-                            );
-                        })}
-                    </div>
-                </div>
-            );
-        };
-
-        // Main Mobile App Component
+        // Main App Component
         const App = () => {
             const [user, setUser] = useState(null);
             const [activeSection, setActiveSection] = useState('members');
@@ -2847,31 +1620,33 @@
 
             return (
                 <div className="main-app">
-                    <Navbar 
-                        user={user} 
-                        activeSection={activeSection} 
-                        setActiveSection={setActiveSection}
-                        onLogout={handleLogout}
-                    />
+                    <div className="navbar">
+                        <div className="navbar-brand">
+                            <div style={{fontSize: '20px'}}>🕉️</div>
+                            <div className="navbar-title">Sri Vinayaka Geleyara Balaga</div>
+                        </div>
+                        <div className="navbar-user">
+                            <div className="user-badge">
+                                {user.name} ({user.type})
+                            </div>
+                            <button className="logout-btn" onClick={handleLogout}>
+                                Logout
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div className="nav-links">
+                        <div
+                            className={`nav-link ${activeSection === 'members' ? 'active' : ''}`}
+                            onClick={() => setActiveSection('members')}
+                        >
+                            Members
+                        </div>
+                    </div>
                     
                     <div className="content">
                         <div className={`section ${activeSection === 'members' ? 'active' : ''}`}>
                             <MembersSection user={user} />
-                        </div>
-                        <div className={`section ${activeSection === 'hundi' ? 'active' : ''}`}>
-                            <HundiSection user={user} />
-                        </div>
-                        <div className={`section ${activeSection === 'budget' ? 'active' : ''}`}>
-                            <BudgetSection user={user} />
-                        </div>
-                        <div className={`section ${activeSection === 'plan' ? 'active' : ''}`}>
-                            <PlanSection user={user} />
-                        </div>
-                        <div className={`section ${activeSection === 'gallery' ? 'active' : ''}`}>
-                            <GallerySection user={user} />
-                        </div>
-                        <div className={`section ${activeSection === 'yearly-report' ? 'active' : ''}`}>
-                            <YearlyReportSection user={user} />
                         </div>
                     </div>
 
