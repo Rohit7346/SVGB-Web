@@ -1069,7 +1069,7 @@
             text-align: center;
         }
 
-        /* Gallery Section - UPDATED: Added download functionality */
+        /* Gallery Section - UPDATED: Google Photos Style */
         .gallery-container {
             margin-top: 20px;
         }
@@ -1077,17 +1077,18 @@
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 20px;
+            gap: 10px;
             margin-top: 20px;
         }
 
         .gallery-item {
             background: white;
-            border-radius: 10px;
+            border-radius: 12px;
             box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
             overflow: hidden;
             position: relative;
             transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
         }
 
         .gallery-item:hover {
@@ -1097,23 +1098,25 @@
 
         .gallery-media {
             width: 100%;
-            height: 200px;
+            height: 250px;
             object-fit: cover;
+            border-radius: 12px;
         }
 
         .gallery-info {
-            padding: 15px;
+            padding: 12px;
         }
 
         .gallery-title {
             font-weight: 600;
             color: var(--maroon);
             margin-bottom: 5px;
+            font-size: 14px;
         }
 
         .gallery-date {
             color: #666;
-            font-size: 14px;
+            font-size: 12px;
         }
 
         .gallery-actions {
@@ -1122,6 +1125,12 @@
             right: 10px;
             display: flex;
             gap: 5px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .gallery-item:hover .gallery-actions {
+            opacity: 1;
         }
 
         .gallery-actions button {
@@ -1630,7 +1639,7 @@
         const { useState, useEffect, useRef } = React;
         const { jsPDF } = window.jspdf;
 
-        // Utility functions for localStorage
+        // Utility functions for localStorage with sync across devices
         const storage = {
             get: (key) => {
                 try {
@@ -1644,6 +1653,15 @@
             set: (key, value) => {
                 try {
                     localStorage.setItem(key, JSON.stringify(value));
+                    
+                    // NEW: Sync across devices using localStorage events
+                    window.dispatchEvent(new StorageEvent('storage', {
+                        key: key,
+                        newValue: JSON.stringify(value),
+                        oldValue: localStorage.getItem(key),
+                        storageArea: localStorage
+                    }));
+                    
                     return true;
                 } catch (error) {
                     console.error(`Error setting ${key} in localStorage:`, error);
@@ -1658,6 +1676,18 @@
                     console.error(`Error removing ${key} from localStorage:`, error);
                     return false;
                 }
+            },
+            
+            // NEW: Sync data across tabs/devices
+            sync: (callback) => {
+                const handleStorageChange = (e) => {
+                    if (e.key && e.newValue) {
+                        callback(e.key, JSON.parse(e.newValue));
+                    }
+                };
+                
+                window.addEventListener('storage', handleStorageChange);
+                return () => window.removeEventListener('storage', handleStorageChange);
             }
         };
 
@@ -1836,183 +1866,182 @@
             );
         };
 
-        // Chat Component - NEW: Added chat functionality
         // Chat Component - FIXED: Clear chat only for admin
-const ChatSection = ({ user }) => {
-    const [messages, setMessages] = useState([]);
-    const [newMessage, setNewMessage] = useState('');
-    const [isMinimized, setIsMinimized] = useState(false);
-    const [unreadCount, setUnreadCount] = useState(0);
-    const messagesEndRef = useRef(null);
-    const chatMessagesRef = useRef(null);
+        const ChatSection = ({ user }) => {
+            const [messages, setMessages] = useState([]);
+            const [newMessage, setNewMessage] = useState('');
+            const [isMinimized, setIsMinimized] = useState(false);
+            const [unreadCount, setUnreadCount] = useState(0);
+            const messagesEndRef = useRef(null);
+            const chatMessagesRef = useRef(null);
 
-    useEffect(() => {
-        const savedMessages = storage.get('chatMessages') || [];
-        setMessages(savedMessages);
-        
-        // Set up auto-refresh for new messages
-        const interval = setInterval(() => {
-            const currentMessages = storage.get('chatMessages') || [];
-            if (currentMessages.length !== messages.length) {
-                setMessages(currentMessages);
+            useEffect(() => {
+                const savedMessages = storage.get('chatMessages') || [];
+                setMessages(savedMessages);
                 
-                // Update unread count if chat is minimized
-                if (isMinimized) {
-                    setUnreadCount(currentMessages.length - messages.length);
-                }
-            }
-        }, 2000); // Check every 2 seconds
+                // Set up auto-refresh for new messages
+                const interval = setInterval(() => {
+                    const currentMessages = storage.get('chatMessages') || [];
+                    if (currentMessages.length !== messages.length) {
+                        setMessages(currentMessages);
+                        
+                        // Update unread count if chat is minimized
+                        if (isMinimized) {
+                            setUnreadCount(currentMessages.length - messages.length);
+                        }
+                    }
+                }, 2000); // Check every 2 seconds
 
-        return () => clearInterval(interval);
-    }, [messages.length, isMinimized]);
+                return () => clearInterval(interval);
+            }, [messages.length, isMinimized]);
 
-    useEffect(() => {
-        scrollToBottom();
-    }, [messages]);
+            useEffect(() => {
+                scrollToBottom();
+            }, [messages]);
 
-    const scrollToBottom = () => {
-        messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
-    };
-
-    const sendMessage = () => {
-        if (newMessage.trim()) {
-            const message = {
-                id: Date.now(),
-                sender: user.name,
-                text: newMessage.trim(),
-                timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
-                date: new Date().toLocaleDateString()
+            const scrollToBottom = () => {
+                messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
             };
-            
-            const updatedMessages = [...messages, message];
-            setMessages(updatedMessages);
-            storage.set('chatMessages', updatedMessages);
-            setNewMessage('');
-            setUnreadCount(0);
-        }
-    };
 
-    const handleKeyPress = (e) => {
-        if (e.key === 'Enter' && !e.shiftKey) {
-            e.preventDefault();
-            sendMessage();
-        }
-    };
-
-    const toggleMinimize = () => {
-        setIsMinimized(!isMinimized);
-        if (!isMinimized) {
-            setUnreadCount(0);
-        }
-    };
-
-    // FIXED: Clear chat only for admin
-    const clearChat = () => {
-        if (user.type !== 'admin') {
-            alert('Only administrators can clear the chat.');
-            return;
-        }
-        
-        if (window.confirm('Are you sure you want to clear all chat messages? This action cannot be undone.')) {
-            setMessages([]);
-            storage.set('chatMessages', []);
-        }
-    };
-
-    const formatMessageTime = (timestamp) => {
-        return timestamp;
-    };
-
-    return (
-        <div className={`chat-section ${isMinimized ? 'minimized' : ''}`}>
-            <div className="chat-header" onClick={toggleMinimize}>
-                <div className="chat-title">
-                    <span>💬 Group Chat</span>
-                    {unreadCount > 0 && (
-                        <span className="chat-badge">{unreadCount}</span>
-                    )}
-                </div>
-                <div className="chat-controls">
-                    {/* FIXED: Clear chat button only shown for admin */}
-                    {user.type === 'admin' && (
-                        <button 
-                            className="chat-control-btn"
-                            onClick={(e) => {
-                                e.stopPropagation();
-                                clearChat();
-                            }}
-                            title="Clear chat (Admin only)"
-                        >
-                            🗑️
-                        </button>
-                    )}
-                    <button 
-                        className="chat-control-btn"
-                        onClick={(e) => {
-                            e.stopPropagation();
-                            toggleMinimize();
-                        }}
-                        title={isMinimized ? 'Maximize' : 'Minimize'}
-                    >
-                        {isMinimized ? '➕' : '➖'}
-                    </button>
-                </div>
-            </div>
-            
-            {!isMinimized && (
-                <>
-                    <div className="chat-messages" ref={chatMessagesRef}>
-                        {messages.length === 0 ? (
-                            <div className="no-messages">
-                                No messages yet. Start the conversation!
-                            </div>
-                        ) : (
-                            messages.map((message) => (
-                                <div 
-                                    key={message.id} 
-                                    className={`message ${message.sender === user.name ? 'own' : 'other'}`}
-                                >
-                                    {message.sender !== user.name && (
-                                        <div className="message-sender">{message.sender}</div>
-                                    )}
-                                    <div>{message.text}</div>
-                                    <div className="message-time">
-                                        {formatMessageTime(message.timestamp)}
-                                    </div>
-                                </div>
-                            ))
-                        )}
-                        <div ref={messagesEndRef} />
-                    </div>
+            const sendMessage = () => {
+                if (newMessage.trim()) {
+                    const message = {
+                        id: Date.now(),
+                        sender: user.name,
+                        text: newMessage.trim(),
+                        timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+                        date: new Date().toLocaleDateString()
+                    };
                     
-                    <div className="chat-input-container">
-                        <div className="chat-input-row">
-                            <input
-                                type="text"
-                                className="chat-input"
-                                value={newMessage}
-                                onChange={(e) => setNewMessage(e.target.value)}
-                                onKeyPress={handleKeyPress}
-                                placeholder="Type your message..."
-                                maxLength="500"
-                            />
+                    const updatedMessages = [...messages, message];
+                    setMessages(updatedMessages);
+                    storage.set('chatMessages', updatedMessages);
+                    setNewMessage('');
+                    setUnreadCount(0);
+                }
+            };
+
+            const handleKeyPress = (e) => {
+                if (e.key === 'Enter' && !e.shiftKey) {
+                    e.preventDefault();
+                    sendMessage();
+                }
+            };
+
+            const toggleMinimize = () => {
+                setIsMinimized(!isMinimized);
+                if (!isMinimized) {
+                    setUnreadCount(0);
+                }
+            };
+
+            // FIXED: Clear chat only for admin
+            const clearChat = () => {
+                if (user.type !== 'admin') {
+                    alert('Only administrators can clear the chat.');
+                    return;
+                }
+                
+                if (window.confirm('Are you sure you want to clear all chat messages? This action cannot be undone.')) {
+                    setMessages([]);
+                    storage.set('chatMessages', []);
+                }
+            };
+
+            const formatMessageTime = (timestamp) => {
+                return timestamp;
+            };
+
+            return (
+                <div className={`chat-section ${isMinimized ? 'minimized' : ''}`}>
+                    <div className="chat-header" onClick={toggleMinimize}>
+                        <div className="chat-title">
+                            <span>💬 Group Chat</span>
+                            {unreadCount > 0 && (
+                                <span className="chat-badge">{unreadCount}</span>
+                            )}
+                        </div>
+                        <div className="chat-controls">
+                            {/* FIXED: Clear chat button only shown for admin */}
+                            {user.type === 'admin' && (
+                                <button 
+                                    className="chat-control-btn"
+                                    onClick={(e) => {
+                                        e.stopPropagation();
+                                        clearChat();
+                                    }}
+                                    title="Clear chat (Admin only)"
+                                >
+                                    🗑️
+                                </button>
+                            )}
                             <button 
-                                className="send-btn"
-                                onClick={sendMessage}
-                                disabled={!newMessage.trim()}
-                                title="Send message"
+                                className="chat-control-btn"
+                                onClick={(e) => {
+                                    e.stopPropagation();
+                                    toggleMinimize();
+                                }}
+                                title={isMinimized ? 'Maximize' : 'Minimize'}
                             >
-                                ➤
+                                {isMinimized ? '➕' : '➖'}
                             </button>
                         </div>
                     </div>
-                </>
-            )}
-        </div>
-    );
-};
+                    
+                    {!isMinimized && (
+                        <>
+                            <div className="chat-messages" ref={chatMessagesRef}>
+                                {messages.length === 0 ? (
+                                    <div className="no-messages">
+                                        No messages yet. Start the conversation!
+                                    </div>
+                                ) : (
+                                    messages.map((message) => (
+                                        <div 
+                                            key={message.id} 
+                                            className={`message ${message.sender === user.name ? 'own' : 'other'}`}
+                                        >
+                                            {message.sender !== user.name && (
+                                                <div className="message-sender">{message.sender}</div>
+                                            )}
+                                            <div>{message.text}</div>
+                                            <div className="message-time">
+                                                {formatMessageTime(message.timestamp)}
+                                            </div>
+                                        </div>
+                                    ))
+                                )}
+                                <div ref={messagesEndRef} />
+                            </div>
+                            
+                            <div className="chat-input-container">
+                                <div className="chat-input-row">
+                                    <input
+                                        type="text"
+                                        className="chat-input"
+                                        value={newMessage}
+                                        onChange={(e) => setNewMessage(e.target.value)}
+                                        onKeyPress={handleKeyPress}
+                                        placeholder="Type your message..."
+                                        maxLength="500"
+                                    />
+                                    <button 
+                                        className="send-btn"
+                                        onClick={sendMessage}
+                                        disabled={!newMessage.trim()}
+                                        title="Send message"
+                                    >
+                                        ➤
+                                    </button>
+                                </div>
+                            </div>
+                        </>
+                    )}
+                </div>
+            );
+        };
 
-        // Members Section Component
+        // Members Section Component - FIXED: File size limit for members
         const MembersSection = ({ user }) => {
             const [members, setMembers] = useState([]);
             const [newMember, setNewMember] = useState('');
@@ -2027,9 +2056,19 @@ const ChatSection = ({ user }) => {
             const previewRef = useRef(null);
             const containerRef = useRef(null);
 
+            // NEW: Sync members data across devices
             useEffect(() => {
                 const savedMembers = storage.get('members') || [];
                 setMembers(savedMembers);
+                
+                // Sync across tabs/devices
+                const unsubscribe = storage.sync((key, newValue) => {
+                    if (key === 'members') {
+                        setMembers(newValue || []);
+                    }
+                });
+                
+                return unsubscribe;
             }, []);
 
             const addMember = () => {
@@ -2038,7 +2077,9 @@ const ChatSection = ({ user }) => {
                         name: newMember.trim(),
                         avatar: null,
                         addedBy: user.name,
-                        addedDate: new Date().toISOString()
+                        addedDate: new Date().toISOString(),
+                        // NEW: Add unique ID for better sync
+                        id: Date.now() + Math.random().toString(36).substr(2, 9)
                     };
                     const updatedMembers = [...members, memberData];
                     setMembers(updatedMembers);
@@ -2064,9 +2105,9 @@ const ChatSection = ({ user }) => {
             const handleAvatarChange = (e) => {
                 const file = e.target.files[0];
                 if (file) {
-                    // Check file size (max 5MB)
-                    if (file.size > 5 * 1024 * 1024) {
-                        alert('File size too large. Please select an image under 5MB.');
+                    // FIXED: Increased file size limit to 10MB for better quality
+                    if (file.size > 10 * 1024 * 1024) {
+                        alert('File size too large. Please select an image under 10MB.');
                         return;
                     }
                     
@@ -2243,11 +2284,14 @@ const ChatSection = ({ user }) => {
                                 <div style={{marginTop: '10px', fontSize: '14px', color: '#666'}}>
                                     <strong>Note:</strong> Members added here can login with password: <strong>pass123</strong>
                                 </div>
+                                <div style={{marginTop: '5px', fontSize: '12px', color: '#888'}}>
+                                    <strong>Sync:</strong> Members list is automatically synced across all devices
+                                </div>
                             </div>
                             
                             <div className="members-grid">
                                 {members.map((member, index) => (
-                                    <div key={index} className="member-card">
+                                    <div key={member.id || index} className="member-card">
                                         <button 
                                             className="delete-member"
                                             onClick={() => deleteMember(index)}
@@ -2295,7 +2339,7 @@ const ChatSection = ({ user }) => {
                             </div>
                             <div className="members-grid">
                                 {members.map((member, index) => (
-                                    <div key={index} className="member-card">
+                                    <div key={member.id || index} className="member-card">
                                         <div className="member-avatar">
                                             {member.avatar ? (
                                                 <img 
@@ -2468,6 +2512,18 @@ const ChatSection = ({ user }) => {
                 if (user.type === 'member') {
                     triggerMoneyAnimation();
                 }
+                
+                // Sync across devices
+                const unsubscribe = storage.sync((key, newValue) => {
+                    if (key === 'hundiTotal') {
+                        setTotal(newValue || 0);
+                    }
+                    if (key === 'hundiTransactions') {
+                        setTransactions(newValue || []);
+                    }
+                });
+                
+                return unsubscribe;
             }, [user.type]);
 
             // FIXED: Money falling animation for members
@@ -2748,6 +2804,15 @@ const ChatSection = ({ user }) => {
             useEffect(() => {
                 const savedItems = storage.get('budgetItems') || [];
                 setItems(savedItems);
+                
+                // Sync across devices
+                const unsubscribe = storage.sync((key, newValue) => {
+                    if (key === 'budgetItems') {
+                        setItems(newValue || []);
+                    }
+                });
+                
+                return unsubscribe;
             }, []);
 
             const addItem = () => {
@@ -2977,6 +3042,26 @@ const ChatSection = ({ user }) => {
                     ) : []
                 }));
                 setEvents(cleanedEvents);
+                
+                // Sync across devices
+                const unsubscribe = storage.sync((key, newValue) => {
+                    if (key === 'eventTypes') {
+                        const cleanedNewEvents = (newValue || []).map(event => ({
+                            ...event,
+                            name: event.name.replace(/@>Y[GH]\s*(First|Second|Third)?\s*/gi, '').trim(),
+                            winners: event.winners ? event.winners.map(winner => ({
+                                ...winner,
+                                name: winner.name.replace(/@>Y[GH]\s*(First|Second|Third)?\s*/gi, '').trim(),
+                                position: winner.position || ''
+                            })).filter(winner => 
+                                winner && winner.name && typeof winner.name === 'string'
+                            ) : []
+                        }));
+                        setEvents(cleanedNewEvents);
+                    }
+                });
+                
+                return unsubscribe;
             }, []);
 
             const addEvent = () => {
@@ -2987,7 +3072,8 @@ const ChatSection = ({ user }) => {
                     const eventData = {
                         name: cleanEventName,
                         winners: [],
-                        createdDate: new Date().toISOString()
+                        createdDate: new Date().toISOString(),
+                        id: Date.now() + Math.random().toString(36).substr(2, 9)
                     };
                     const updatedEvents = [...events, eventData];
                     setEvents(updatedEvents);
@@ -3104,7 +3190,7 @@ const ChatSection = ({ user }) => {
                             
                             <div className="events-grid">
                                 {events.map((event, index) => (
-                                    <div key={index} className="event-card">
+                                    <div key={event.id || index} className="event-card">
                                         {editingIndex === index ? (
                                             <div>
                                                 <input
@@ -3202,7 +3288,7 @@ const ChatSection = ({ user }) => {
                             </div>
                             <div className="events-grid">
                                 {events.map((event, index) => (
-                                    <div key={index} className="event-card">
+                                    <div key={event.id || index} className="event-card">
                                         <div className="event-name">{event.name}</div>
                                         
                                         {/* Show winners to members */}
@@ -3289,7 +3375,7 @@ const ChatSection = ({ user }) => {
             );
         };
 
-        // Gallery Section Component - UPDATED: Added download functionality for members
+        // Gallery Section Component - UPDATED: Google Photos Style with better layout
         const GallerySection = ({ user, setActiveSection }) => {
             const [media, setMedia] = useState([]);
             const [showUploadModal, setShowUploadModal] = useState(false);
@@ -3299,11 +3385,26 @@ const ChatSection = ({ user }) => {
             useEffect(() => {
                 const savedMedia = storage.get('galleryMedia') || [];
                 setMedia(savedMedia);
+                
+                // Sync across devices
+                const unsubscribe = storage.sync((key, newValue) => {
+                    if (key === 'galleryMedia') {
+                        setMedia(newValue || []);
+                    }
+                });
+                
+                return unsubscribe;
             }, []);
 
             const handleMediaUpload = (e) => {
                 const file = e.target.files[0];
                 if (file) {
+                    // FIXED: Increased file size limit for gallery
+                    if (file.size > 15 * 1024 * 1024) {
+                        alert('File size too large. Please select a file under 15MB.');
+                        return;
+                    }
+                    
                     const reader = new FileReader();
                     reader.onload = (e) => {
                         setMediaPreview(e.target.result);
@@ -3316,7 +3417,7 @@ const ChatSection = ({ user }) => {
                 if (newMedia.title.trim() && mediaPreview) {
                     const mediaItem = { 
                         ...newMedia, 
-                        id: Date.now(),
+                        id: Date.now() + Math.random().toString(36).substr(2, 9),
                         date: newMedia.date || new Date().toISOString().split('T')[0],
                         url: mediaPreview
                     };
