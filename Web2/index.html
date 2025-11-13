@@ -15,6 +15,7 @@
             padding: 0;
             box-sizing: border-box;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            -webkit-tap-highlight-color: transparent;
         }
 
         :root {
@@ -35,7 +36,7 @@
             background-color: #f8f4e9;
             color: #333;
             line-height: 1.6;
-            -webkit-tap-highlight-color: transparent;
+            font-size: 14px;
         }
 
         .app-container {
@@ -44,7 +45,7 @@
             flex-direction: column;
         }
 
-        /* Login Page Styles */
+        /* Mobile First Design */
         .login-container {
             display: flex;
             justify-content: center;
@@ -56,21 +57,21 @@
 
         .login-card {
             background: white;
-            border-radius: 15px;
+            border-radius: 20px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            padding: 40px;
+            padding: 30px 25px;
             width: 100%;
-            max-width: 450px;
+            max-width: 400px;
             text-align: center;
         }
 
         .login-header {
-            margin-bottom: 30px;
+            margin-bottom: 25px;
         }
 
         .ganesha-img {
-            width: 80px;
-            height: 80px;
+            width: 70px;
+            height: 70px;
             border-radius: 50%;
             object-fit: cover;
             margin-bottom: 15px;
@@ -79,38 +80,41 @@
 
         @keyframes float {
             0% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
+            50% { transform: translateY(-8px); }
             100% { transform: translateY(0px); }
         }
 
         .trust-name {
             color: var(--maroon);
-            font-size: 24px;
+            font-size: 20px;
             font-weight: bold;
             margin-bottom: 5px;
+            line-height: 1.3;
         }
 
         .login-subtitle {
             color: #666;
-            font-size: 16px;
-            margin-bottom: 30px;
+            font-size: 14px;
+            margin-bottom: 25px;
         }
 
         .user-type-selector {
             display: flex;
-            margin-bottom: 25px;
-            border-radius: 8px;
+            margin-bottom: 20px;
+            border-radius: 12px;
             overflow: hidden;
             border: 1px solid #ddd;
+            background: #f5f5f5;
         }
 
         .user-type {
             flex: 1;
-            padding: 12px;
-            background: #f5f5f5;
+            padding: 15px 10px;
             cursor: pointer;
             transition: all 0.3s;
             text-align: center;
+            font-size: 14px;
+            font-weight: 500;
         }
 
         .user-type.active {
@@ -129,15 +133,17 @@
             margin-bottom: 8px;
             font-weight: 600;
             color: #555;
+            font-size: 14px;
         }
 
         .form-control {
             width: 100%;
-            padding: 12px 15px;
+            padding: 16px;
             border: 1px solid #ddd;
-            border-radius: 8px;
+            border-radius: 12px;
             font-size: 16px;
             transition: border 0.3s;
+            background: #fff;
         }
 
         .form-control:focus {
@@ -149,17 +155,17 @@
             display: flex;
             align-items: center;
             gap: 10px;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
 
         .captcha-box {
             flex: 1;
             background: #f0f0f0;
-            padding: 10px;
-            border-radius: 5px;
+            padding: 12px;
+            border-radius: 8px;
             text-align: center;
             font-weight: bold;
-            font-size: 18px;
+            font-size: 16px;
             letter-spacing: 2px;
             font-family: 'Courier New', monospace;
         }
@@ -167,23 +173,20 @@
         .refresh-captcha {
             background: var(--gold);
             border: none;
-            border-radius: 5px;
-            padding: 10px;
+            border-radius: 8px;
+            padding: 12px;
             cursor: pointer;
             transition: background 0.3s;
-        }
-
-        .refresh-captcha:hover {
-            background: var(--dark-gold);
+            font-size: 16px;
         }
 
         .login-btn {
             width: 100%;
-            padding: 14px;
+            padding: 18px;
             background: var(--maroon);
             color: white;
             border: none;
-            border-radius: 8px;
+            border-radius: 12px;
             font-size: 16px;
             font-weight: bold;
             cursor: pointer;
@@ -198,96 +201,107 @@
         .error-message {
             color: #d32f2f;
             margin-top: 15px;
-            padding: 10px;
+            padding: 12px;
             background: #ffebee;
-            border-radius: 5px;
+            border-radius: 8px;
             display: none;
+            font-size: 14px;
         }
 
-        /* Main App Styles */
+        /* Main App Styles - Mobile Optimized */
         .main-app {
             display: flex;
             flex-direction: column;
             min-height: 100vh;
         }
 
-        /* Navbar Styles */
+        /* Mobile Navbar */
         .navbar {
             background: linear-gradient(to right, var(--maroon), var(--saffron));
             color: white;
-            padding: 15px 20px;
+            padding: 15px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
 
         .navbar-brand {
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 12px;
         }
 
         .navbar-logo {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
         }
 
         .navbar-title {
-            font-size: 22px;
+            font-size: 18px;
             font-weight: bold;
+            line-height: 1.2;
         }
 
         .navbar-user {
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 12px;
         }
 
         .user-info {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
         }
 
         .user-badge {
             background: rgba(255, 255, 255, 0.2);
-            padding: 5px 10px;
-            border-radius: 20px;
-            font-size: 14px;
+            padding: 6px 10px;
+            border-radius: 15px;
+            font-size: 12px;
         }
 
         .logout-btn {
             background: rgba(255, 255, 255, 0.2);
             border: 1px solid rgba(255, 255, 255, 0.3);
             color: white;
-            padding: 8px 15px;
-            border-radius: 5px;
+            padding: 8px 12px;
+            border-radius: 8px;
             cursor: pointer;
             transition: background 0.3s;
+            font-size: 12px;
         }
 
-        .logout-btn:hover {
-            background: rgba(255, 255, 255, 0.3);
-        }
-
+        /* Mobile Navigation */
         .nav-links {
             display: flex;
             background: var(--light-gold);
-            padding: 0 20px;
+            padding: 0 10px;
             overflow-x: auto;
             -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+
+        .nav-links::-webkit-scrollbar {
+            display: none;
         }
 
         .nav-link {
-            padding: 15px 20px;
+            padding: 15px 16px;
             cursor: pointer;
             font-weight: 500;
             color: #555;
             border-bottom: 3px solid transparent;
             transition: all 0.3s;
             white-space: nowrap;
+            font-size: 14px;
+            flex-shrink: 0;
         }
 
         .nav-link.active {
@@ -296,22 +310,18 @@
             background: rgba(255, 153, 51, 0.1);
         }
 
-        .nav-link:hover {
-            background: rgba(255, 153, 51, 0.1);
-        }
-
-        /* Content Area */
+        /* Mobile Content Area */
         .content {
             flex: 1;
-            padding: 30px;
-            max-width: 1200px;
+            padding: 20px 15px;
+            max-width: 100%;
             margin: 0 auto;
             width: 100%;
         }
 
         .section {
             display: none;
-            animation: fadeIn 0.5s ease;
+            animation: fadeIn 0.3s ease;
         }
 
         .section.active {
@@ -325,23 +335,24 @@
 
         .section-title {
             color: var(--maroon);
-            font-size: 28px;
-            margin-bottom: 25px;
+            font-size: 24px;
+            margin-bottom: 20px;
             padding-bottom: 10px;
             border-bottom: 2px solid var(--gold);
         }
 
-        /* Form Styles */
+        /* Mobile Form Styles */
         .form-card {
             background: white;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            padding: 25px;
-            margin-bottom: 30px;
+            border-radius: 16px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            padding: 20px;
+            margin-bottom: 25px;
         }
 
         .form-row {
             display: flex;
+            flex-direction: column;
             gap: 15px;
             margin-bottom: 15px;
         }
@@ -351,12 +362,18 @@
         }
 
         .btn {
-            padding: 12px 20px;
+            padding: 16px 20px;
             border: none;
-            border-radius: 6px;
+            border-radius: 12px;
             cursor: pointer;
             font-weight: 600;
             transition: all 0.3s;
+            font-size: 15px;
+            text-align: center;
+            min-height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .btn-primary {
@@ -373,17 +390,9 @@
             color: white;
         }
 
-        .btn-danger:hover {
-            background: #b71c1c;
-        }
-
         .btn-success {
             background: var(--success);
             color: white;
-        }
-
-        .btn-success:hover {
-            background: #218838;
         }
 
         .btn-warning {
@@ -391,37 +400,30 @@
             color: #212529;
         }
 
-        .btn-warning:hover {
-            background: #e0a800;
-        }
-
         .btn-info {
             background: var(--info);
             color: white;
         }
 
-        .btn-info:hover {
-            background: #138496;
-        }
-
         .btn-sm {
-            padding: 8px 15px;
+            padding: 12px 16px;
             font-size: 14px;
+            min-height: 44px;
         }
 
-        /* Members Section - Enhanced for Mobile */
+        /* Mobile Members Section */
         .members-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 15px;
             margin-top: 20px;
         }
 
         .member-card {
             background: white;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-            padding: 20px;
+            border-radius: 16px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            padding: 15px;
             text-align: center;
             position: relative;
             transition: transform 0.3s, box-shadow 0.3s;
@@ -429,39 +431,31 @@
         }
 
         .member-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
         }
 
         .member-avatar {
-            width: 80px;
-            height: 80px;
+            width: 60px;
+            height: 60px;
             border-radius: 50%;
             object-fit: cover;
-            border: 3px solid var(--gold);
-            margin: 0 auto 15px;
+            border: 2px solid var(--gold);
+            margin: 0 auto 12px;
             background: var(--light-gold);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 24px;
+            font-size: 18px;
             color: var(--maroon);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .member-avatar img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 50%;
         }
 
         .member-name {
-            font-size: 18px;
+            font-size: 15px;
             font-weight: 600;
             color: var(--maroon);
-            margin-bottom: 10px;
+            margin-bottom: 8px;
+            line-height: 1.3;
         }
 
         .change-dp-btn {
@@ -469,27 +463,24 @@
             color: white;
             border: none;
             border-radius: 20px;
-            padding: 6px 12px;
+            padding: 8px 12px;
             font-size: 12px;
             cursor: pointer;
             margin-top: 5px;
             transition: background 0.3s;
-        }
-
-        .change-dp-btn:hover {
-            background: #e68a00;
+            width: 100%;
         }
 
         .delete-member {
             position: absolute;
-            top: 10px;
-            right: 10px;
+            top: 8px;
+            right: 8px;
             background: #ffebee;
             color: #d32f2f;
             border: none;
             border-radius: 50%;
-            width: 30px;
-            height: 30px;
+            width: 28px;
+            height: 28px;
             cursor: pointer;
             display: flex;
             align-items: center;
@@ -497,230 +488,32 @@
             font-size: 16px;
         }
 
-        /* WhatsApp-style DP Modal with Cropping */
-        .dp-modal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.9);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-            padding: 20px;
-        }
-
-        .dp-modal {
-            background: white;
-            border-radius: 15px;
-            width: 100%;
-            max-width: 500px;
-            overflow: hidden;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
-        }
-
-        .dp-modal-header {
-            padding: 20px;
-            text-align: center;
-            border-bottom: 1px solid #eee;
-            background: var(--light-gold);
-            position: relative;
-        }
-
-        .dp-modal-title {
-            font-size: 20px;
-            color: var(--maroon);
-            margin-bottom: 5px;
-        }
-
-        .dp-modal-subtitle {
-            color: #666;
-            font-size: 14px;
-        }
-
-        .dp-close-btn {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background: none;
-            border: none;
-            font-size: 24px;
-            cursor: pointer;
-            color: var(--maroon);
-        }
-
-        .dp-modal-body {
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 20px;
-        }
-
-        .dp-preview-container {
-            width: 300px;
-            height: 300px;
-            border-radius: 10px;
-            overflow: hidden;
-            position: relative;
-            background: var(--light-gold);
-            touch-action: none;
-            border: 2px solid var(--gold);
-        }
-
-        .dp-preview {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            user-select: none;
-            -webkit-user-select: none;
-            transition: transform 0.1s;
-        }
-
-        .dp-crop-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-        }
-
-        .dp-crop-circle {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 200px;
-            height: 200px;
-            border: 2px solid white;
-            border-radius: 50%;
-            box-shadow: 0 0 0 3000px rgba(0, 0, 0, 0.5);
-            pointer-events: none;
-        }
-
-        .dp-controls {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            width: 100%;
-            max-width: 300px;
-        }
-
-        .dp-zoom-control {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .dp-zoom-slider {
-            flex: 1;
-            height: 5px;
-            -webkit-appearance: none;
-            background: #ddd;
-            border-radius: 5px;
-            outline: none;
-        }
-
-        .dp-zoom-slider::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            background: var(--saffron);
-            cursor: pointer;
-        }
-
-        .dp-actions {
-            display: flex;
-            gap: 10px;
-            width: 100%;
-            justify-content: center;
-            margin-top: 10px;
-        }
-
-        .dp-action-btn {
-            flex: 1;
-            max-width: 150px;
-            padding: 12px;
-            border: none;
-            border-radius: 8px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .dp-cancel {
-            background: #f5f5f5;
-            color: #333;
-        }
-
-        .dp-save {
-            background: var(--saffron);
-            color: white;
-        }
-
-        .dp-file-input {
-            display: none;
-        }
-
-        .dp-upload-btn {
-            background: var(--maroon);
-            color: white;
-            border: none;
-            border-radius: 8px;
-            padding: 12px 20px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: background 0.3s;
-            width: 100%;
-            max-width: 200px;
-        }
-
-        .dp-upload-btn:hover {
-            background: #600000;
-        }
-
-        /* Hundi Section - South Indian Temple Style */
+        /* Mobile Hundi Section */
         .hundi-container {
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 30px;
+            gap: 25px;
         }
 
         .temple-scene {
             position: relative;
-            width: 320px;
-            height: 400px;
+            width: 280px;
+            height: 350px;
             background: linear-gradient(135deg, var(--temple-stone) 0%, #b8a99a 100%);
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            border-radius: 16px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
             overflow: hidden;
-            padding: 20px;
-        }
-
-        .temple-background {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: 
-                radial-gradient(circle at 20% 30%, rgba(255,215,0,0.3) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(255,215,0,0.2) 0%, transparent 50%);
-            z-index: 1;
+            padding: 15px;
         }
 
         .south-indian-hundi {
             position: absolute;
-            bottom: 40px;
+            bottom: 30px;
             left: 50%;
             transform: translateX(-50%);
-            width: 180px;
-            height: 220px;
+            width: 150px;
+            height: 180px;
             z-index: 2;
         }
 
@@ -728,103 +521,11 @@
             position: relative;
             width: 100%;
             height: 100%;
-            background: 
-                linear-gradient(45deg, var(--dark-metal) 0%, #5a5a5a 50%, var(--dark-metal) 100%);
-            border: 8px solid #3a3a3a;
-            border-radius: 8px;
-            box-shadow: 
-                inset 0 -15px 20px rgba(0,0,0,0.4),
-                0 5px 15px rgba(0,0,0,0.3);
+            background: linear-gradient(45deg, var(--dark-metal) 0%, #5a5a5a 50%, var(--dark-metal) 100%);
+            border: 6px solid #3a3a3a;
+            border-radius: 6px;
+            box-shadow: inset 0 -12px 15px rgba(0,0,0,0.4), 0 4px 10px rgba(0,0,0,0.2);
             overflow: hidden;
-        }
-
-        .hundi-texture {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: 
-                repeating-linear-gradient(90deg, 
-                    transparent 0px, 
-                    transparent 2px, 
-                    rgba(255,255,255,0.05) 2px, 
-                    rgba(255,255,255,0.05) 4px);
-            opacity: 0.6;
-        }
-
-        .hundi-slot {
-            position: absolute;
-            top: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 40px;
-            height: 20px;
-            background: #333;
-            border-radius: 4px 4px 0 0;
-            box-shadow: 0 -2px 5px rgba(0,0,0,0.3);
-        }
-
-        .hundi-lock {
-            position: absolute;
-            top: 20px;
-            right: 15px;
-            width: 25px;
-            height: 30px;
-            background: #8B4513;
-            border-radius: 4px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.3);
-        }
-
-        .hundi-lock:after {
-            content: '';
-            position: absolute;
-            top: -8px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 15px;
-            height: 8px;
-            background: #D2691E;
-            border-radius: 4px 4px 0 0;
-        }
-
-        .hundi-money-container {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: linear-gradient(to bottom, #4CAF50 0%, #2E7D32 100%);
-            transition: height 1.5s ease;
-            border-radius: 0 0 0 0;
-        }
-
-        .hundi-money-fall {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            overflow: hidden;
-        }
-
-        .money-note {
-            position: absolute;
-            font-size: 16px;
-            color: #4CAF50;
-            animation: fall linear forwards;
-            z-index: 3;
-        }
-
-        @keyframes fall {
-            0% {
-                transform: translateY(-100%) rotate(0deg);
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(250px) rotate(360deg);
-                opacity: 0;
-            }
         }
 
         .hundi-total {
@@ -834,93 +535,33 @@
             transform: translate(-50%, -50%);
             color: white;
             font-weight: bold;
-            font-size: 20px;
+            font-size: 18px;
             text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
             z-index: 4;
         }
 
-        .temple-lamps {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            width: 30px;
-            height: 50px;
-            background: var(--gold);
-            border-radius: 5px;
-            box-shadow: 0 0 10px var(--gold);
-            animation: flicker 3s infinite alternate;
-        }
-
-        .temple-lamps:after {
-            content: '';
-            position: absolute;
-            top: -10px;
-            left: 5px;
-            width: 20px;
-            height: 15px;
-            background: var(--gold);
-            border-radius: 50%;
-            opacity: 0.7;
-        }
-
-        .temple-lamps:nth-child(2) {
-            left: auto;
-            right: 20px;
-        }
-
-        @keyframes flicker {
-            0%, 100% { opacity: 0.8; }
-            50% { opacity: 1; }
-        }
-
-        .incense-smoke {
-            position: absolute;
-            top: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 4px;
-            height: 40px;
-            background: linear-gradient(to top, transparent, rgba(255,255,255,0.8));
-            animation: smoke 4s infinite ease-in-out;
-            border-radius: 2px;
-        }
-
-        @keyframes smoke {
-            0% { 
-                transform: translateX(-50%) translateY(0);
-                opacity: 0;
-                height: 40px;
-            }
-            50% { 
-                opacity: 0.7;
-                height: 80px;
-            }
-            100% { 
-                transform: translateX(-50%) translateY(-60px);
-                opacity: 0;
-                height: 100px;
-            }
-        }
-
         .hundi-actions {
             display: flex;
-            gap: 15px;
+            flex-direction: column;
+            gap: 12px;
             margin-top: 20px;
+            width: 100%;
+            max-width: 280px;
         }
 
         .add-money-btn {
-            padding: 15px 30px;
-            font-size: 18px;
+            padding: 16px 20px;
+            font-size: 16px;
         }
 
-        /* Modal Styles */
+        /* Mobile Modal Styles */
         .modal-overlay {
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
-            background: rgba(0, 0, 0, 0.5);
+            background: rgba(0, 0, 0, 0.7);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -930,15 +571,17 @@
 
         .modal {
             background: white;
-            border-radius: 15px;
-            padding: 30px;
-            width: 90%;
-            max-width: 400px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            border-radius: 20px;
+            padding: 25px;
+            width: 100%;
+            max-width: 350px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            max-height: 90vh;
+            overflow-y: auto;
         }
 
         .modal-title {
-            font-size: 22px;
+            font-size: 20px;
             margin-bottom: 20px;
             color: var(--maroon);
             text-align: center;
@@ -947,23 +590,25 @@
         .modal-actions {
             display: flex;
             gap: 10px;
-            justify-content: flex-end;
+            justify-content: center;
             margin-top: 20px;
+            flex-wrap: wrap;
         }
 
-        /* Budget Section */
+        /* Mobile Budget Section */
         .budget-table {
             width: 100%;
             border-collapse: collapse;
             margin-top: 20px;
             background: white;
-            border-radius: 10px;
+            border-radius: 12px;
             overflow: hidden;
             box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+            font-size: 14px;
         }
 
         .budget-table th, .budget-table td {
-            padding: 15px;
+            padding: 12px 8px;
             text-align: left;
             border-bottom: 1px solid #eee;
         }
@@ -972,112 +617,53 @@
             background: var(--saffron);
             color: white;
             font-weight: 600;
-        }
-
-        .budget-table tr:last-child td {
-            border-bottom: none;
-        }
-
-        .budget-table tr:hover {
-            background: #fff9e6;
-        }
-
-        .total-row {
-            font-weight: bold;
-            background: var(--light-gold) !important;
+            font-size: 13px;
         }
 
         .download-btn {
             margin-bottom: 20px;
         }
 
-        /* Plan Section - Enhanced with Winners */
+        /* Mobile Events Section */
         .events-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 20px;
+            grid-template-columns: 1fr;
+            gap: 15px;
             margin-top: 20px;
         }
 
         .event-card {
             background: white;
-            border-radius: 10px;
+            border-radius: 12px;
             box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
             padding: 20px;
             position: relative;
         }
 
         .event-name {
-            font-size: 18px;
+            font-size: 16px;
             font-weight: 600;
             color: var(--maroon);
             margin-bottom: 15px;
         }
 
-        .event-winners {
-            margin-top: 15px;
-            padding-top: 15px;
-            border-top: 1px solid #eee;
-        }
-
-        .winner-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 8px 0;
-            border-bottom: 1px solid #f5f5f5;
-        }
-
-        .winner-item:last-child {
-            border-bottom: none;
-        }
-
-        .winner-name {
-            flex: 1;
-        }
-
-        .winner-position {
-            font-weight: bold;
-            color: var(--maroon);
-            margin-right: 10px;
-            min-width: 60px;
-        }
-
-        .winner-actions {
-            display: flex;
-            gap: 5px;
-        }
-
         .event-actions {
             display: flex;
-            gap: 10px;
+            gap: 8px;
             margin-top: 15px;
+            flex-wrap: wrap;
         }
 
-        .edit-input {
-            width: 100%;
-            padding: 8px 12px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-size: 16px;
+        .event-actions .btn {
+            flex: 1;
+            min-width: 80px;
         }
 
-        .winner-limit-notice {
-            color: #d32f2f;
-            font-size: 12px;
-            margin-top: 5px;
-            text-align: center;
-        }
-
-        /* Gallery Section - UPDATED: Google Photos Style */
-        .gallery-container {
-            margin-top: 20px;
-        }
-
+        /* Mobile Gallery Section */
         .gallery-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 10px;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 12px;
             margin-top: 20px;
         }
 
@@ -1088,19 +674,12 @@
             overflow: hidden;
             position: relative;
             transition: transform 0.3s, box-shadow 0.3s;
-            cursor: pointer;
-        }
-
-        .gallery-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
         }
 
         .gallery-media {
             width: 100%;
-            height: 250px;
+            height: 150px;
             object-fit: cover;
-            border-radius: 12px;
         }
 
         .gallery-info {
@@ -1110,27 +689,21 @@
         .gallery-title {
             font-weight: 600;
             color: var(--maroon);
-            margin-bottom: 5px;
-            font-size: 14px;
+            margin-bottom: 4px;
+            font-size: 13px;
         }
 
         .gallery-date {
             color: #666;
-            font-size: 12px;
+            font-size: 11px;
         }
 
         .gallery-actions {
             position: absolute;
-            top: 10px;
-            right: 10px;
+            top: 8px;
+            right: 8px;
             display: flex;
-            gap: 5px;
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-
-        .gallery-item:hover .gallery-actions {
-            opacity: 1;
+            gap: 4px;
         }
 
         .gallery-actions button {
@@ -1138,158 +711,50 @@
             color: white;
             border: none;
             border-radius: 4px;
-            width: 30px;
-            height: 30px;
+            width: 28px;
+            height: 28px;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            transition: background 0.3s;
-        }
-
-        .gallery-actions button:hover {
-            background: rgba(0, 0, 0, 0.9);
-        }
-
-        .download-btn-gallery {
-            background: var(--success) !important;
-            width: 35px !important;
-            height: 35px !important;
-        }
-
-        .download-btn-gallery:hover {
-            background: #218838 !important;
-        }
-
-        /* File Upload Styles */
-        .file-upload {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            margin-top: 10px;
-        }
-
-        .file-input {
-            padding: 10px;
-            border: 1px dashed #ddd;
-            border-radius: 8px;
-            text-align: center;
-            cursor: pointer;
-            transition: border 0.3s;
-        }
-
-        .file-input:hover {
-            border-color: var(--saffron);
-        }
-
-        .file-input input {
-            display: none;
-        }
-
-        .avatar-preview, .media-preview {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin: 10px auto;
-            border: 3px solid var(--gold);
-            display: none;
-        }
-
-        .media-preview {
-            width: 200px;
-            height: 150px;
-            border-radius: 8px;
-        }
-
-        /* Admin Only Notice */
-        .admin-only {
-            background: #fff3cd;
-            border: 1px solid #ffeaa7;
-            border-radius: 8px;
-            padding: 15px;
-            margin-bottom: 20px;
-            color: #856404;
-            text-align: center;
-        }
-
-        /* Member Only Notice */
-        .member-only {
-            background: #e8f5e8;
-            border: 1px solid #c8e6c9;
-            border-radius: 8px;
-            padding: 15px;
-            margin-bottom: 20px;
-            color: #2e7d32;
-            text-align: center;
-        }
-
-        /* Transaction History */
-        .transaction-history {
-            margin-top: 30px;
-            background: white;
-            border-radius: 10px;
-            padding: 20px;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
-        }
-
-        .transaction-list {
-            max-height: 200px;
-            overflow-y: auto;
-            margin-top: 15px;
-        }
-
-        .transaction-item {
-            display: flex;
-            justify-content: space-between;
-            padding: 10px;
-            border-bottom: 1px solid #eee;
-        }
-
-        .transaction-item:last-child {
-            border-bottom: none;
-        }
-
-        .transaction-amount {
-            font-weight: bold;
-            color: var(--success);
-        }
-
-        .transaction-date {
-            color: #666;
             font-size: 12px;
         }
 
-        /* Yearly Report Section */
-        .yearly-report-section {
-            margin-top: 30px;
-        }
-
-        .year-selector {
-            display: flex;
-            gap: 15px;
-            align-items: center;
-            margin-bottom: 20px;
-            flex-wrap: wrap;
-        }
-
-        .year-input {
-            padding: 10px 15px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            font-size: 16px;
-            width: 120px;
-        }
-
-        /* Chat Section - NEW: Added chat functionality */
-        .chat-section {
+        /* Mobile Chat Section - Updated to circular button */
+        .chat-button {
             position: fixed;
             bottom: 20px;
             right: 20px;
-            width: 350px;
-            height: 500px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--maroon), var(--saffron));
+            color: white;
+            border: none;
+            border-radius: 50%;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            z-index: 999;
+            transition: all 0.3s ease;
+        }
+
+        .chat-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .chat-section {
+            position: fixed;
+            bottom: 90px;
+            right: 20px;
+            width: 90%;
+            max-width: 350px;
+            height: 450px;
             background: white;
-            border-radius: 15px;
+            border-radius: 20px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
             display: flex;
             flex-direction: column;
@@ -1298,14 +763,14 @@
         }
 
         .chat-section.minimized {
-            height: 60px;
+            height: 50px;
         }
 
         .chat-header {
             background: linear-gradient(to right, var(--maroon), var(--saffron));
             color: white;
-            padding: 15px 20px;
-            border-radius: 15px 15px 0 0;
+            padding: 15px;
+            border-radius: 20px 20px 0 0;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -1313,52 +778,49 @@
         }
 
         .chat-title {
-            font-size: 16px;
+            font-size: 14px;
             font-weight: bold;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
         }
 
         .chat-controls {
             display: flex;
-            gap: 10px;
+            gap: 8px;
         }
 
         .chat-control-btn {
             background: rgba(255, 255, 255, 0.2);
             border: none;
             color: white;
-            width: 30px;
-            height: 30px;
+            width: 28px;
+            height: 28px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            transition: background 0.3s;
-        }
-
-        .chat-control-btn:hover {
-            background: rgba(255, 255, 255, 0.3);
+            font-size: 12px;
         }
 
         .chat-messages {
             flex: 1;
-            padding: 15px;
+            padding: 12px;
             overflow-y: auto;
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 8px;
             background: #f8f9fa;
         }
 
         .message {
-            max-width: 80%;
-            padding: 10px 15px;
-            border-radius: 18px;
+            max-width: 85%;
+            padding: 10px 12px;
+            border-radius: 16px;
             position: relative;
             word-wrap: break-word;
+            font-size: 14px;
         }
 
         .message.own {
@@ -1376,43 +838,25 @@
             border-bottom-left-radius: 5px;
         }
 
-        .message-sender {
-            font-size: 12px;
-            font-weight: bold;
-            margin-bottom: 3px;
-            opacity: 0.8;
-        }
-
-        .message-time {
-            font-size: 10px;
-            text-align: right;
-            margin-top: 5px;
-            opacity: 0.7;
-        }
-
         .chat-input-container {
-            padding: 15px;
+            padding: 12px;
             border-top: 1px solid #e0e0e0;
             background: white;
-            border-radius: 0 0 15px 15px;
+            border-radius: 0 0 20px 20px;
         }
 
         .chat-input-row {
             display: flex;
-            gap: 10px;
+            gap: 8px;
         }
 
         .chat-input {
             flex: 1;
-            padding: 12px 15px;
+            padding: 12px;
             border: 1px solid #ddd;
-            border-radius: 25px;
+            border-radius: 20px;
             outline: none;
             font-size: 14px;
-        }
-
-        .chat-input:focus {
-            border-color: var(--saffron);
         }
 
         .send-btn {
@@ -1426,209 +870,159 @@
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            transition: background 0.3s;
+            font-size: 14px;
         }
 
-        .send-btn:hover {
-            background: #600000;
-        }
-
-        .send-btn:disabled {
-            background: #ccc;
-            cursor: not-allowed;
-        }
-
-        .no-messages {
+        /* Sync Status Styles - Updated for better UI */
+        .sync-status {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 20px;
             text-align: center;
-            color: #666;
-            font-style: italic;
-            margin-top: 50px;
         }
 
-        .chat-badge {
-            background: #ff4444;
+        .sync-controls {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+
+        .sync-btn {
+            background: linear-gradient(135deg, var(--saffron), var(--gold));
             color: white;
-            border-radius: 50%;
-            width: 20px;
-            height: 20px;
-            font-size: 12px;
+            border: none;
+            border-radius: 8px;
+            padding: 10px 16px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 600;
             display: flex;
             align-items: center;
-            justify-content: center;
-            position: absolute;
-            top: -5px;
-            right: -5px;
+            gap: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
 
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .navbar {
-                flex-direction: column;
-                gap: 15px;
+        .sync-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        }
+
+        .sync-btn:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        /* Responsive Design for Tablets */
+        @media (min-width: 768px) {
+            .content {
+                padding: 30px 25px;
+                max-width: 1200px;
             }
             
-            .nav-links {
-                width: 100%;
-                justify-content: flex-start;
-                padding: 0 10px;
-            }
-            
-            .nav-link {
-                padding: 12px 15px;
-                font-size: 14px;
+            .section-title {
+                font-size: 28px;
             }
             
             .form-row {
-                flex-direction: column;
+                flex-direction: row;
             }
             
             .members-grid {
-                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-                gap: 15px;
-            }
-            
-            .member-card {
-                padding: 15px;
+                grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+                gap: 20px;
             }
             
             .member-avatar {
                 width: 70px;
                 height: 70px;
-                font-size: 20px;
             }
             
-            .member-name {
-                font-size: 16px;
-            }
-            
-            .budget-table {
-                display: block;
-                overflow-x: auto;
-            }
-            
-            .content {
-                padding: 20px 15px;
-            }
-            
-            .login-card {
-                padding: 30px 20px;
+            .events-grid {
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             }
             
             .gallery-grid {
                 grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            }
-            
-            .temple-scene {
-                width: 280px;
-                height: 350px;
-            }
-            
-            .south-indian-hundi {
-                width: 150px;
-                height: 180px;
-            }
-            
-            .hundi-actions {
-                flex-direction: column;
-                width: 100%;
-                max-width: 300px;
-            }
-            
-            .hundi-actions .btn {
-                width: 100%;
-            }
-            
-            .dp-modal {
-                max-width: 90%;
-            }
-            
-            .dp-preview-container {
-                width: 250px;
-                height: 250px;
-            }
-            
-            .dp-crop-circle {
-                width: 150px;
-                height: 150px;
-            }
-            
-            .dp-actions {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .dp-action-btn {
-                max-width: 100%;
-            }
-            
-            .events-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .year-selector {
-                flex-direction: column;
-                align-items: flex-start;
+                gap: 15px;
             }
             
             .chat-section {
-                width: 300px;
-                height: 400px;
-                right: 10px;
-                bottom: 10px;
+                width: 350px;
+                height: 500px;
             }
         }
 
-        @media (max-width: 480px) {
-            .members-grid {
-                grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+        /* Responsive Design for Desktop */
+        @media (min-width: 1024px) {
+            .navbar {
+                padding: 15px 30px;
             }
             
-            .member-avatar {
-                width: 60px;
-                height: 60px;
-                font-size: 18px;
-            }
-            
-            .member-name {
-                font-size: 14px;
-            }
-            
-            .change-dp-btn {
-                font-size: 11px;
-                padding: 5px 10px;
-            }
-            
-            .section-title {
-                font-size: 24px;
+            .nav-links {
+                padding: 0 30px;
             }
             
             .content {
-                padding: 15px 10px;
+                padding: 40px;
             }
             
-            .form-card {
+            .members-grid {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            }
+        }
+
+        /* Touch-friendly improvements */
+        @media (max-width: 480px) {
+            .btn {
+                padding: 14px 16px;
+                font-size: 14px;
+                min-height: 48px;
+            }
+            
+            .form-control {
+                padding: 14px;
+            }
+            
+            .modal {
                 padding: 20px;
             }
             
-            .dp-modal-body {
-                padding: 15px;
+            .members-grid {
+                grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+                gap: 12px;
             }
             
-            .dp-preview-container {
-                width: 200px;
-                height: 200px;
+            .member-card {
+                padding: 12px;
             }
-            
-            .dp-crop-circle {
-                width: 120px;
-                height: 120px;
-            }
-            
-            .chat-section {
-                width: calc(100% - 20px);
-                right: 10px;
-                left: 10px;
-            }
+        }
+
+        /* Loading states */
+        .loading {
+            opacity: 0.7;
+            pointer-events: none;
+        }
+
+        .spinner {
+            border: 2px solid #f3f3f3;
+            border-top: 2px solid var(--saffron);
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            animation: spin 1s linear infinite;
+            display: inline-block;
+            margin-right: 8px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
     </style>
 </head>
@@ -1639,7 +1033,36 @@
         const { useState, useEffect, useRef } = React;
         const { jsPDF } = window.jspdf;
 
-        // Utility functions for localStorage with sync across devices
+        // Cloud Sync Service
+        const CloudSyncService = {
+            CLOUD_KEY: 'sri_vinayaka_cloud_data',
+            
+            saveToCloud: (data) => {
+                try {
+                    localStorage.setItem(CloudSyncService.CLOUD_KEY, JSON.stringify({
+                        ...data,
+                        lastUpdated: Date.now(),
+                        syncId: Math.random().toString(36).substr(2, 9)
+                    }));
+                    return true;
+                } catch (error) {
+                    console.error('Error saving to cloud:', error);
+                    return false;
+                }
+            },
+            
+            loadFromCloud: () => {
+                try {
+                    const cloudData = localStorage.getItem(CloudSyncService.CLOUD_KEY);
+                    return cloudData ? JSON.parse(cloudData) : null;
+                } catch (error) {
+                    console.error('Error loading from cloud:', error);
+                    return null;
+                }
+            }
+        };
+
+        // Enhanced storage with cloud sync
         const storage = {
             get: (key) => {
                 try {
@@ -1650,17 +1073,20 @@
                     return null;
                 }
             },
+            
             set: (key, value) => {
                 try {
                     localStorage.setItem(key, JSON.stringify(value));
                     
-                    // NEW: Sync across devices using localStorage events
-                    window.dispatchEvent(new StorageEvent('storage', {
-                        key: key,
-                        newValue: JSON.stringify(value),
-                        oldValue: localStorage.getItem(key),
-                        storageArea: localStorage
-                    }));
+                    // Sync critical data to cloud
+                    if (['members', 'eventTypes', 'budgetItems', 'hundiTotal', 'hundiTransactions'].includes(key)) {
+                        const currentCloudData = CloudSyncService.loadFromCloud() || {};
+                        CloudSyncService.saveToCloud({
+                            ...currentCloudData,
+                            [key]: value,
+                            lastSync: Date.now()
+                        });
+                    }
                     
                     return true;
                 } catch (error) {
@@ -1668,6 +1094,7 @@
                     return false;
                 }
             },
+            
             remove: (key) => {
                 try {
                     localStorage.removeItem(key);
@@ -1678,20 +1105,34 @@
                 }
             },
             
-            // NEW: Sync data across tabs/devices
-            sync: (callback) => {
-                const handleStorageChange = (e) => {
-                    if (e.key && e.newValue) {
-                        callback(e.key, JSON.parse(e.newValue));
-                    }
+            initializeFromCloud: () => {
+                const cloudData = CloudSyncService.loadFromCloud();
+                if (cloudData) {
+                    Object.keys(cloudData).forEach(key => {
+                        if (key !== 'lastUpdated' && key !== 'syncId' && key !== 'lastSync') {
+                            localStorage.setItem(key, JSON.stringify(cloudData[key]));
+                        }
+                    });
+                    return true;
+                }
+                return false;
+            },
+            
+            syncFromCloud: () => {
+                return storage.initializeFromCloud();
+            },
+            
+            getSyncStatus: () => {
+                const cloudData = CloudSyncService.loadFromCloud();
+                return {
+                    hasCloudData: !!cloudData,
+                    lastUpdated: cloudData?.lastUpdated || null,
+                    memberCount: cloudData?.members?.length || 0
                 };
-                
-                window.addEventListener('storage', handleStorageChange);
-                return () => window.removeEventListener('storage', handleStorageChange);
             }
         };
 
-        // Login Component - FIXED: Proper case-insensitive captcha
+        // Mobile-Optimized Login Component
         const Login = ({ onLogin }) => {
             const [userType, setUserType] = useState('member');
             const [name, setName] = useState('');
@@ -1699,12 +1140,13 @@
             const [captcha, setCaptcha] = useState('');
             const [userCaptcha, setUserCaptcha] = useState('');
             const [error, setError] = useState('');
+            const [isSyncing, setIsSyncing] = useState(false);
+            const [syncStatus, setSyncStatus] = useState(null);
 
-            // Generate random alphabetical captcha
             const generateCaptcha = () => {
-                const characters = 'ABCDEFGHJKLMNPQRSTUVWXYZabcdefghjkmnpqrstuvwxyz23456789';
+                const characters = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
                 let result = '';
-                const length = 6;
+                const length = 5;
                 
                 for (let i = 0; i < length; i++) {
                     result += characters.charAt(Math.floor(Math.random() * characters.length));
@@ -1716,20 +1158,38 @@
 
             useEffect(() => {
                 generateCaptcha();
+                const status = storage.getSyncStatus();
+                setSyncStatus(status);
             }, []);
+
+            const syncFromCloud = async () => {
+                setIsSyncing(true);
+                try {
+                    const success = storage.syncFromCloud();
+                    if (success) {
+                        const newStatus = storage.getSyncStatus();
+                        setSyncStatus(newStatus);
+                        alert('✅ Successfully synced data from cloud!');
+                    } else {
+                        alert('❌ No cloud data found.');
+                    }
+                } catch (error) {
+                    alert('❌ Sync failed. Please try again.');
+                } finally {
+                    setIsSyncing(false);
+                }
+            };
 
             const handleLogin = (e) => {
                 e.preventDefault();
                 setError('');
 
                 if (userType === 'member') {
-                    // Validate member login
                     if (password !== 'pass123') {
                         setError('Invalid password for member');
                         return;
                     }
                     
-                    // FIXED: Proper case-insensitive captcha validation
                     if (userCaptcha.toUpperCase() !== captcha.toUpperCase()) {
                         setError('Incorrect captcha answer');
                         generateCaptcha();
@@ -1741,20 +1201,18 @@
                         return;
                     }
 
-                    // Check if member exists in the members list
                     const members = storage.get('members') || [];
                     const memberExists = members.some(member => 
                         member.name.toLowerCase() === name.trim().toLowerCase()
                     );
 
                     if (!memberExists) {
-                        setError('You are not registered as a member. Please contact admin.');
+                        setError('You are not registered as a member. Please contact admin or try syncing data.');
                         return;
                     }
                     
                     onLogin({ type: 'member', name: name.trim() });
                 } else {
-                    // Validate admin login
                     if (password !== 'admin1970') {
                         setError('Invalid admin password');
                         return;
@@ -1768,18 +1226,33 @@
                 <div className="login-container">
                     <div className="login-card">
                         <div className="login-header">
-                            <img 
-                                src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Ganesha_-_Sri_Lanka.jpg/240px-Ganesha_-_Sri_Lanka.jpg" 
-                                alt="Lord Ganesha" 
-                                className="ganesha-img"
-                                onError={(e) => {
-                                    e.target.style.display = 'none';
-                                    e.target.nextSibling.style.display = 'block';
-                                }}
-                            />
-                            <div style={{display: 'none', fontSize: '60px'}}>🕉️</div>
+                            <div style={{fontSize: '50px', marginBottom: '15px'}}>🕉️</div>
                             <h1 className="trust-name">Sri Vinayaka Geleyara Balaga</h1>
                             <p className="login-subtitle">Manage temple activities and donations</p>
+                        </div>
+
+                        {/* Sync Status */}
+                        <div className="sync-status">
+                            <h4 style={{color: 'var(--maroon)', marginBottom: '10px'}}>🔗 Cloud Sync</h4>
+                            {syncStatus ? (
+                                <div>
+                                    <p style={{fontSize: '13px', color: '#666', marginBottom: '10px'}}>
+                                        {syncStatus.hasCloudData ? 
+                                            `✅ ${syncStatus.memberCount} members registered` : 
+                                            '❌ No cloud data'
+                                        }
+                                    </p>
+                                    <button 
+                                        onClick={syncFromCloud}
+                                        disabled={isSyncing}
+                                        className="sync-btn"
+                                    >
+                                        {isSyncing ? '🔄 Syncing...' : '🔄 Sync Data'}
+                                    </button>
+                                </div>
+                            ) : (
+                                <p style={{fontSize: '13px', color: '#666'}}>Checking...</p>
+                            )}
                         </div>
                         
                         <div className="user-type-selector">
@@ -1807,7 +1280,7 @@
                                         className="form-control"
                                         value={name}
                                         onChange={(e) => setName(e.target.value)}
-                                        placeholder="Enter your name as registered"
+                                        placeholder="Enter your registered name"
                                     />
                                 </div>
                             )}
@@ -1826,7 +1299,7 @@
                             
                             {userType === 'member' && (
                                 <div className="form-group">
-                                    <label>Enter the text shown below</label>
+                                    <label>Enter the code shown below</label>
                                     <div className="captcha-container">
                                         <div className="captcha-box">{captcha}</div>
                                         <button 
@@ -1842,7 +1315,7 @@
                                         className="form-control"
                                         value={userCaptcha}
                                         onChange={(e) => setUserCaptcha(e.target.value)}
-                                        placeholder="Enter the text above"
+                                        placeholder="Enter the code above"
                                     />
                                 </div>
                             )}
@@ -1856,8 +1329,8 @@
                             </div>
 
                             {userType === 'member' && (
-                                <div style={{marginTop: '15px', fontSize: '14px', color: '#666'}}>
-                                    <strong>Note:</strong> You must be registered by admin to login
+                                <div style={{marginTop: '15px', fontSize: '13px', color: '#666', textAlign: 'center'}}>
+                                    <strong>Note:</strong> Registered by admin only
                                 </div>
                             )}
                         </form>
@@ -1866,34 +1339,18 @@
             );
         };
 
-        // Chat Component - FIXED: Clear chat only for admin
+        // Mobile Chat Component - Updated with circular button
         const ChatSection = ({ user }) => {
             const [messages, setMessages] = useState([]);
             const [newMessage, setNewMessage] = useState('');
-            const [isMinimized, setIsMinimized] = useState(false);
             const [unreadCount, setUnreadCount] = useState(0);
+            const [showChat, setShowChat] = useState(false);
             const messagesEndRef = useRef(null);
-            const chatMessagesRef = useRef(null);
 
             useEffect(() => {
                 const savedMessages = storage.get('chatMessages') || [];
                 setMessages(savedMessages);
-                
-                // Set up auto-refresh for new messages
-                const interval = setInterval(() => {
-                    const currentMessages = storage.get('chatMessages') || [];
-                    if (currentMessages.length !== messages.length) {
-                        setMessages(currentMessages);
-                        
-                        // Update unread count if chat is minimized
-                        if (isMinimized) {
-                            setUnreadCount(currentMessages.length - messages.length);
-                        }
-                    }
-                }, 2000); // Check every 2 seconds
-
-                return () => clearInterval(interval);
-            }, [messages.length, isMinimized]);
+            }, []);
 
             useEffect(() => {
                 scrollToBottom();
@@ -1928,71 +1385,79 @@
                 }
             };
 
-            const toggleMinimize = () => {
-                setIsMinimized(!isMinimized);
-                if (!isMinimized) {
+            const toggleChat = () => {
+                setShowChat(!showChat);
+                if (showChat) {
                     setUnreadCount(0);
                 }
             };
 
-            // FIXED: Clear chat only for admin
             const clearChat = () => {
                 if (user.type !== 'admin') {
                     alert('Only administrators can clear the chat.');
                     return;
                 }
                 
-                if (window.confirm('Are you sure you want to clear all chat messages? This action cannot be undone.')) {
+                if (window.confirm('Clear all chat messages?')) {
                     setMessages([]);
                     storage.set('chatMessages', []);
                 }
             };
 
-            const formatMessageTime = (timestamp) => {
-                return timestamp;
-            };
-
             return (
-                <div className={`chat-section ${isMinimized ? 'minimized' : ''}`}>
-                    <div className="chat-header" onClick={toggleMinimize}>
-                        <div className="chat-title">
-                            <span>💬 Group Chat</span>
-                            {unreadCount > 0 && (
-                                <span className="chat-badge">{unreadCount}</span>
-                            )}
-                        </div>
-                        <div className="chat-controls">
-                            {/* FIXED: Clear chat button only shown for admin */}
-                            {user.type === 'admin' && (
-                                <button 
-                                    className="chat-control-btn"
-                                    onClick={(e) => {
-                                        e.stopPropagation();
-                                        clearChat();
-                                    }}
-                                    title="Clear chat (Admin only)"
-                                >
-                                    🗑️
-                                </button>
-                            )}
-                            <button 
-                                className="chat-control-btn"
-                                onClick={(e) => {
-                                    e.stopPropagation();
-                                    toggleMinimize();
-                                }}
-                                title={isMinimized ? 'Maximize' : 'Minimize'}
-                            >
-                                {isMinimized ? '➕' : '➖'}
-                            </button>
-                        </div>
-                    </div>
+                <>
+                    <button className="chat-button" onClick={toggleChat}>
+                        💬
+                    </button>
                     
-                    {!isMinimized && (
-                        <>
-                            <div className="chat-messages" ref={chatMessagesRef}>
+                    {showChat && (
+                        <div className="chat-section">
+                            <div className="chat-header">
+                                <div className="chat-title">
+                                    <span>💬 Group Chat</span>
+                                    {unreadCount > 0 && (
+                                        <span style={{
+                                            background: '#ff4444',
+                                            color: 'white',
+                                            borderRadius: '50%',
+                                            width: '18px',
+                                            height: '18px',
+                                            fontSize: '10px',
+                                            display: 'flex',
+                                            alignItems: 'center',
+                                            justifyContent: 'center',
+                                            marginLeft: '5px'
+                                        }}>{unreadCount}</span>
+                                    )}
+                                </div>
+                                <div className="chat-controls">
+                                    {user.type === 'admin' && (
+                                        <button 
+                                            className="chat-control-btn"
+                                            onClick={(e) => {
+                                                e.stopPropagation();
+                                                clearChat();
+                                            }}
+                                            title="Clear chat"
+                                        >
+                                            🗑️
+                                        </button>
+                                    )}
+                                    <button 
+                                        className="chat-control-btn"
+                                        onClick={(e) => {
+                                            e.stopPropagation();
+                                            toggleChat();
+                                        }}
+                                    >
+                                        ×
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <div className="chat-messages">
                                 {messages.length === 0 ? (
-                                    <div className="no-messages">
+                                    <div style={{textAlign: 'center', color: '#666', fontStyle: 'italic', marginTop: '50px'}}>
                                         No messages yet. Start the conversation!
                                     </div>
                                 ) : (
@@ -2002,11 +1467,13 @@
                                             className={`message ${message.sender === user.name ? 'own' : 'other'}`}
                                         >
                                             {message.sender !== user.name && (
-                                                <div className="message-sender">{message.sender}</div>
+                                                <div style={{fontSize: '11px', fontWeight: 'bold', marginBottom: '2px', opacity: '0.8'}}>
+                                                    {message.sender}
+                                                </div>
                                             )}
                                             <div>{message.text}</div>
-                                            <div className="message-time">
-                                                {formatMessageTime(message.timestamp)}
+                                            <div style={{fontSize: '9px', textAlign: 'right', marginTop: '3px', opacity: '0.7'}}>
+                                                {message.timestamp}
                                             </div>
                                         </div>
                                     ))
@@ -2022,54 +1489,81 @@
                                         value={newMessage}
                                         onChange={(e) => setNewMessage(e.target.value)}
                                         onKeyPress={handleKeyPress}
-                                        placeholder="Type your message..."
+                                        placeholder="Type a message..."
                                         maxLength="500"
                                     />
                                     <button 
                                         className="send-btn"
                                         onClick={sendMessage}
                                         disabled={!newMessage.trim()}
-                                        title="Send message"
                                     >
                                         ➤
                                     </button>
                                 </div>
                             </div>
-                        </>
+                        </div>
                     )}
-                </div>
+                </>
             );
         };
 
-        // Members Section Component - FIXED: File size limit for members
+        // Mobile Members Section
         const MembersSection = ({ user }) => {
             const [members, setMembers] = useState([]);
             const [newMember, setNewMember] = useState('');
             const [showDpModal, setShowDpModal] = useState(false);
             const [selectedMember, setSelectedMember] = useState(null);
             const [avatarPreview, setAvatarPreview] = useState(null);
-            const [zoomLevel, setZoomLevel] = useState(1);
-            const [position, setPosition] = useState({ x: 0, y: 0 });
-            const [isDragging, setIsDragging] = useState(false);
-            const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
-            const fileInputRef = useRef(null);
-            const previewRef = useRef(null);
-            const containerRef = useRef(null);
+            const [isSyncing, setIsSyncing] = useState(false);
 
-            // NEW: Sync members data across devices
             useEffect(() => {
                 const savedMembers = storage.get('members') || [];
                 setMembers(savedMembers);
-                
-                // Sync across tabs/devices
-                const unsubscribe = storage.sync((key, newValue) => {
-                    if (key === 'members') {
-                        setMembers(newValue || []);
-                    }
-                });
-                
-                return unsubscribe;
             }, []);
+
+            const syncToCloud = () => {
+                setIsSyncing(true);
+                try {
+                    const currentData = {
+                        members: storage.get('members') || [],
+                        eventTypes: storage.get('eventTypes') || [],
+                        budgetItems: storage.get('budgetItems') || [],
+                        hundiTotal: storage.get('hundiTotal') || 0,
+                        hundiTransactions: storage.get('hundiTransactions') || [],
+                        lastUpdated: Date.now(),
+                        syncedBy: user.name
+                    };
+                    
+                    const success = CloudSyncService.saveToCloud(currentData);
+                    if (success) {
+                        alert('✅ Data synced to cloud!');
+                    } else {
+                        alert('❌ Sync failed.');
+                    }
+                } catch (error) {
+                    alert('❌ Sync failed.');
+                } finally {
+                    setIsSyncing(false);
+                }
+            };
+
+            const syncFromCloud = () => {
+                setIsSyncing(true);
+                try {
+                    const success = storage.syncFromCloud();
+                    if (success) {
+                        const savedMembers = storage.get('members') || [];
+                        setMembers(savedMembers);
+                        alert('✅ Data synced from cloud!');
+                    } else {
+                        alert('❌ No cloud data found.');
+                    }
+                } catch (error) {
+                    alert('❌ Sync failed.');
+                } finally {
+                    setIsSyncing(false);
+                }
+            };
 
             const addMember = () => {
                 if (newMember.trim()) {
@@ -2078,7 +1572,6 @@
                         avatar: null,
                         addedBy: user.name,
                         addedDate: new Date().toISOString(),
-                        // NEW: Add unique ID for better sync
                         id: Date.now() + Math.random().toString(36).substr(2, 9)
                     };
                     const updatedMembers = [...members, memberData];
@@ -2097,161 +1590,40 @@
             const openDpModal = (member, index) => {
                 setSelectedMember({ ...member, index });
                 setAvatarPreview(member.avatar);
-                setZoomLevel(1);
-                setPosition({ x: 0, y: 0 });
                 setShowDpModal(true);
             };
 
             const handleAvatarChange = (e) => {
                 const file = e.target.files[0];
                 if (file) {
-                    // FIXED: Increased file size limit to 10MB for better quality
                     if (file.size > 10 * 1024 * 1024) {
-                        alert('File size too large. Please select an image under 10MB.');
+                        alert('File too large. Max 10MB.');
                         return;
                     }
                     
-                    // Check file type
                     if (!file.type.match('image.*')) {
-                        alert('Please select a valid image file (JPEG, PNG, etc.)');
+                        alert('Please select a valid image file.');
                         return;
                     }
                     
                     const reader = new FileReader();
                     reader.onload = (e) => {
                         setAvatarPreview(e.target.result);
-                        setZoomLevel(1);
-                        setPosition({ x: 0, y: 0 });
                     };
                     reader.readAsDataURL(file);
                 }
             };
 
-            const handleZoomChange = (e) => {
-                setZoomLevel(parseFloat(e.target.value));
-            };
-
-            const handleMouseDown = (e) => {
-                if (!avatarPreview) return;
-                setIsDragging(true);
-                setDragStart({
-                    x: e.clientX - position.x,
-                    y: e.clientY - position.y
-                });
-                e.preventDefault();
-            };
-
-            const handleMouseMove = (e) => {
-                if (!isDragging || !avatarPreview) return;
-                
-                const newX = e.clientX - dragStart.x;
-                const newY = e.clientY - dragStart.y;
-                
-                // Limit movement based on zoom level
-                const maxMove = (zoomLevel - 1) * 100;
-                setPosition({
-                    x: Math.max(Math.min(newX, maxMove), -maxMove),
-                    y: Math.max(Math.min(newY, maxMove), -maxMove)
-                });
-                e.preventDefault();
-            };
-
-            const handleMouseUp = () => {
-                setIsDragging(false);
-            };
-
-            // Touch event handlers for mobile
-            const handleTouchStart = (e) => {
-                if (!avatarPreview) return;
-                setIsDragging(true);
-                const touch = e.touches[0];
-                setDragStart({
-                    x: touch.clientX - position.x,
-                    y: touch.clientY - position.y
-                });
-            };
-
-            const handleTouchMove = (e) => {
-                if (!isDragging || !avatarPreview) return;
-                e.preventDefault();
-                
-                const touch = e.touches[0];
-                const newX = touch.clientX - dragStart.x;
-                const newY = touch.clientY - dragStart.y;
-                
-                // Limit movement based on zoom level
-                const maxMove = (zoomLevel - 1) * 100;
-                setPosition({
-                    x: Math.max(Math.min(newX, maxMove), -maxMove),
-                    y: Math.max(Math.min(newY, maxMove), -maxMove)
-                });
-            };
-
-            const handleTouchEnd = () => {
-                setIsDragging(false);
-            };
-
             const saveAvatar = () => {
                 if (selectedMember && avatarPreview) {
-                    // Create a canvas to crop the image
-                    const canvas = document.createElement('canvas');
-                    const ctx = canvas.getContext('2d');
-                    const img = new Image();
-                    
-                    img.onload = () => {
-                        // Set canvas size to the crop circle size
-                        const size = 200;
-                        canvas.width = size;
-                        canvas.height = size;
-                        
-                        // Calculate the source rectangle for cropping
-                        const scale = Math.max(img.width / 300, img.height / 300) * zoomLevel;
-                        const srcX = (300 / 2 - position.x / zoomLevel) * scale - (size / 2);
-                        const srcY = (300 / 2 - position.y / zoomLevel) * scale - (size / 2);
-                        const srcSize = size * scale;
-                        
-                        // Draw the cropped image
-                        ctx.beginPath();
-                        ctx.arc(size / 2, size / 2, size / 2, 0, Math.PI * 2);
-                        ctx.closePath();
-                        ctx.clip();
-                        
-                        ctx.drawImage(
-                            img, 
-                            srcX, srcY, srcSize, srcSize,
-                            0, 0, size, size
-                        );
-                        
-                        // Convert to data URL and save
-                        const croppedAvatar = canvas.toDataURL('image/jpeg', 0.9);
-                        
-                        const updatedMembers = [...members];
-                        updatedMembers[selectedMember.index].avatar = croppedAvatar;
-                        setMembers(updatedMembers);
-                        storage.set('members', updatedMembers);
-                        setShowDpModal(false);
-                        setSelectedMember(null);
-                        setAvatarPreview(null);
-                    };
-                    
-                    img.src = avatarPreview;
-                }
-            };
-
-            const removeAvatar = () => {
-                if (selectedMember) {
                     const updatedMembers = [...members];
-                    updatedMembers[selectedMember.index].avatar = null;
+                    updatedMembers[selectedMember.index].avatar = avatarPreview;
                     setMembers(updatedMembers);
                     storage.set('members', updatedMembers);
                     setShowDpModal(false);
                     setSelectedMember(null);
                     setAvatarPreview(null);
                 }
-            };
-
-            const triggerFileInput = () => {
-                fileInputRef.current.click();
             };
 
             const getInitials = (name) => {
@@ -2261,6 +1633,28 @@
             return (
                 <div>
                     <h2 className="section-title">Trust Members</h2>
+                    
+                    {user.type === 'admin' && (
+                        <div className="form-card">
+                            <h3 style={{marginBottom: '15px', color: 'var(--maroon)'}}>🌐 Cloud Sync</h3>
+                            <div className="sync-controls">
+                                <button 
+                                    className="sync-btn"
+                                    onClick={syncToCloud}
+                                    disabled={isSyncing}
+                                >
+                                    {isSyncing ? '🔄' : '📤'} Sync to Cloud
+                                </button>
+                                <button 
+                                    className="sync-btn"
+                                    onClick={syncFromCloud}
+                                    disabled={isSyncing}
+                                >
+                                    {isSyncing ? '🔄' : '📥'} Sync from Cloud
+                                </button>
+                            </div>
+                        </div>
+                    )}
                     
                     {user.type === 'admin' ? (
                         <>
@@ -2281,11 +1675,8 @@
                                         Add Member
                                     </button>
                                 </div>
-                                <div style={{marginTop: '10px', fontSize: '14px', color: '#666'}}>
-                                    <strong>Note:</strong> Members added here can login with password: <strong>pass123</strong>
-                                </div>
-                                <div style={{marginTop: '5px', fontSize: '12px', color: '#888'}}>
-                                    <strong>Sync:</strong> Members list is automatically synced across all devices
+                                <div style={{marginTop: '10px', fontSize: '13px', color: '#666'}}>
+                                    <strong>Note:</strong> Password: <strong>pass123</strong>
                                 </div>
                             </div>
                             
@@ -2295,25 +1686,21 @@
                                         <button 
                                             className="delete-member"
                                             onClick={() => deleteMember(index)}
-                                            title="Delete member"
                                         >
                                             ×
                                         </button>
                                         
                                         <div className="member-avatar">
                                             {member.avatar ? (
-                                                <img 
-                                                    src={member.avatar} 
-                                                    alt={member.name}
-                                                />
+                                                <img src={member.avatar} alt={member.name} />
                                             ) : (
                                                 getInitials(member.name)
                                             )}
                                         </div>
                                         
                                         <div className="member-name">{member.name}</div>
-                                        <div style={{fontSize: '12px', color: '#666', marginBottom: '8px'}}>
-                                            Added by: {member.addedBy}
+                                        <div style={{fontSize: '11px', color: '#666', marginBottom: '8px'}}>
+                                            by {member.addedBy}
                                         </div>
                                         
                                         <button 
@@ -2328,13 +1715,21 @@
                             
                             {members.length === 0 && (
                                 <div style={{textAlign: 'center', padding: '40px', color: '#666'}}>
-                                    No members added yet. Add the first member above.
+                                    No members added yet.
                                 </div>
                             )}
                         </>
                     ) : (
                         <>
-                            <div className="member-only">
+                            <div style={{
+                                background: '#e8f5e8',
+                                border: '1px solid #c8e6c9',
+                                borderRadius: '12px',
+                                padding: '15px',
+                                margin-bottom: '20px',
+                                text-align: 'center',
+                                color: '#2e7d32'
+                            }}>
                                 All registered members can view each other and manage their own profile pictures.
                             </div>
                             <div className="members-grid">
@@ -2342,10 +1737,7 @@
                                     <div key={member.id || index} className="member-card">
                                         <div className="member-avatar">
                                             {member.avatar ? (
-                                                <img 
-                                                    src={member.avatar} 
-                                                    alt={member.name}
-                                                />
+                                                <img src={member.avatar} alt={member.name} />
                                             ) : (
                                                 getInitials(member.name)
                                             )}
@@ -2353,7 +1745,6 @@
                                         
                                         <div className="member-name">{member.name}</div>
                                         
-                                        {/* Members can only change their own DP */}
                                         {user.name === member.name && (
                                             <button 
                                                 className="change-dp-btn"
@@ -2368,121 +1759,67 @@
                         </>
                     )}
 
-                    {/* WhatsApp-style DP Modal with Adjustment */}
+                    {/* Avatar Modal */}
                     {showDpModal && (
-                        <div className="dp-modal-overlay">
-                            <div className="dp-modal">
-                                <div className="dp-modal-header">
-                                    <h3 className="dp-modal-title">Adjust Profile Picture</h3>
-                                    <p className="dp-modal-subtitle">{selectedMember?.name}</p>
-                                    <button 
-                                        className="dp-close-btn"
-                                        onClick={() => setShowDpModal(false)}
-                                    >
-                                        ×
-                                    </button>
-                                </div>
-                                <div className="dp-modal-body">
-                                    <div 
-                                        ref={containerRef}
-                                        className="dp-preview-container"
-                                        onMouseDown={handleMouseDown}
-                                        onMouseMove={handleMouseMove}
-                                        onMouseUp={handleMouseUp}
-                                        onMouseLeave={handleMouseUp}
-                                        onTouchStart={handleTouchStart}
-                                        onTouchMove={handleTouchMove}
-                                        onTouchEnd={handleTouchEnd}
-                                        style={{ cursor: avatarPreview ? (isDragging ? 'grabbing' : 'grab') : 'default' }}
-                                    >
-                                        {avatarPreview ? (
-                                            <img 
-                                                ref={previewRef}
-                                                src={avatarPreview} 
-                                                alt="Preview" 
-                                                className="dp-preview"
-                                                style={{
-                                                    transform: `scale(${zoomLevel}) translate(${position.x}px, ${position.y}px)`,
-                                                    transition: isDragging ? 'none' : 'transform 0.1s'
-                                                }}
-                                            />
-                                        ) : (
-                                            <div style={{
-                                                display: 'flex',
-                                                alignItems: 'center',
-                                                justifyContent: 'center',
-                                                height: '100%',
-                                                fontSize: '40px',
-                                                color: 'var(--maroon)'
-                                            }}>
-                                                {getInitials(selectedMember?.name || '')}
-                                            </div>
-                                        )}
-                                        <div className="dp-crop-overlay">
-                                            <div className="dp-crop-circle"></div>
-                                        </div>
-                                    </div>
-                                    
-                                    {avatarPreview && (
-                                        <div className="dp-controls">
-                                            <div className="dp-zoom-control">
-                                                <span>Zoom:</span>
-                                                <input
-                                                    type="range"
-                                                    min="1"
-                                                    max="3"
-                                                    step="0.1"
-                                                    value={zoomLevel}
-                                                    onChange={handleZoomChange}
-                                                    className="dp-zoom-slider"
-                                                />
-                                                <span>{Math.round(zoomLevel * 100)}%</span>
-                                            </div>
-                                            <div style={{fontSize: '12px', color: '#666', textAlign: 'center'}}>
-                                                Drag to adjust position • Pinch to zoom on touch devices
-                                            </div>
-                                        </div>
+                        <div className="modal-overlay">
+                            <div className="modal">
+                                <h3 className="modal-title">Profile Picture</h3>
+                                <p style={{textAlign: 'center', marginBottom: '20px', color: '#666'}}>
+                                    {selectedMember?.name}
+                                </p>
+                                
+                                <div style={{
+                                    width: '150px',
+                                    height: '150px',
+                                    borderRadius: '75px',
+                                    overflow: 'hidden',
+                                    margin: '0 auto 20px',
+                                    border: '3px solid var(--gold)',
+                                    background: avatarPreview ? 'none' : 'var(--light-gold)',
+                                    display: 'flex',
+                                    align-items: 'center',
+                                    justifyContent: 'center',
+                                    fontSize: '40px',
+                                    color: 'var(--maroon)'
+                                }}>
+                                    {avatarPreview ? (
+                                        <img 
+                                            src={avatarPreview} 
+                                            alt="Preview" 
+                                            style={{width: '100%', height: '100%', objectFit: 'cover'}}
+                                        />
+                                    ) : (
+                                        getInitials(selectedMember?.name || '')
                                     )}
-                                    
+                                </div>
+                                
+                                <input
+                                    type="file"
+                                    accept="image/*"
+                                    onChange={handleAvatarChange}
+                                    style={{display: 'none'}}
+                                    id="avatarInput"
+                                />
+                                
+                                <div className="modal-actions">
                                     <button 
-                                        className="dp-upload-btn"
-                                        onClick={triggerFileInput}
+                                        className="btn"
+                                        onClick={() => setShowDpModal(false)}
+                                        style={{background: '#f5f5f5'}}
                                     >
-                                        {avatarPreview ? 'Change Photo' : 'Choose Photo'}
+                                        Cancel
                                     </button>
-                                    
-                                    <input
-                                        ref={fileInputRef}
-                                        type="file"
-                                        className="dp-file-input"
-                                        accept="image/*"
-                                        onChange={handleAvatarChange}
-                                    />
-                                    
-                                    <div className="dp-actions">
+                                    <label htmlFor="avatarInput" className="btn btn-primary">
+                                        Choose Photo
+                                    </label>
+                                    {avatarPreview && (
                                         <button 
-                                            className="dp-action-btn dp-cancel"
-                                            onClick={() => setShowDpModal(false)}
+                                            className="btn btn-success"
+                                            onClick={saveAvatar}
                                         >
-                                            Cancel
+                                            Save
                                         </button>
-                                        {avatarPreview && (
-                                            <button 
-                                                className="dp-action-btn dp-save"
-                                                onClick={saveAvatar}
-                                            >
-                                                Save
-                                            </button>
-                                        )}
-                                        {selectedMember?.avatar && (
-                                            <button 
-                                                className="dp-action-btn dp-cancel"
-                                                onClick={removeAvatar}
-                                            >
-                                                Remove Photo
-                                            </button>
-                                        )}
-                                    </div>
+                                    )}
                                 </div>
                             </div>
                         </div>
@@ -2491,55 +1828,34 @@
             );
         };
 
-        // Hundi Section Component - FIXED: Money falling animation for members
+        // Mobile Hundi Section
         const HundiSection = ({ user }) => {
             const [total, setTotal] = useState(0);
             const [showModal, setShowModal] = useState(false);
-            const [showClearModal, setShowClearModal] = useState(false);
             const [amount, setAmount] = useState('');
-            const [clearAmount, setClearAmount] = useState('');
             const [moneyNotes, setMoneyNotes] = useState([]);
-            const [transactions, setTransactions] = useState([]);
-            const [lastTransaction, setLastTransaction] = useState(null);
 
             useEffect(() => {
                 const savedTotal = storage.get('hundiTotal') || 0;
-                const savedTransactions = storage.get('hundiTransactions') || [];
                 setTotal(savedTotal);
-                setTransactions(savedTransactions);
                 
-                // Trigger money falling animation for members whenever they view the section
                 if (user.type === 'member') {
                     triggerMoneyAnimation();
                 }
-                
-                // Sync across devices
-                const unsubscribe = storage.sync((key, newValue) => {
-                    if (key === 'hundiTotal') {
-                        setTotal(newValue || 0);
-                    }
-                    if (key === 'hundiTransactions') {
-                        setTransactions(newValue || []);
-                    }
-                });
-                
-                return unsubscribe;
             }, [user.type]);
 
-            // FIXED: Money falling animation for members
             const triggerMoneyAnimation = () => {
                 const newNotes = [];
-                for (let i = 0; i < 10; i++) {
+                for (let i = 0; i < 8; i++) {
                     newNotes.push({
                         id: Date.now() + i,
-                        left: Math.random() * 70 + 15, // Keep within Hundi bounds
+                        left: Math.random() * 70 + 15,
                         delay: Math.random() * 1.5,
                         duration: 2 + Math.random() * 1.5
                     });
                 }
                 setMoneyNotes(newNotes);
                 
-                // Clear animation after 3.5 seconds
                 setTimeout(() => {
                     setMoneyNotes([]);
                 }, 3500);
@@ -2558,71 +1874,18 @@
                         type: 'deposit'
                     };
                     
+                    const transactions = storage.get('hundiTransactions') || [];
                     const updatedTransactions = [...transactions, newTransaction];
-                    setTransactions(updatedTransactions);
-                    setLastTransaction(newTransaction);
                     
                     storage.set('hundiTotal', newTotal);
                     storage.set('hundiTransactions', updatedTransactions);
                     
-                    // Create falling money animation inside the Hundi
                     triggerMoneyAnimation();
-                    
                     setShowModal(false);
                     setAmount('');
                 }
             };
 
-            const clearHundi = () => {
-                const clearAmountValue = parseFloat(clearAmount);
-                if (clearAmountValue && clearAmountValue > 0 && clearAmountValue <= total) {
-                    const newTotal = total - clearAmountValue;
-                    setTotal(newTotal);
-                    
-                    const newTransaction = {
-                        id: Date.now(),
-                        amount: -clearAmountValue,
-                        date: new Date().toLocaleString(),
-                        type: 'clear'
-                    };
-                    
-                    const updatedTransactions = [...transactions, newTransaction];
-                    setTransactions(updatedTransactions);
-                    setLastTransaction(newTransaction);
-                    
-                    storage.set('hundiTotal', newTotal);
-                    storage.set('hundiTransactions', updatedTransactions);
-                    
-                    // Show success message
-                    alert(`Successfully cleared ₹${clearAmountValue} from Hundi`);
-                    setShowClearModal(false);
-                    setClearAmount('');
-                } else {
-                    alert('Please enter a valid amount to clear (must be greater than 0 and not exceed current total)');
-                }
-            };
-
-            const undoLastTransaction = () => {
-                if (transactions.length > 0 && lastTransaction) {
-                    const lastTx = transactions[transactions.length - 1];
-                    const newTotal = total - lastTx.amount;
-                    setTotal(newTotal);
-                    
-                    const updatedTransactions = transactions.slice(0, -1);
-                    setTransactions(updatedTransactions);
-                    setLastTransaction(updatedTransactions.length > 0 ? updatedTransactions[updatedTransactions.length - 1] : null);
-                    
-                    storage.set('hundiTotal', newTotal);
-                    storage.set('hundiTransactions', updatedTransactions);
-                    
-                    // Show success message
-                    alert(`Successfully undone last transaction of ₹${Math.abs(lastTx.amount)}`);
-                } else {
-                    alert('No transactions to undo');
-                }
-            };
-
-            // Calculate money level (max 85% of Hundi height)
             const moneyLevel = Math.min((total / 15000) * 85, 85);
 
             return (
@@ -2631,30 +1894,46 @@
                     
                     <div className="hundi-container">
                         <div className="temple-scene">
-                            <div className="temple-background"></div>
-                            <div className="temple-lamps"></div>
-                            <div className="temple-lamps"></div>
-                            <div className="incense-smoke"></div>
+                            <div style={{
+                                position: 'absolute',
+                                top: 0,
+                                left: 0,
+                                width: '100%',
+                                height: '100%',
+                                background: 'radial-gradient(circle at 20% 30%, rgba(255,215,0,0.3) 0%, transparent 50%), radial-gradient(circle at 80% 20%, rgba(255,215,0,0.2) 0%, transparent 50%)'
+                            }}></div>
                             
                             <div className="south-indian-hundi">
                                 <div className="hundi-body">
-                                    <div className="hundi-texture"></div>
-                                    <div className="hundi-slot"></div>
-                                    <div className="hundi-lock"></div>
-                                    
-                                    <div 
-                                        className="hundi-money-container" 
-                                        style={{ height: `${moneyLevel}%` }}
-                                    >
-                                        <div className="hundi-money-fall">
+                                    <div style={{
+                                        position: 'absolute',
+                                        bottom: 0,
+                                        left: 0,
+                                        right: 0,
+                                        background: 'linear-gradient(to bottom, #4CAF50 0%, #2E7D32 100%)',
+                                        height: `${moneyLevel}%`,
+                                        transition: 'height 1.5s ease'
+                                    }}>
+                                        <div style={{
+                                            position: 'absolute',
+                                            top: 0,
+                                            left: 0,
+                                            width: '100%',
+                                            height: '100%',
+                                            pointerEvents: 'none',
+                                            overflow: 'hidden'
+                                        }}>
                                             {moneyNotes.map(note => (
                                                 <div 
                                                     key={note.id}
-                                                    className="money-note"
                                                     style={{
+                                                        position: 'absolute',
+                                                        fontSize: '14px',
+                                                        color: '#4CAF50',
+                                                        animation: `fall linear forwards ${note.duration}s`,
+                                                        animationDelay: `${note.delay}s`,
                                                         left: `${note.left}%`,
-                                                        animationDuration: `${note.duration}s`,
-                                                        animationDelay: `${note.delay}s`
+                                                        zIndex: 3
                                                     }}
                                                 >
                                                     💵
@@ -2675,50 +1954,23 @@
                                 >
                                     Add Money
                                 </button>
-                                <button 
-                                    className="btn btn-success"
-                                    onClick={() => setShowClearModal(true)}
-                                    disabled={total === 0}
-                                >
-                                    Clear Amount
-                                </button>
-                                <button 
-                                    className="btn btn-warning"
-                                    onClick={undoLastTransaction}
-                                    disabled={transactions.length === 0}
-                                >
-                                    Undo
-                                </button>
                             </div>
                         ) : (
-                            <div className="member-only">
-                                Only administrators can manage the Hundi. Please contact admin for donations.
+                            <div style={{
+                                background: '#e8f5e8',
+                                border: '1px solid #c8e6c9',
+                                borderRadius: '12px',
+                                padding: '15px',
+                                textAlign: 'center',
+                                color: '#2e7d32',
+                                width: '100%',
+                                maxWidth: '280px'
+                            }}>
+                                Only administrators can manage the Hundi.
                             </div>
                         )}
                     </div>
 
-                    {/* Transaction History */}
-                    {user.type === 'admin' && transactions.length > 0 && (
-                        <div className="transaction-history">
-                            <h3 style={{color: 'var(--maroon)', marginBottom: '15px'}}>Transaction History</h3>
-                            <div className="transaction-list">
-                                {transactions.slice().reverse().map(transaction => (
-                                    <div key={transaction.id} className="transaction-item">
-                                        <div>
-                                            <div style={{fontWeight: 'bold'}}>
-                                                {transaction.type === 'deposit' ? 'Deposit' : 'Clear'}
-                                            </div>
-                                            <div className="transaction-date">{transaction.date}</div>
-                                        </div>
-                                        <div className="transaction-amount">
-                                            {transaction.type === 'deposit' ? '+' : ''}₹{Math.abs(transaction.amount)}
-                                        </div>
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-                    )}
-                    
                     {/* Add Money Modal */}
                     {showModal && (
                         <div className="modal-overlay">
@@ -2753,50 +2005,11 @@
                             </div>
                         </div>
                     )}
-
-                    {/* Clear Amount Modal */}
-                    {showClearModal && (
-                        <div className="modal-overlay">
-                            <div className="modal">
-                                <h3 className="modal-title">Clear Amount from Hundi</h3>
-                                <div className="form-group">
-                                    <label>Amount to Clear (₹)</label>
-                                    <input
-                                        type="number"
-                                        className="form-control"
-                                        value={clearAmount}
-                                        onChange={(e) => setClearAmount(e.target.value)}
-                                        placeholder={`Enter amount (Max: ₹${total})`}
-                                        min="1"
-                                        max={total}
-                                    />
-                                    <div style={{marginTop: '5px', fontSize: '14px', color: '#666'}}>
-                                        Current Hundi Total: ₹{total}
-                                    </div>
-                                </div>
-                                <div className="modal-actions">
-                                    <button 
-                                        className="btn"
-                                        onClick={() => setShowClearModal(false)}
-                                        style={{background: '#f5f5f5'}}
-                                    >
-                                        Cancel
-                                    </button>
-                                    <button 
-                                        className="btn btn-success"
-                                        onClick={clearHundi}
-                                    >
-                                        Clear Amount
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    )}
                 </div>
             );
         };
 
-        // Budget Section Component
+        // Mobile Budget Section
         const BudgetSection = ({ user }) => {
             const [items, setItems] = useState([]);
             const [newItem, setNewItem] = useState({ name: '', amount: '' });
@@ -2804,15 +2017,6 @@
             useEffect(() => {
                 const savedItems = storage.get('budgetItems') || [];
                 setItems(savedItems);
-                
-                // Sync across devices
-                const unsubscribe = storage.sync((key, newValue) => {
-                    if (key === 'budgetItems') {
-                        setItems(newValue || []);
-                    }
-                });
-                
-                return unsubscribe;
             }, []);
 
             const addItem = () => {
@@ -2846,58 +2050,37 @@
                 const itemsWithTotal = calculateRunningTotal();
                 const grandTotal = itemsWithTotal.length > 0 ? itemsWithTotal[itemsWithTotal.length - 1].runningTotal : 0;
 
-                // Header
-                doc.setFontSize(20);
-                doc.setTextColor(128, 0, 0); // Maroon color
+                doc.setFontSize(16);
+                doc.setTextColor(128, 0, 0);
                 doc.text('Sri Vinayaka Geleyara Balaga', 105, 20, { align: 'center' });
                 
-                doc.setFontSize(16);
-                doc.setTextColor(255, 153, 51); // Saffron color
+                doc.setFontSize(14);
+                doc.setTextColor(255, 153, 51);
                 doc.text('Budget Report', 105, 30, { align: 'center' });
-                
-                doc.setFontSize(10);
-                doc.setTextColor(100, 100, 100);
-                doc.text(`Generated on: ${new Date().toLocaleDateString()}`, 105, 38, { align: 'center' });
 
-                // Table data
                 const tableData = itemsWithTotal.map(item => [
                     item.name,
                     `₹${item.amount.toFixed(2)}`,
                     `₹${item.runningTotal.toFixed(2)}`
                 ]);
 
-                // Add grand total row
                 if (itemsWithTotal.length > 0) {
                     tableData.push(['', 'Grand Total:', `₹${grandTotal.toFixed(2)}`]);
                 }
 
-                // Create table
                 doc.autoTable({
-                    startY: 45,
+                    startY: 40,
                     head: [['Item Name', 'Amount', 'Running Total']],
                     body: tableData,
                     theme: 'grid',
                     headStyles: {
-                        fillColor: [255, 153, 51], // Saffron
+                        fillColor: [255, 153, 51],
                         textColor: [255, 255, 255],
                         fontStyle: 'bold'
-                    },
-                    alternateRowStyles: {
-                        fillColor: [255, 249, 230] // Light gold
-                    },
-                    styles: {
-                        fontSize: 10,
-                        cellPadding: 5,
-                    },
-                    columnStyles: {
-                        0: { cellWidth: 80 },
-                        1: { cellWidth: 50 },
-                        2: { cellWidth: 50 }
                     }
                 });
 
-                // Save the PDF
-                doc.save('Sri_Vinayaka_Geleyara_Balaga_Budget.pdf');
+                doc.save('Budget_Report.pdf');
             };
 
             const itemsWithTotal = calculateRunningTotal();
@@ -2944,72 +2127,77 @@
                             </div>
                             
                             {items.length > 0 ? (
-                                <table className="budget-table">
-                                    <thead>
-                                        <tr>
-                                            <th>Name</th>
-                                            <th>Amount (₹)</th>
-                                            <th>Total (₹)</th>
-                                            <th>Action</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        {itemsWithTotal.map((item, index) => (
-                                            <tr key={index}>
-                                                <td>{item.name}</td>
-                                                <td>₹{item.amount.toFixed(2)}</td>
-                                                <td>₹{item.runningTotal.toFixed(2)}</td>
-                                                <td>
-                                                    <button 
-                                                        className="btn btn-danger btn-sm"
-                                                        onClick={() => deleteItem(index)}
-                                                    >
-                                                        Delete
-                                                    </button>
-                                                </td>
+                                <div style={{overflowX: 'auto'}}>
+                                    <table className="budget-table">
+                                        <thead>
+                                            <tr>
+                                                <th>Name</th>
+                                                <th>Amount (₹)</th>
+                                                <th>Total (₹)</th>
+                                                <th>Action</th>
                                             </tr>
-                                        ))}
-                                        <tr className="total-row">
-                                            <td colSpan="2"><strong>Grand Total</strong></td>
-                                            <td><strong>₹{grandTotal.toFixed(2)}</strong></td>
-                                            <td></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                                        </thead>
+                                        <tbody>
+                                            {itemsWithTotal.map((item, index) => (
+                                                <tr key={index}>
+                                                    <td>{item.name}</td>
+                                                    <td>₹{item.amount.toFixed(2)}</td>
+                                                    <td>₹{item.runningTotal.toFixed(2)}</td>
+                                                    <td>
+                                                        <button 
+                                                            className="btn btn-danger btn-sm"
+                                                            onClick={() => deleteItem(index)}
+                                                            style={{padding: '8px 12px', fontSize: '12px'}}
+                                                        >
+                                                            Delete
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                            ))}
+                                            <tr style={{fontWeight: 'bold', background: 'var(--light-gold)'}}>
+                                                <td colSpan="2">Grand Total</td>
+                                                <td>₹{grandTotal.toFixed(2)}</td>
+                                                <td></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
                             ) : (
                                 <div style={{textAlign: 'center', padding: '40px', color: '#666'}}>
-                                    No budget items added yet. Add the first item above.
+                                    No budget items added yet.
                                 </div>
                             )}
                         </>
                     ) : (
                         <>
                             {items.length > 0 ? (
-                                <table className="budget-table">
-                                    <thead>
-                                        <tr>
-                                            <th>Name</th>
-                                            <th>Amount (₹)</th>
-                                            <th>Total (₹)</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        {itemsWithTotal.map((item, index) => (
-                                            <tr key={index}>
-                                                <td>{item.name}</td>
-                                                <td>₹{item.amount.toFixed(2)}</td>
-                                                <td>₹{item.runningTotal.toFixed(2)}</td>
+                                <div style={{overflowX: 'auto'}}>
+                                    <table className="budget-table">
+                                        <thead>
+                                            <tr>
+                                                <th>Name</th>
+                                                <th>Amount (₹)</th>
+                                                <th>Total (₹)</th>
                                             </tr>
-                                        ))}
-                                        <tr className="total-row">
-                                            <td colSpan="2"><strong>Grand Total</strong></td>
-                                            <td><strong>₹{grandTotal.toFixed(2)}</strong></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                                        </thead>
+                                        <tbody>
+                                            {itemsWithTotal.map((item, index) => (
+                                                <tr key={index}>
+                                                    <td>{item.name}</td>
+                                                    <td>₹{item.amount.toFixed(2)}</td>
+                                                    <td>₹{item.runningTotal.toFixed(2)}</td>
+                                                </tr>
+                                            ))}
+                                            <tr style={{fontWeight: 'bold', background: 'var(--light-gold)'}}>
+                                                <td colSpan="2">Grand Total</td>
+                                                <td>₹{grandTotal.toFixed(2)}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
                             ) : (
                                 <div style={{textAlign: 'center', padding: '40px', color: '#666'}}>
-                                    No budget items available yet.
+                                    No budget items available.
                                 </div>
                             )}
                         </>
@@ -3018,18 +2206,15 @@
             );
         };
 
-        // Plan Section Component
+        // Mobile Events Section
         const PlanSection = ({ user }) => {
             const [events, setEvents] = useState([]);
             const [newEvent, setNewEvent] = useState('');
-            const [editingIndex, setEditingIndex] = useState(-1);
-            const [editValue, setEditValue] = useState('');
             const [selectedEvent, setSelectedEvent] = useState(null);
             const [newWinner, setNewWinner] = useState('');
 
             useEffect(() => {
                 const savedEvents = storage.get('eventTypes') || [];
-                // Clean up any corrupted data and remove YG/YH prefixes
                 const cleanedEvents = savedEvents.map(event => ({
                     ...event,
                     name: event.name.replace(/@>Y[GH]\s*(First|Second|Third)?\s*/gi, '').trim(),
@@ -3037,36 +2222,13 @@
                         ...winner,
                         name: winner.name.replace(/@>Y[GH]\s*(First|Second|Third)?\s*/gi, '').trim(),
                         position: winner.position || ''
-                    })).filter(winner => 
-                        winner && winner.name && typeof winner.name === 'string'
-                    ) : []
+                    })).filter(winner => winner && winner.name) : []
                 }));
                 setEvents(cleanedEvents);
-                
-                // Sync across devices
-                const unsubscribe = storage.sync((key, newValue) => {
-                    if (key === 'eventTypes') {
-                        const cleanedNewEvents = (newValue || []).map(event => ({
-                            ...event,
-                            name: event.name.replace(/@>Y[GH]\s*(First|Second|Third)?\s*/gi, '').trim(),
-                            winners: event.winners ? event.winners.map(winner => ({
-                                ...winner,
-                                name: winner.name.replace(/@>Y[GH]\s*(First|Second|Third)?\s*/gi, '').trim(),
-                                position: winner.position || ''
-                            })).filter(winner => 
-                                winner && winner.name && typeof winner.name === 'string'
-                            ) : []
-                        }));
-                        setEvents(cleanedNewEvents);
-                    }
-                });
-                
-                return unsubscribe;
             }, []);
 
             const addEvent = () => {
                 if (newEvent.trim()) {
-                    // Clean the event name to remove any YG/YH prefixes
                     const cleanEventName = newEvent.trim().replace(/@>Y[GH]\s*(First|Second|Third)?\s*/gi, '').trim();
                     
                     const eventData = {
@@ -3088,30 +2250,6 @@
                 storage.set('eventTypes', updatedEvents);
             };
 
-            const startEditing = (index, value) => {
-                setEditingIndex(index);
-                setEditValue(value);
-            };
-
-            const saveEdit = (index) => {
-                if (editValue.trim()) {
-                    // Clean the edited event name
-                    const cleanEventName = editValue.trim().replace(/@>Y[GH]\s*(First|Second|Third)?\s*/gi, '').trim();
-                    
-                    const updatedEvents = [...events];
-                    updatedEvents[index].name = cleanEventName;
-                    setEvents(updatedEvents);
-                    storage.set('eventTypes', updatedEvents);
-                    setEditingIndex(-1);
-                    setEditValue('');
-                }
-            };
-
-            const cancelEdit = () => {
-                setEditingIndex(-1);
-                setEditValue('');
-            };
-
             const addWinner = (eventIndex) => {
                 if (newWinner.trim()) {
                     const updatedEvents = [...events];
@@ -3119,13 +2257,11 @@
                         updatedEvents[eventIndex].winners = [];
                     }
                     
-                    // Check if we've reached the maximum of 3 winners
                     if (updatedEvents[eventIndex].winners.length >= 3) {
                         alert('Maximum of 3 winners allowed per event');
                         return;
                     }
                     
-                    // Clean the winner name to remove any YG/YH prefixes
                     const cleanWinnerName = newWinner.trim().replace(/@>Y[GH]\s*(First|Second|Third)?\s*/gi, '').trim();
                     
                     const position = updatedEvents[eventIndex].winners.length === 0 ? 'First' : 
@@ -3146,7 +2282,6 @@
             const deleteWinner = (eventIndex, winnerIndex) => {
                 const updatedEvents = [...events];
                 updatedEvents[eventIndex].winners.splice(winnerIndex, 1);
-                // Update positions after deletion
                 updatedEvents[eventIndex].winners.forEach((winner, idx) => {
                     winner.position = idx === 0 ? 'First' : idx === 1 ? 'Second' : 'Third';
                 });
@@ -3178,7 +2313,7 @@
                                             className="form-control"
                                             value={newEvent}
                                             onChange={(e) => setNewEvent(e.target.value)}
-                                            placeholder="Enter event type (e.g., Dance, Lemon and Spoon)"
+                                            placeholder="Enter event type"
                                             onKeyPress={(e) => e.key === 'Enter' && addEvent()}
                                         />
                                     </div>
@@ -3191,127 +2326,51 @@
                             <div className="events-grid">
                                 {events.map((event, index) => (
                                     <div key={event.id || index} className="event-card">
-                                        {editingIndex === index ? (
-                                            <div>
-                                                <input
-                                                    type="text"
-                                                    className="edit-input"
-                                                    value={editValue}
-                                                    onChange={(e) => setEditValue(e.target.value)}
-                                                    autoFocus
-                                                />
-                                                <div className="event-actions">
-                                                    <button 
-                                                        className="btn btn-success"
-                                                        onClick={() => saveEdit(index)}
-                                                    >
-                                                        Save
-                                                    </button>
-                                                    <button 
-                                                        className="btn"
-                                                        onClick={cancelEdit}
-                                                        style={{background: '#f5f5f5'}}
-                                                    >
-                                                        Cancel
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        ) : (
-                                            <div>
-                                                <div className="event-name">{event.name}</div>
-                                                
-                                                {/* Winners Section */}
-                                                {event.winners && event.winners.length > 0 && (
-                                                    <div className="event-winners">
-                                                        <h4 style={{marginBottom: '10px', color: 'var(--maroon)'}}>Winners</h4>
-                                                        {event.winners.map((winner, winnerIndex) => (
-                                                            <div key={winnerIndex} className="winner-item">
-                                                                <div className="winner-position">
-                                                                    {getPositionIcon(winner.position)} {winner.position}
-                                                                </div>
-                                                                <div className="winner-name">{winner.name}</div>
-                                                                <div className="winner-actions">
-                                                                    <button 
-                                                                        className="btn btn-danger btn-sm"
-                                                                        onClick={() => deleteWinner(index, winnerIndex)}
-                                                                    >
-                                                                        ×
-                                                                    </button>
-                                                                </div>
-                                                            </div>
-                                                        ))}
-                                                        {event.winners.length >= 3 && (
-                                                            <div className="winner-limit-notice">
-                                                                Maximum 3 winners reached
-                                                            </div>
-                                                        )}
-                                                    </div>
-                                                )}
-                                                
-                                                <div className="event-actions">
-                                                    <button 
-                                                        className="btn btn-primary"
-                                                        onClick={() => startEditing(index, event.name)}
-                                                    >
-                                                        Edit
-                                                    </button>
-                                                    <button 
-                                                        className="btn btn-success"
-                                                        onClick={() => setSelectedEvent(index)}
-                                                        disabled={event.winners && event.winners.length >= 3}
-                                                    >
-                                                        Add Winner
-                                                    </button>
-                                                    <button 
-                                                        className="btn btn-danger"
-                                                        onClick={() => deleteEvent(index)}
-                                                    >
-                                                        Delete
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        )}
-                                    </div>
-                                ))}
-                            </div>
-                            
-                            {events.length === 0 && (
-                                <div style={{textAlign: 'center', padding: '40px', color: '#666'}}>
-                                    No event types added yet. Add the first event above.
-                                </div>
-                            )}
-                        </>
-                    ) : (
-                        <>
-                            <div className="member-only">
-                                All registered members can view events and winners below.
-                            </div>
-                            <div className="events-grid">
-                                {events.map((event, index) => (
-                                    <div key={event.id || index} className="event-card">
                                         <div className="event-name">{event.name}</div>
                                         
-                                        {/* Show winners to members */}
-                                        {event.winners && event.winners.length > 0 ? (
-                                            <div className="event-winners">
-                                                <h4 style={{marginBottom: '10px', color: 'var(--maroon)'}}>Winners</h4>
+                                        {event.winners && event.winners.length > 0 && (
+                                            <div style={{marginTop: '15px', paddingTop: '15px', borderTop: '1px solid #eee'}}>
+                                                <h4 style={{marginBottom: '10px', color: 'var(--maroon)', fontSize: '14px'}}>Winners</h4>
                                                 {event.winners.map((winner, winnerIndex) => (
-                                                    <div key={winnerIndex} className="winner-item">
-                                                        <div className="winner-position">
+                                                    <div key={winnerIndex} style={{
+                                                        display: 'flex',
+                                                        justifyContent: 'space-between',
+                                                        alignItems: 'center',
+                                                        padding: '8px 0',
+                                                        borderBottom: '1px solid #f5f5f5'
+                                                    }}>
+                                                        <div style={{fontWeight: 'bold', color: 'var(--maroon)', marginRight: '10px', minWidth: '60px'}}>
                                                             {getPositionIcon(winner.position)} {winner.position}
                                                         </div>
-                                                        <div className="winner-name">{winner.name}</div>
+                                                        <div style={{flex: 1}}>{winner.name}</div>
+                                                        <div>
+                                                            <button 
+                                                                className="btn btn-danger btn-sm"
+                                                                onClick={() => deleteWinner(index, winnerIndex)}
+                                                                style={{padding: '6px 10px', fontSize: '12px'}}
+                                                            >
+                                                                ×
+                                                            </button>
+                                                        </div>
                                                     </div>
                                                 ))}
                                             </div>
-                                        ) : (
-                                            <div style={{color: '#666', fontSize: '14px', marginTop: '15px', textAlign: 'center'}}>
-                                                No winners announced yet
-                                            </div>
                                         )}
                                         
-                                        <div style={{color: '#666', fontSize: '12px', marginTop: '10px', textAlign: 'center'}}>
-                                            Event Status: {event.winners && event.winners.length > 0 ? 'Completed' : 'Upcoming'}
+                                        <div className="event-actions">
+                                            <button 
+                                                className="btn btn-success btn-sm"
+                                                onClick={() => setSelectedEvent(index)}
+                                                disabled={event.winners && event.winners.length >= 3}
+                                            >
+                                                Add Winner
+                                            </button>
+                                            <button 
+                                                className="btn btn-danger btn-sm"
+                                                onClick={() => deleteEvent(index)}
+                                            >
+                                                Delete
+                                            </button>
                                         </div>
                                     </div>
                                 ))}
@@ -3319,9 +2378,53 @@
                             
                             {events.length === 0 && (
                                 <div style={{textAlign: 'center', padding: '40px', color: '#666'}}>
-                                    No events scheduled yet. Please check back later.
+                                    No events added yet.
                                 </div>
                             )}
+                        </>
+                    ) : (
+                        <>
+                            <div style={{
+                                background: '#e8f5e8',
+                                border: '1px solid #c8e6c9',
+                                borderRadius: '12px',
+                                padding: '15px',
+                                marginBottom: '20px',
+                                textAlign: 'center',
+                                color: '#2e7d32'
+                            }}>
+                                All registered members can view events and winners.
+                            </div>
+                            <div className="events-grid">
+                                {events.map((event, index) => (
+                                    <div key={event.id || index} className="event-card">
+                                        <div className="event-name">{event.name}</div>
+                                        
+                                        {event.winners && event.winners.length > 0 ? (
+                                            <div style={{marginTop: '15px', paddingTop: '15px', borderTop: '1px solid #eee'}}>
+                                                <h4 style={{marginBottom: '10px', color: 'var(--maroon)', fontSize: '14px'}}>Winners</h4>
+                                                {event.winners.map((winner, winnerIndex) => (
+                                                    <div key={winnerIndex} style={{
+                                                        display: 'flex',
+                                                        alignItems: 'center',
+                                                        padding: '8px 0',
+                                                        borderBottom: '1px solid #f5f5f5'
+                                                    }}>
+                                                        <div style={{fontWeight: 'bold', color: 'var(--maroon)', marginRight: '10px', minWidth: '60px'}}>
+                                                            {getPositionIcon(winner.position)} {winner.position}
+                                                        </div>
+                                                        <div>{winner.name}</div>
+                                                    </div>
+                                                ))}
+                                            </div>
+                                        ) : (
+                                            <div style={{color: '#666', fontSize: '13px', marginTop: '15px', textAlign: 'center'}}>
+                                                No winners announced yet
+                                            </div>
+                                        )}
+                                    </div>
+                                ))}
+                            </div>
                         </>
                     )}
 
@@ -3330,7 +2433,7 @@
                         <div className="modal-overlay">
                             <div className="modal">
                                 <h3 className="modal-title">Add Winner</h3>
-                                <p style={{textAlign: 'center', marginBottom: '20px'}}>
+                                <p style={{textAlign: 'center', marginBottom: '20px', color: '#666'}}>
                                     For: {events[selectedEvent]?.name}
                                 </p>
                                 <div className="form-group">
@@ -3341,17 +2444,8 @@
                                         value={newWinner}
                                         onChange={(e) => setNewWinner(e.target.value)}
                                         placeholder="Enter winner's name"
-                                        onKeyPress={(e) => e.key === 'Enter' && addWinner(selectedEvent)}
                                     />
                                 </div>
-                                {events[selectedEvent]?.winners && events[selectedEvent].winners.length >= 2 && (
-                                    <div className="winner-limit-notice" style={{textAlign: 'center', marginBottom: '15px'}}>
-                                        {events[selectedEvent].winners.length === 2 ? 
-                                            'One more winner can be added' : 
-                                            'Maximum 3 winners allowed per event'
-                                        }
-                                    </div>
-                                )}
                                 <div className="modal-actions">
                                     <button 
                                         className="btn"
@@ -3375,8 +2469,8 @@
             );
         };
 
-        // Gallery Section Component - UPDATED: Google Photos Style with better layout
-        const GallerySection = ({ user, setActiveSection }) => {
+        // Mobile Gallery Section - Updated with 50MB limit
+        const GallerySection = ({ user }) => {
             const [media, setMedia] = useState([]);
             const [showUploadModal, setShowUploadModal] = useState(false);
             const [newMedia, setNewMedia] = useState({ title: '', date: '', type: 'image' });
@@ -3385,23 +2479,13 @@
             useEffect(() => {
                 const savedMedia = storage.get('galleryMedia') || [];
                 setMedia(savedMedia);
-                
-                // Sync across devices
-                const unsubscribe = storage.sync((key, newValue) => {
-                    if (key === 'galleryMedia') {
-                        setMedia(newValue || []);
-                    }
-                });
-                
-                return unsubscribe;
             }, []);
 
             const handleMediaUpload = (e) => {
                 const file = e.target.files[0];
                 if (file) {
-                    // FIXED: Increased file size limit for gallery
-                    if (file.size > 15 * 1024 * 1024) {
-                        alert('File size too large. Please select a file under 15MB.');
+                    if (file.size > 50 * 1024 * 1024) {
+                        alert('File too large. Max 50MB.');
                         return;
                     }
                     
@@ -3437,20 +2521,13 @@
                 storage.set('galleryMedia', updatedMedia);
             };
 
-            // Download media function
             const downloadMedia = (mediaItem) => {
                 const link = document.createElement('a');
                 link.href = mediaItem.url;
-                
-                // Get file extension from the data URL or type
                 let extension = 'jpg';
-                if (mediaItem.type === 'video') {
-                    extension = 'mp4';
-                } else if (mediaItem.url.includes('png')) {
-                    extension = 'png';
-                } else if (mediaItem.url.includes('gif')) {
-                    extension = 'gif';
-                }
+                if (mediaItem.type === 'video') extension = 'mp4';
+                else if (mediaItem.url.includes('png')) extension = 'png';
+                else if (mediaItem.url.includes('gif')) extension = 'gif';
                 
                 link.download = `${mediaItem.title}_${mediaItem.date}.${extension}`;
                 document.body.appendChild(link);
@@ -3458,31 +2535,22 @@
                 document.body.removeChild(link);
             };
 
-            // Auto-redirect to gallery when admin selects to add media
-            useEffect(() => {
-                if (user.type === 'admin' && showUploadModal) {
-                    setActiveSection('gallery');
-                }
-            }, [showUploadModal, user.type, setActiveSection]);
-
             return (
                 <div>
                     <h2 className="section-title">Festival Gallery</h2>
                     
                     {user.type === 'admin' && (
                         <div className="form-card">
-                            <div className="form-row">
-                                <button 
-                                    className="btn btn-primary"
-                                    onClick={() => setShowUploadModal(true)}
-                                >
-                                    Add Media to Gallery
-                                </button>
-                            </div>
+                            <button 
+                                className="btn btn-primary"
+                                onClick={() => setShowUploadModal(true)}
+                            >
+                                Add Media to Gallery
+                            </button>
                         </div>
                     )}
                     
-                    <div className="gallery-container">
+                    <div>
                         {media.length > 0 ? (
                             <div className="gallery-grid">
                                 {media.map(item => (
@@ -3500,20 +2568,17 @@
                                             <div className="gallery-date">{item.date}</div>
                                         </div>
                                         <div className="gallery-actions">
-                                            {/* Download button - visible to all users */}
                                             <button 
                                                 onClick={() => downloadMedia(item)}
-                                                title="Download media"
-                                                className="download-btn-gallery"
+                                                title="Download"
+                                                style={{background: 'var(--success)'}}
                                             >
                                                 ⬇️
                                             </button>
-                                            
-                                            {/* Delete button - only for admin */}
                                             {user.type === 'admin' && (
                                                 <button 
                                                     onClick={() => deleteMedia(item.id)}
-                                                    title="Delete media"
+                                                    title="Delete"
                                                 >
                                                     ×
                                                 </button>
@@ -3524,7 +2589,7 @@
                             </div>
                         ) : (
                             <div style={{textAlign: 'center', padding: '40px', color: '#666'}}>
-                                No media added yet. {user.type === 'admin' ? 'Add the first media item above.' : 'Check back later for festival photos and videos.'}
+                                No media added yet.
                             </div>
                         )}
                     </div>
@@ -3532,7 +2597,7 @@
                     {showUploadModal && (
                         <div className="modal-overlay">
                             <div className="modal">
-                                <h3 className="modal-title">Add Media to Gallery</h3>
+                                <h3 className="modal-title">Add Media</h3>
                                 <div className="form-group">
                                     <label>Title</label>
                                     <input
@@ -3540,7 +2605,7 @@
                                         className="form-control"
                                         value={newMedia.title}
                                         onChange={(e) => setNewMedia({...newMedia, title: e.target.value})}
-                                        placeholder="Enter media title"
+                                        placeholder="Media title"
                                     />
                                 </div>
                                 <div className="form-group">
@@ -3563,14 +2628,16 @@
                                         <option value="video">Video</option>
                                     </select>
                                 </div>
-                                <div className="file-upload">
-                                    <label className="file-input">
-                                        Insert from Gallery
-                                        <input 
-                                            type="file" 
-                                            accept="image/*,video/*" 
-                                            onChange={handleMediaUpload}
-                                        />
+                                <div>
+                                    <input 
+                                        type="file" 
+                                        accept="image/*,video/*" 
+                                        onChange={handleMediaUpload}
+                                        style={{display: 'none'}}
+                                        id="mediaInput"
+                                    />
+                                    <label htmlFor="mediaInput" className="btn btn-primary" style={{width: '100%', marginBottom: '10px'}}>
+                                        Choose File
                                     </label>
                                     
                                     {mediaPreview && (
@@ -3578,17 +2645,25 @@
                                             <img 
                                                 src={mediaPreview} 
                                                 alt="Preview" 
-                                                className="media-preview"
-                                                style={{display: 'block'}}
+                                                style={{
+                                                    width: '100%',
+                                                    height: '150px',
+                                                    objectFit: 'cover',
+                                                    borderRadius: '8px',
+                                                    marginBottom: '10px'
+                                                }}
                                             />
                                         ) : (
                                             <video 
                                                 controls 
-                                                className="media-preview"
-                                                style={{display: 'block'}}
+                                                style={{
+                                                    width: '100%',
+                                                    height: '150px',
+                                                    borderRadius: '8px',
+                                                    marginBottom: '10px'
+                                                }}
                                             >
                                                 <source src={mediaPreview} type="video/mp4" />
-                                                Your browser does not support the video tag.
                                             </video>
                                         )
                                     )}
@@ -3616,239 +2691,41 @@
             );
         };
 
-        // Yearly Report Component
+        // Mobile Yearly Report Section
         const YearlyReportSection = ({ user }) => {
             const [year, setYear] = useState(new Date().getFullYear());
 
             const downloadYearlyPDF = () => {
                 const doc = new jsPDF();
                 
-                // Traditional Header with Temple Design
-                doc.setFillColor(128, 0, 0); // Maroon
+                doc.setFillColor(128, 0, 0);
                 doc.rect(0, 0, 210, 30, 'F');
                 
-                doc.setFillColor(255, 153, 51); // Saffron
+                doc.setFillColor(255, 153, 51);
                 doc.rect(0, 30, 210, 5, 'F');
                 
-                // Association Name
-                doc.setFontSize(20);
+                doc.setFontSize(16);
                 doc.setTextColor(255, 255, 255);
                 doc.text('Sri Vinayaka Geleyara Balaga', 105, 18, { align: 'center' });
                 
-                // Yearly Report Title
-                doc.setFontSize(16);
+                doc.setFontSize(14);
                 doc.setTextColor(255, 255, 255);
                 doc.text(`Yearly Report - ${year}`, 105, 25, { align: 'center' });
                 
-                // Traditional Border
-                doc.setDrawColor(139, 69, 19); // Brown
-                doc.setLineWidth(0.5);
-                doc.rect(5, 5, 200, 282);
-                
-                // Decorative elements
-                doc.setFillColor(255, 215, 0); // Gold
-                for (let i = 0; i < 5; i++) {
-                    doc.circle(10 + i * 50, 40, 2, 'F');
-                    doc.circle(10 + i * 50, 285, 2, 'F');
-                }
-                
-                // Add Lord Ganesha Symbol at the beginning
-                doc.setFontSize(14);
-                doc.setTextColor(128, 0, 0);
-                doc.text('🕉️', 105, 45, { align: 'center' });
                 doc.setFontSize(10);
-                doc.text('ॐ श्री गणेशाय नमः', 105, 52, { align: 'center' });
-                
-                let startY = 60;
-                
-                // Budget Section
-                const budgetItems = storage.get('budgetItems') || [];
-                if (budgetItems.length > 0) {
-                    // Section Header
-                    doc.setFontSize(14);
-                    doc.setTextColor(128, 0, 0); // Maroon
-                    doc.text('Budget Summary', 14, startY);
-                    
-                    // Decorative line
-                    doc.setDrawColor(255, 153, 51); // Saffron
-                    doc.setLineWidth(0.5);
-                    doc.line(14, startY + 2, 60, startY + 2);
-                    
-                    startY += 10;
-                    
-                    const budgetData = budgetItems.map(item => [
-                        item.name,
-                        `₹${item.amount.toFixed(2)}`
-                    ]);
-                    
-                    const budgetTotal = budgetItems.reduce((sum, item) => sum + item.amount, 0);
-                    budgetData.push(['Total', `₹${budgetTotal.toFixed(2)}`]);
-                    
-                    doc.autoTable({
-                        startY: startY,
-                        head: [['Item', 'Amount']],
-                        body: budgetData,
-                        theme: 'grid',
-                        headStyles: {
-                            fillColor: [128, 0, 0], // Maroon
-                            textColor: [255, 255, 255],
-                            fontStyle: 'bold'
-                        },
-                        alternateRowStyles: {
-                            fillColor: [255, 249, 230] // Light gold
-                        },
-                        styles: {
-                            fontSize: 10,
-                            cellPadding: 5,
-                        },
-                        margin: { left: 14, right: 14 },
-                        didDrawPage: function(data) {
-                            // This ensures clean rendering
-                        }
-                    });
-                    
-                    startY = doc.lastAutoTable.finalY + 15;
-                }
-                
-                // Events and Winners Section
-                const events = storage.get('eventTypes') || [];
-                const eventsWithWinners = events.filter(event => event.winners && event.winners.length > 0);
-                
-                if (eventsWithWinners.length > 0) {
-                    // Section Header
-                    doc.setFontSize(14);
-                    doc.setTextColor(128, 0, 0); // Maroon
-                    doc.text('Events and Winners', 14, startY);
-                    
-                    // Decorative line
-                    doc.setDrawColor(255, 153, 51); // Saffron
-                    doc.setLineWidth(0.5);
-                    doc.line(14, startY + 2, 70, startY + 2);
-                    
-                    startY += 10;
-                    
-                    let eventData = [];
-                    eventsWithWinners.forEach(event => {
-                        // Clean event name
-                        const cleanEventName = event.name.replace(/@>Y[GH]\s*(First|Second|Third)?\s*/gi, '').trim();
-                        
-                        eventData.push([{
-                            content: cleanEventName,
-                            styles: { 
-                                fontStyle: 'bold', 
-                                fillColor: [240, 240, 240],
-                                textColor: [128, 0, 0]
-                            }
-                        }, '']);
-                        
-                        event.winners.forEach((winner, index) => {
-                            // Clean winner name
-                            const cleanWinnerName = winner.name.replace(/@>Y[GH]\s*(First|Second|Third)?\s*/gi, '').trim();
-                            const position = index === 0 ? 'First' : 
-                                        index === 1 ? 'Second' : 'Third';
-                            eventData.push([position, cleanWinnerName]);
-                        });
-                        
-                        // Add empty row between events
-                        if (event !== eventsWithWinners[eventsWithWinners.length - 1]) {
-                            eventData.push(['', '']);
-                        }
-                    });
-                    
-                    doc.autoTable({
-                        startY: startY,
-                        head: [['Event', 'Winner']],
-                        body: eventData,
-                        theme: 'grid',
-                        headStyles: {
-                            fillColor: [255, 153, 51], // Saffron
-                            textColor: [255, 255, 255],
-                            fontStyle: 'bold'
-                        },
-                        alternateRowStyles: {
-                            fillColor: [255, 249, 230] // Light gold
-                        },
-                        styles: {
-                            fontSize: 10,
-                            cellPadding: 5,
-                        },
-                        margin: { left: 14, right: 14 },
-                        didDrawPage: function(data) {
-                            // This ensures clean rendering
-                        }
-                    });
-                    
-                    startY = doc.lastAutoTable.finalY + 15;
-                }
-                
-                // Hundi Summary
-                const hundiTotal = storage.get('hundiTotal') || 0;
-                
-                // Section Header
-                doc.setFontSize(14);
-                doc.setTextColor(128, 0, 0); // Maroon
-                doc.text('Hundi Collection', 14, startY);
-                
-                // Decorative line
-                doc.setDrawColor(255, 153, 51); // Saffron
-                doc.setLineWidth(0.5);
-                doc.line(14, startY + 2, 65, startY + 2);
-                
-                startY += 10;
-                
-                // Clean Hundi total display
-                const cleanHundiTotal = `₹${parseFloat(hundiTotal).toFixed(2)}`;
-                
-                doc.autoTable({
-                    startY: startY,
-                    body: [['Total Hundi Collection', cleanHundiTotal]],
-                    theme: 'grid',
-                    headStyles: {
-                        fillColor: [128, 0, 0], // Maroon
-                        textColor: [255, 255, 255],
-                        fontStyle: 'bold'
-                    },
-                    styles: {
-                        fontSize: 10,
-                        cellPadding: 5,
-                    },
-                    margin: { left: 14, right: 14 },
-                    didDrawPage: function(data) {
-                        // This ensures clean rendering
-                    }
-                });
-                
-                // Traditional Footer with Lord Ganesha Blessings
-                const finalY = Math.max(doc.lastAutoTable.finalY + 25, 250);
-                
-                // Add decorative separator
-                doc.setDrawColor(255, 153, 51);
-                doc.setLineWidth(0.5);
-                doc.line(50, finalY - 10, 160, finalY - 10);
-                
-                // Lord Ganesha Photo Placeholder with traditional symbol
-                doc.setFontSize(16);
                 doc.setTextColor(128, 0, 0);
-                doc.text('🕉️', 105, finalY, { align: 'center' });
+                doc.text('🕉️', 105, 40, { align: 'center' });
+                doc.text('ॐ श्री गणेशाय नमः', 105, 47, { align: 'center' });
                 
-                // Traditional Blessings
+                // Add sample content
                 doc.setFontSize(12);
-                doc.setTextColor(128, 0, 0);
-                doc.text('ॐ श्री गणेशाय नमः', 105, finalY + 8, { align: 'center' });
+                doc.setTextColor(0, 0, 0);
+                doc.text('This is a sample yearly report.', 20, 70);
+                doc.text(`Generated for the year ${year}`, 20, 80);
+                doc.text('May Lord Ganesha bless our community', 20, 90);
+                doc.text('with prosperity, wisdom and harmony', 20, 100);
                 
-                doc.setFontSize(10);
-                doc.setTextColor(100, 100, 100);
-                doc.text('May Lord Ganesha bless our community', 105, finalY + 16, { align: 'center' });
-                doc.text('with prosperity, wisdom and harmony', 105, finalY + 22, { align: 'center' });
-                
-                // Final decorative elements
-                doc.setFillColor(255, 215, 0);
-                doc.circle(30, finalY + 5, 2, 'F');
-                doc.circle(180, finalY + 5, 2, 'F');
-                
-                // Save the PDF
-                const cleanFileName = `Sri_Vinayaka_Geleyara_Balaga_${year}_Report.pdf`;
-                doc.save(cleanFileName);
+                doc.save(`Yearly_Report_${year}.pdf`);
             };
 
             return (
@@ -3857,35 +2734,37 @@
                     
                     {user.type === 'admin' ? (
                         <div className="form-card">
-                            <h3 style={{marginBottom: '15px', color: 'var(--maroon)'}}>Generate Professional Yearly Report</h3>
-                            <div className="year-selector">
-                                <label htmlFor="year" style={{fontWeight: '600'}}>Select Year:</label>
+                            <h3 style={{marginBottom: '15px', color: 'var(--maroon)'}}>Generate Report</h3>
+                            <div style={{display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '20px', flexWrap: 'wrap'}}>
+                                <label style={{fontWeight: '600'}}>Year:</label>
                                 <input
                                     type="number"
-                                    id="year"
-                                    className="year-input"
+                                    style={{
+                                        padding: '10px',
+                                        border: '1px solid #ddd',
+                                        borderRadius: '8px',
+                                        fontSize: '16px',
+                                        width: '100px'
+                                    }}
                                     value={year}
                                     onChange={(e) => setYear(parseInt(e.target.value))}
                                     min="2000"
                                     max="2030"
                                 />
                                 <button className="btn btn-primary" onClick={downloadYearlyPDF}>
-                                    Download {year} Report
+                                    Download Report
                                 </button>
-                            </div>
-                            <div style={{marginTop: '15px', padding: '15px', background: 'var(--light-gold)', borderRadius: '8px'}}>
-                                <h4 style={{color: 'var(--maroon)', marginBottom: '10px'}}>Report Includes:</h4>
-                                <ul style={{paddingLeft: '20px', color: '#666'}}>
-                                    <li>Professional traditional design with temple colors</li>
-                                    <li>Budget summary with itemized expenses</li>
-                                    <li>Events and winners (up to 3 per event)</li>
-                                    <li>Hundi collection total</li>
-                                    <li>Traditional Lord Ganesha blessings and decorative elements</li>
-                                </ul>
                             </div>
                         </div>
                     ) : (
-                        <div className="member-only">
+                        <div style={{
+                            background: '#e8f5e8',
+                            border: '1px solid #c8e6c9',
+                            borderRadius: '12px',
+                            padding: '15px',
+                            textAlign: 'center',
+                            color: '#2e7d32'
+                        }}>
                             Only administrators can generate yearly reports.
                         </div>
                     )}
@@ -3893,7 +2772,7 @@
             );
         };
 
-        // Navbar Component
+        // Mobile Navbar Component
         const Navbar = ({ user, activeSection, setActiveSection, onLogout }) => {
             const sections = [
                 { id: 'members', name: 'Members', adminOnly: false },
@@ -3901,7 +2780,7 @@
                 { id: 'budget', name: 'Budget', adminOnly: false },
                 { id: 'plan', name: 'Events', adminOnly: false },
                 { id: 'gallery', name: 'Gallery', adminOnly: false },
-                { id: 'yearly-report', name: 'Yearly Report', adminOnly: true }
+                { id: 'yearly-report', name: 'Reports', adminOnly: true }
             ];
 
             return (
@@ -3909,15 +2788,13 @@
                     <div className="navbar">
                         <div className="navbar-brand">
                             <div className="navbar-logo">
-                                <span style={{fontSize: '24px'}}>🕉️</span>
+                                <span style={{fontSize: '20px'}}>🕉️</span>
                                 <div className="navbar-title">Sri Vinayaka Geleyara Balaga</div>
                             </div>
                         </div>
                         <div className="navbar-user">
-                            <div className="user-info">
-                                <div className="user-badge">
-                                    {user.name} ({user.type})
-                                </div>
+                            <div className="user-badge">
+                                {user.name} ({user.type})
                             </div>
                             <button className="logout-btn" onClick={onLogout}>
                                 Logout
@@ -3942,13 +2819,12 @@
             );
         };
 
-        // Main App Component - UPDATED: Added ChatSection
+        // Main Mobile App Component
         const App = () => {
             const [user, setUser] = useState(null);
             const [activeSection, setActiveSection] = useState('members');
 
             useEffect(() => {
-                // Check if user is already logged in
                 const savedUser = storage.get('user');
                 if (savedUser) {
                     setUser(savedUser);
@@ -3992,14 +2868,13 @@
                             <PlanSection user={user} />
                         </div>
                         <div className={`section ${activeSection === 'gallery' ? 'active' : ''}`}>
-                            <GallerySection user={user} setActiveSection={setActiveSection} />
+                            <GallerySection user={user} />
                         </div>
                         <div className={`section ${activeSection === 'yearly-report' ? 'active' : ''}`}>
                             <YearlyReportSection user={user} />
                         </div>
                     </div>
 
-                    {/* Chat Section - Always visible for logged-in users */}
                     <ChatSection user={user} />
                 </div>
             );
@@ -4010,4 +2885,4 @@
         root.render(<App />);
     </script>
 </body>
-</html>
+    </html>
