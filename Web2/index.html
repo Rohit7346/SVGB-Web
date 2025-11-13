@@ -1508,325 +1508,325 @@
         };
 
         // Mobile Members Section
-        const MembersSection = ({ user }) => {
-            const [members, setMembers] = useState([]);
-            const [newMember, setNewMember] = useState('');
-            const [showDpModal, setShowDpModal] = useState(false);
-            const [selectedMember, setSelectedMember] = useState(null);
-            const [avatarPreview, setAvatarPreview] = useState(null);
-            const [isSyncing, setIsSyncing] = useState(false);
+       const MembersSection = ({ user }) => {
+    const [members, setMembers] = useState([]);
+    const [newMember, setNewMember] = useState('');
+    const [showDpModal, setShowDpModal] = useState(false);
+    const [selectedMember, setSelectedMember] = useState(null);
+    const [avatarPreview, setAvatarPreview] = useState(null);
+    const [isSyncing, setIsSyncing] = useState(false);
 
-            useEffect(() => {
+    useEffect(() => {
+        const savedMembers = storage.get('members') || [];
+        setMembers(savedMembers);
+    }, []);
+
+    const syncToCloud = () => {
+        setIsSyncing(true);
+        try {
+            const currentData = {
+                members: storage.get('members') || [],
+                eventTypes: storage.get('eventTypes') || [],
+                budgetItems: storage.get('budgetItems') || [],
+                hundiTotal: storage.get('hundiTotal') || 0,
+                hundiTransactions: storage.get('hundiTransactions') || [],
+                lastUpdated: Date.now(),
+                syncedBy: user.name
+            };
+            
+            const success = CloudSyncService.saveToCloud(currentData);
+            if (success) {
+                alert('✅ Data synced to cloud!');
+            } else {
+                alert('❌ Sync failed.');
+            }
+        } catch (error) {
+            alert('❌ Sync failed.');
+        } finally {
+            setIsSyncing(false);
+        }
+    };
+
+    const syncFromCloud = () => {
+        setIsSyncing(true);
+        try {
+            const success = storage.syncFromCloud();
+            if (success) {
                 const savedMembers = storage.get('members') || [];
                 setMembers(savedMembers);
-            }, []);
+                alert('✅ Data synced from cloud!');
+            } else {
+                alert('❌ No cloud data found.');
+            }
+        } catch (error) {
+            alert('❌ Sync failed.');
+        } finally {
+            setIsSyncing(false);
+        }
+    };
 
-            const syncToCloud = () => {
-                setIsSyncing(true);
-                try {
-                    const currentData = {
-                        members: storage.get('members') || [],
-                        eventTypes: storage.get('eventTypes') || [],
-                        budgetItems: storage.get('budgetItems') || [],
-                        hundiTotal: storage.get('hundiTotal') || 0,
-                        hundiTransactions: storage.get('hundiTransactions') || [],
-                        lastUpdated: Date.now(),
-                        syncedBy: user.name
-                    };
-                    
-                    const success = CloudSyncService.saveToCloud(currentData);
-                    if (success) {
-                        alert('✅ Data synced to cloud!');
-                    } else {
-                        alert('❌ Sync failed.');
-                    }
-                } catch (error) {
-                    alert('❌ Sync failed.');
-                } finally {
-                    setIsSyncing(false);
-                }
+    const addMember = () => {
+        if (newMember.trim()) {
+            const memberData = {
+                name: newMember.trim(),
+                avatar: null,
+                addedBy: user.name,
+                addedDate: new Date().toISOString(),
+                id: Date.now() + Math.random().toString(36).substr(2, 9)
             };
+            const updatedMembers = [...members, memberData];
+            setMembers(updatedMembers);
+            storage.set('members', updatedMembers);
+            setNewMember('');
+        }
+    };
 
-            const syncFromCloud = () => {
-                setIsSyncing(true);
-                try {
-                    const success = storage.syncFromCloud();
-                    if (success) {
-                        const savedMembers = storage.get('members') || [];
-                        setMembers(savedMembers);
-                        alert('✅ Data synced from cloud!');
-                    } else {
-                        alert('❌ No cloud data found.');
-                    }
-                } catch (error) {
-                    alert('❌ Sync failed.');
-                } finally {
-                    setIsSyncing(false);
-                }
+    const deleteMember = (index) => {
+        const updatedMembers = members.filter((_, i) => i !== index);
+        setMembers(updatedMembers);
+        storage.set('members', updatedMembers);
+    };
+
+    const openDpModal = (member, index) => {
+        setSelectedMember({ ...member, index });
+        setAvatarPreview(member.avatar);
+        setShowDpModal(true);
+    };
+
+    const handleAvatarChange = (e) => {
+        const file = e.target.files[0];
+        if (file) {
+            if (file.size > 10 * 1024 * 1024) {
+                alert('File too large. Max 10MB.');
+                return;
+            }
+            
+            if (!file.type.match('image.*')) {
+                alert('Please select a valid image file.');
+                return;
+            }
+            
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                setAvatarPreview(e.target.result);
             };
+            reader.readAsDataURL(file);
+        }
+    };
 
-            const addMember = () => {
-                if (newMember.trim()) {
-                    const memberData = {
-                        name: newMember.trim(),
-                        avatar: null,
-                        addedBy: user.name,
-                        addedDate: new Date().toISOString(),
-                        id: Date.now() + Math.random().toString(36).substr(2, 9)
-                    };
-                    const updatedMembers = [...members, memberData];
-                    setMembers(updatedMembers);
-                    storage.set('members', updatedMembers);
-                    setNewMember('');
-                }
-            };
+    const saveAvatar = () => {
+        if (selectedMember && avatarPreview) {
+            const updatedMembers = [...members];
+            updatedMembers[selectedMember.index].avatar = avatarPreview;
+            setMembers(updatedMembers);
+            storage.set('members', updatedMembers);
+            setShowDpModal(false);
+            setSelectedMember(null);
+            setAvatarPreview(null);
+        }
+    };
 
-            const deleteMember = (index) => {
-                const updatedMembers = members.filter((_, i) => i !== index);
-                setMembers(updatedMembers);
-                storage.set('members', updatedMembers);
-            };
+    const getInitials = (name) => {
+        return name.split(' ').map(n => n[0]).join('').toUpperCase();
+    };
 
-            const openDpModal = (member, index) => {
-                setSelectedMember({ ...member, index });
-                setAvatarPreview(member.avatar);
-                setShowDpModal(true);
-            };
-
-            const handleAvatarChange = (e) => {
-                const file = e.target.files[0];
-                if (file) {
-                    if (file.size > 10 * 1024 * 1024) {
-                        alert('File too large. Max 10MB.');
-                        return;
-                    }
-                    
-                    if (!file.type.match('image.*')) {
-                        alert('Please select a valid image file.');
-                        return;
-                    }
-                    
-                    const reader = new FileReader();
-                    reader.onload = (e) => {
-                        setAvatarPreview(e.target.result);
-                    };
-                    reader.readAsDataURL(file);
-                }
-            };
-
-            const saveAvatar = () => {
-                if (selectedMember && avatarPreview) {
-                    const updatedMembers = [...members];
-                    updatedMembers[selectedMember.index].avatar = avatarPreview;
-                    setMembers(updatedMembers);
-                    storage.set('members', updatedMembers);
-                    setShowDpModal(false);
-                    setSelectedMember(null);
-                    setAvatarPreview(null);
-                }
-            };
-
-            const getInitials = (name) => {
-                return name.split(' ').map(n => n[0]).join('').toUpperCase();
-            };
-
-            return (
-                <div>
-                    <h2 className="section-title">Trust Members</h2>
-                    
-                    {user.type === 'admin' && (
-                        <div className="form-card">
-                            <h3 style={{marginBottom: '15px', color: 'var(--maroon)'}}>🌐 Cloud Sync</h3>
-                            <div className="sync-controls">
-                                <button 
-                                    className="sync-btn"
-                                    onClick={syncToCloud}
-                                    disabled={isSyncing}
-                                >
-                                    {isSyncing ? '🔄' : '📤'} Sync to Cloud
-                                </button>
-                                <button 
-                                    className="sync-btn"
-                                    onClick={syncFromCloud}
-                                    disabled={isSyncing}
-                                >
-                                    {isSyncing ? '🔄' : '📥'} Sync from Cloud
-                                </button>
-                            </div>
-                        </div>
-                    )}
-                    
-                    {user.type === 'admin' ? (
-                        <>
-                            <div className="form-card">
-                                <h3 style={{marginBottom: '15px', color: 'var(--maroon)'}}>Add New Member</h3>
-                                <div className="form-row">
-                                    <div className="form-field">
-                                        <input
-                                            type="text"
-                                            className="form-control"
-                                            value={newMember}
-                                            onChange={(e) => setNewMember(e.target.value)}
-                                            placeholder="Enter member name"
-                                            onKeyPress={(e) => e.key === 'Enter' && addMember()}
-                                        />
-                                    </div>
-                                    <button className="btn btn-primary" onClick={addMember}>
-                                        Add Member
-                                    </button>
-                                </div>
-                                <div style={{marginTop: '10px', fontSize: '13px', color: '#666'}}>
-                                    <strong>Note:</strong> Password: <strong>pass123</strong>
-                                </div>
-                            </div>
-                            
-                            <div className="members-grid">
-                                {members.map((member, index) => (
-                                    <div key={member.id || index} className="member-card">
-                                        <button 
-                                            className="delete-member"
-                                            onClick={() => deleteMember(index)}
-                                        >
-                                            ×
-                                        </button>
-                                        
-                                        <div className="member-avatar">
-                                            {member.avatar ? (
-                                                <img src={member.avatar} alt={member.name} />
-                                            ) : (
-                                                getInitials(member.name)
-                                            )}
-                                        </div>
-                                        
-                                        <div className="member-name">{member.name}</div>
-                                        <div style={{fontSize: '11px', color: '#666', marginBottom: '8px'}}>
-                                            by {member.addedBy}
-                                        </div>
-                                        
-                                        <button 
-                                            className="change-dp-btn"
-                                            onClick={() => openDpModal(member, index)}
-                                        >
-                                            Change Photo
-                                        </button>
-                                    </div>
-                                ))}
-                            </div>
-                            
-                            {members.length === 0 && (
-                                <div style={{textAlign: 'center', padding: '40px', color: '#666'}}>
-                                    No members added yet.
-                                </div>
-                            )}
-                        </>
-                    ) : (
-                        <>
-                            <div style={{
-                                background: '#e8f5e8',
-                                border: '1px solid #c8e6c9',
-                                borderRadius: '12px',
-                                padding: '15px',
-                                margin-bottom: '20px',
-                                text-align: 'center',
-                                color: '#2e7d32'
-                            }}>
-                                All registered members can view each other and manage their own profile pictures.
-                            </div>
-                            <div className="members-grid">
-                                {members.map((member, index) => (
-                                    <div key={member.id || index} className="member-card">
-                                        <div className="member-avatar">
-                                            {member.avatar ? (
-                                                <img src={member.avatar} alt={member.name} />
-                                            ) : (
-                                                getInitials(member.name)
-                                            )}
-                                        </div>
-                                        
-                                        <div className="member-name">{member.name}</div>
-                                        
-                                        {user.name === member.name && (
-                                            <button 
-                                                className="change-dp-btn"
-                                                onClick={() => openDpModal(member, index)}
-                                            >
-                                                Change My Photo
-                                            </button>
-                                        )}
-                                    </div>
-                                ))}
-                            </div>
-                        </>
-                    )}
-
-                    {/* Avatar Modal */}
-                    {showDpModal && (
-                        <div className="modal-overlay">
-                            <div className="modal">
-                                <h3 className="modal-title">Profile Picture</h3>
-                                <p style={{textAlign: 'center', marginBottom: '20px', color: '#666'}}>
-                                    {selectedMember?.name}
-                                </p>
-                                
-                                <div style={{
-                                    width: '150px',
-                                    height: '150px',
-                                    borderRadius: '75px',
-                                    overflow: 'hidden',
-                                    margin: '0 auto 20px',
-                                    border: '3px solid var(--gold)',
-                                    background: avatarPreview ? 'none' : 'var(--light-gold)',
-                                    display: 'flex',
-                                    align-items: 'center',
-                                    justifyContent: 'center',
-                                    fontSize: '40px',
-                                    color: 'var(--maroon)'
-                                }}>
-                                    {avatarPreview ? (
-                                        <img 
-                                            src={avatarPreview} 
-                                            alt="Preview" 
-                                            style={{width: '100%', height: '100%', objectFit: 'cover'}}
-                                        />
-                                    ) : (
-                                        getInitials(selectedMember?.name || '')
-                                    )}
-                                </div>
-                                
-                                <input
-                                    type="file"
-                                    accept="image/*"
-                                    onChange={handleAvatarChange}
-                                    style={{display: 'none'}}
-                                    id="avatarInput"
-                                />
-                                
-                                <div className="modal-actions">
-                                    <button 
-                                        className="btn"
-                                        onClick={() => setShowDpModal(false)}
-                                        style={{background: '#f5f5f5'}}
-                                    >
-                                        Cancel
-                                    </button>
-                                    <label htmlFor="avatarInput" className="btn btn-primary">
-                                        Choose Photo
-                                    </label>
-                                    {avatarPreview && (
-                                        <button 
-                                            className="btn btn-success"
-                                            onClick={saveAvatar}
-                                        >
-                                            Save
-                                        </button>
-                                    )}
-                                </div>
-                            </div>
-                        </div>
-                    )}
+    return (
+        <div>
+            <h2 className="section-title">Trust Members</h2>
+            
+            {user.type === 'admin' && (
+                <div className="form-card">
+                    <h3 style={{marginBottom: '15px', color: 'var(--maroon)'}}>🌐 Cloud Sync</h3>
+                    <div className="sync-controls">
+                        <button 
+                            className="sync-btn"
+                            onClick={syncToCloud}
+                            disabled={isSyncing}
+                        >
+                            {isSyncing ? '🔄' : '📤'} Sync to Cloud
+                        </button>
+                        <button 
+                            className="sync-btn"
+                            onClick={syncFromCloud}
+                            disabled={isSyncing}
+                        >
+                            {isSyncing ? '🔄' : '📥'} Sync from Cloud
+                        </button>
+                    </div>
                 </div>
-            );
-        };
+            )}
+            
+            {user.type === 'admin' ? (
+                <>
+                    <div className="form-card">
+                        <h3 style={{marginBottom: '15px', color: 'var(--maroon)'}}>Add New Member</h3>
+                        <div className="form-row">
+                            <div className="form-field">
+                                <input
+                                    type="text"
+                                    className="form-control"
+                                    value={newMember}
+                                    onChange={(e) => setNewMember(e.target.value)}
+                                    placeholder="Enter member name"
+                                    onKeyPress={(e) => e.key === 'Enter' && addMember()}
+                                />
+                            </div>
+                            <button className="btn btn-primary" onClick={addMember}>
+                                Add Member
+                            </button>
+                        </div>
+                        <div style={{marginTop: '10px', fontSize: '13px', color: '#666'}}>
+                            <strong>Note:</strong> Password: <strong>pass123</strong>
+                        </div>
+                    </div>
+                    
+                    <div className="members-grid">
+                        {members.map((member, index) => (
+                            <div key={member.id || index} className="member-card">
+                                <button 
+                                    className="delete-member"
+                                    onClick={() => deleteMember(index)}
+                                >
+                                    ×
+                                </button>
+                                
+                                <div className="member-avatar">
+                                    {member.avatar ? (
+                                        <img src={member.avatar} alt={member.name} />
+                                    ) : (
+                                        getInitials(member.name)
+                                    )}
+                                </div>
+                                
+                                <div className="member-name">{member.name}</div>
+                                <div style={{fontSize: '11px', color: '#666', marginBottom: '8px'}}>
+                                    by {member.addedBy}
+                                </div>
+                                
+                                <button 
+                                    className="change-dp-btn"
+                                    onClick={() => openDpModal(member, index)}
+                                >
+                                    Change Photo
+                                </button>
+                            </div>
+                        ))}
+                    </div>
+                    
+                    {members.length === 0 && (
+                        <div style={{textAlign: 'center', padding: '40px', color: '#666'}}>
+                            No members added yet.
+                        </div>
+                    )}
+                </>
+            ) : (
+                <>
+                    <div style={{
+                        background: '#e8f5e8',
+                        border: '1px solid #c8e6c9',
+                        borderRadius: '12px',
+                        padding: '15px',
+                        marginBottom: '20px',
+                        textAlign: 'center',
+                        color: '#2e7d32'
+                    }}>
+                        All registered members can view each other and manage their own profile pictures.
+                    </div>
+                    <div className="members-grid">
+                        {members.map((member, index) => (
+                            <div key={member.id || index} className="member-card">
+                                <div className="member-avatar">
+                                    {member.avatar ? (
+                                        <img src={member.avatar} alt={member.name} />
+                                    ) : (
+                                        getInitials(member.name)
+                                    )}
+                                </div>
+                                
+                                <div className="member-name">{member.name}</div>
+                                
+                                {user.name === member.name && (
+                                    <button 
+                                        className="change-dp-btn"
+                                        onClick={() => openDpModal(member, index)}
+                                    >
+                                        Change My Photo
+                                    </button>
+                                )}
+                            </div>
+                        ))}
+                    </div>
+                </>
+            )}
+
+            {/* Avatar Modal */}
+            {showDpModal && (
+                <div className="modal-overlay">
+                    <div className="modal">
+                        <h3 className="modal-title">Profile Picture</h3>
+                        <p style={{textAlign: 'center', marginBottom: '20px', color: '#666'}}>
+                            {selectedMember?.name}
+                        </p>
+                        
+                        <div style={{
+                            width: '150px',
+                            height: '150px',
+                            borderRadius: '75px',
+                            overflow: 'hidden',
+                            margin: '0 auto 20px',
+                            border: '3px solid var(--gold)',
+                            background: avatarPreview ? 'none' : 'var(--light-gold)',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            fontSize: '40px',
+                            color: 'var(--maroon)'
+                        }}>
+                            {avatarPreview ? (
+                                <img 
+                                    src={avatarPreview} 
+                                    alt="Preview" 
+                                    style={{width: '100%', height: '100%', objectFit: 'cover'}}
+                                />
+                            ) : (
+                                getInitials(selectedMember?.name || '')
+                            )}
+                        </div>
+                        
+                        <input
+                            type="file"
+                            accept="image/*"
+                            onChange={handleAvatarChange}
+                            style={{display: 'none'}}
+                            id="avatarInput"
+                        />
+                        
+                        <div className="modal-actions">
+                            <button 
+                                className="btn"
+                                onClick={() => setShowDpModal(false)}
+                                style={{background: '#f5f5f5'}}
+                            >
+                                Cancel
+                            </button>
+                            <label htmlFor="avatarInput" className="btn btn-primary">
+                                Choose Photo
+                            </label>
+                            {avatarPreview && (
+                                <button 
+                                    className="btn btn-success"
+                                    onClick={saveAvatar}
+                                >
+                                    Save
+                                </button>
+                            )}
+                        </div>
+                    </div>
+                </div>
+            )}
+        </div>
+    );
+};
 
         // Mobile Hundi Section
         const HundiSection = ({ user }) => {
@@ -2885,4 +2885,4 @@
         root.render(<App />);
     </script>
 </body>
-    </html>
+</html>
